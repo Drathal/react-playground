@@ -22,6 +22,9 @@ new WebpackDevServer(webpack(config), {
 // product api
 app.get('/api/product', (req, res) => res.sendFile(path.join(__dirname, '../test/fixtures/products.json')))
 
+// devliver html coverage
+app.use('/coverage', express.static(path.join(__dirname, '../coverage')))
+
 // proxy hot server
 app.use(config.output.publicPath, proxy(url.parse(`http://${config.host}:${config.port + 1}${config.output.publicPath}`)))
 

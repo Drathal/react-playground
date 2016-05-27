@@ -24,6 +24,7 @@ ReactDOM.render(
   rootEl
 )
 
+// hot reloading
 if (module.hot) {
   module.hot.accept('./root', () => {
     const NextRoot = require('./root').default // eslint-disable-line global-require

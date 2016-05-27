@@ -2,13 +2,12 @@ const chai = require('chai')
 const sinonChai = require('sinon-chai')
 const jsdom = require('jsdom').jsdom
 
-var pe = require('pretty-error').start()
+const pe = require('pretty-error').start()
 pe.skipPackage('mocha', 'babel-register')
 pe.skipNodeFiles()
 pe.skipPath('internal/module.js')
 
-var exposedProperties = ['window', 'navigator', 'document']
-
+const exposedProperties = ['window', 'navigator', 'document']
 global.document = jsdom('')
 global.window = document.defaultView
 Object.keys(document.defaultView).forEach((property) => {

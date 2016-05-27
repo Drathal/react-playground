@@ -4,5 +4,6 @@
 /.tmp
 /.idea
 /dist
+/.nyc_output
 *.log
 .DS_Store

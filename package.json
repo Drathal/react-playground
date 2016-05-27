@@ -4,8 +4,8 @@
   "description": "react-playground",
   "scripts": {
     "test": "better-npm-run test",
-    "test:watch": "better-npm-run test:watch",
-    "test:coverage": "better-npm-run test:coverage",
+    "test:watch": "npm test --watch",
+    "coverage": "nyc --cache npm run test -- --reporter min",
     "build": "better-npm-run build",
     "build:server": "cp ./index.html ./dist && cp ./build/server.prod.js ./dist/index.js",
     "start": "better-npm-run start",
@@ -14,25 +14,16 @@
     "clean": "rimraf dist",
     "font:update": "cd assets/fonts && rm -rf * && gfdownloader Material+Icons:400 && gfdownloader Roboto:400,700"
   },
+  "nyc": {
+    "extension": [".js"],
+    "reporter": ["lcov", "text", "html"],
+    "report-dir": "./coverage",
+    "exclude": ["**/*.spec.js", "build", "test", "config", "node_modules"],
+    "includes": ["**/*.js"]
+  },
   "betterScripts": {
     "test": {
-      "command": "mocha --reporter spec",
-      "env": {
-        "BABEL_DISABLE_CACHE": 1,
-        "BABEL_ENV": "test",
-        "NODE_ENV": "test"
-      }
-    },
-    "test:coverage": {
-      "command": "babel-node node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --reporter spec",
-      "env": {
-        "BABEL_DISABLE_CACHE": 1,
-        "BABEL_ENV": "test",
-        "NODE_ENV": "test"
-      }
-    },
-    "test:watch": {
-      "command": "nodemon --exec babel-node node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --reporter spec",
+      "command": "mocha",
       "env": {
         "BABEL_DISABLE_CACHE": 1,
         "BABEL_ENV": "test",
@@ -130,6 +121,7 @@
     "node-sass": "^3.4.2",
     "nodemon": "^1.9.1",
     "npm-run-all": "^2.1.1",
+    "nyc": "^6.4.4",
     "pretty-error": "^2.0.0",
     "proxy-middleware": "^0.15.0",
     "react-addons-test-utils": "^15.1.0",
