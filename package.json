@@ -1,0 +1,146 @@
+{
+  "name": "redux-playground",
+  "version": "0.0.90",
+  "description": "redux-playground",
+  "scripts": {
+    "test": "better-npm-run test",
+    "test:watch": "better-npm-run test:watch",
+    "test:coverage": "better-npm-run test:coverage",
+    "build": "better-npm-run build",
+    "build:server": "cp ./index.html ./dist && cp ./build/server.prod.js ./dist/index.js",
+    "start": "better-npm-run start",
+    "start:dev": "better-npm-run start:dev",
+    "dev": "npm-run-all --parallel start:dev test:watch",
+    "clean": "rimraf dist",
+    "font:update": "cd assets/fonts && rm -rf * && gfdownloader Material+Icons:400 && gfdownloader Roboto:400,700"
+  },
+  "betterScripts": {
+    "test": {
+      "command": "mocha --reporter spec",
+      "env": {
+        "BABEL_DISABLE_CACHE": 1,
+        "BABEL_ENV": "test",
+        "NODE_ENV": "test"
+      }
+    },
+    "test:coverage": {
+      "command": "babel-node node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --reporter spec",
+      "env": {
+        "BABEL_DISABLE_CACHE": 1,
+        "BABEL_ENV": "test",
+        "NODE_ENV": "test"
+      }
+    },
+    "test:watch": {
+      "command": "nodemon --exec babel-node node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --reporter spec",
+      "env": {
+        "BABEL_DISABLE_CACHE": 1,
+        "BABEL_ENV": "test",
+        "NODE_ENV": "test"
+      }
+    },
+    "start": {
+      "command": "node dist/index.js",
+      "env": {
+        "BABEL_ENV": "production",
+        "NODE_ENV": "production"
+      }
+    },
+    "start:dev": {
+      "command": "babel-node ./build/server.dev.js",
+      "env": {
+        "BABEL_ENV": "development",
+        "NODE_ENV": "development"
+      }
+    },
+    "build": {
+      "command": "npm run clean && webpack --config build/webpack.config.js -p && npm run build:server",
+      "env": {
+        "BABEL_ENV": "production",
+        "NODE_ENV": "production"
+      }
+    }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drathal/redux-playground.git"
+  },
+  "engines": {
+    "node": ">=5.11.1",
+    "npm": ">=3.8.3"
+  },
+  "dependencies": {
+    "axios": "^0.11.1",
+    "express": "^4.13.4",
+    "i18n": "^0.8.2",
+    "i18next": "^3.1.0",
+    "i18next-browser-languagedetector": "^0.3.0",
+    "i18next-xhr-backend": "^0.5.3",
+    "lodash": "^4.13.1",
+    "material-design-icons": "^2.2.3",
+    "react": "^15.1.0",
+    "react-addons-css-transition-group": "^15.1.0",
+    "react-bootstrap": "^0.29.4",
+    "react-dom": "^15.1.0",
+    "react-hot-loader": "^3.0.0-beta.2",
+    "react-i18next": "^1.3.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.1",
+    "react-router-redux": "^4.0.4",
+    "redux": "^3.3.1",
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-react-constant-elements": "^6.5.0",
+    "babel-plugin-transform-react-inline-elements": "^6.6.5",
+    "babel-plugin-webpack-loaders": "^0.5.0",
+    "babel-polyfill": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "better-npm-run": "0.0.8",
+    "chai": "^3.5.0",
+    "css-loader": "^0.23.1",
+    "deep-freeze": "0.0.1",
+    "enzyme": "^2.3.0",
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-react": "^5.1.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "google-fonts-downloader": "0.0.3",
+    "image-webpack-loader": "^1.7.0",
+    "isparta": "^4.0.0",
+    "istanbul": "^0.4.3",
+    "js-beautify": "^1.6.2",
+    "jsdom": "^9.2.0",
+    "json-loader": "^0.5.4",
+    "mocha": "^2.5.2",
+    "node-sass": "^3.4.2",
+    "nodemon": "^1.9.1",
+    "npm-run-all": "^2.1.1",
+    "pretty-error": "^2.0.0",
+    "proxy-middleware": "^0.15.0",
+    "react-addons-test-utils": "^15.1.0",
+    "redux-devtools": "^3.3.1",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.0.11",
+    "sass-loader": "^3.2.0",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

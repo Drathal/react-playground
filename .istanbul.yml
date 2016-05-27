@@ -1,0 +1,21 @@
+verbose: false
+instrumentation:
+  root: src
+  include-all-sources: true
+  extensions:
+    - .js
+  default-excludes: true
+  excludes:
+    - '*.spec.js'
+reporting:
+    print: summary
+    reports:
+        - lcov
+        - cobertura
+        - html
+    dir: ./coverage
+    watermarks:
+        statements: [70, 90]
+        lines: [70, 90]
+        functions: [70, 90]
+        branches: [70, 90]

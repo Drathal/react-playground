@@ -1,0 +1,15 @@
+@import 'settings.scss';
+@import 'colors.scss';
+@import 'fonts.scss';
+
+:global {
+  body {
+    font-family : 'Roboto', 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size : 14px;
+    -webkit-font-smoothing : antialiased;
+    line-height : 1.42857143;
+    color : $default-text-color;
+    background-color : transparent;
+    font-weight : 400;
+  }
+}

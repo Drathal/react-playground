@@ -1,0 +1,8 @@
+/node_modules
+/coverage
+/reports
+/.tmp
+/.idea
+/dist
+*.log
+.DS_Store
