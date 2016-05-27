@@ -71,7 +71,6 @@
     "npm": ">=3.8.3"
   },
   "dependencies": {
-    "es6-promise": "^3.2.1",
     "esformatter": "^0.9.4",
     "express": "^4.13.4",
     "i18n": "^0.8.2",
