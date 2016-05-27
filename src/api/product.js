@@ -1,3 +1,3 @@
-import axios from 'axios';
+import fetch from 'isomorphic-fetch'
 
-export const getProducts = endpoint => axios.get(endpoint).then(response => response)
+export const getProducts = endpoint => fetch(endpoint).then(response => response.json())

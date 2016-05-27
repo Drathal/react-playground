@@ -14,7 +14,7 @@ const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)
 const rootEl = document.getElementById('root')
 
-getProducts(config.endpoint.productApi).then(response => response.data.map(product => store.dispatch(addProduct(product))))
+getProducts(config.endpoint.productApi).then(response => response.map(product => store.dispatch(addProduct(product))))
 
 ReactDOM.render(
   <AppContainer>
