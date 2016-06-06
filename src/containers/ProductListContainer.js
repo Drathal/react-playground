@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import config from '../../../config/default.json'
-import * as productAPi from '../../api/product'
+import config from '../../config/default.json'
+import * as productAPi from '../api/product'
 
-import ProductsList from '../../components/ProductList'
-import * as productActions from '../../redux/modules/products/actions'
+import ProductsList from '../components/ProductList'
+import * as productActions from '../redux/modules/products/actions'
 
 const createRandomProduct = () => {
   const id = Math.floor(Math.random() * (100 - 5) + 5)
