@@ -1,0 +1,47 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2016-06-05 16:28+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Markus Dethlefsen <dethlefsen@cleverbridge.com>\n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/components/ProductList/ProductList.js:8
+#, fuzzy
+msgid "lala"
+msgstr "lala"
+
+#: src/components/ProductList/ProductList.js:11
+msgid "one"
+msgid_plural "more"
+msgstr[0] "einer"
+msgstr[1] "mehr"
+
+#: src/components/ProductList/ProductList.js:17
+msgid "Inbox"
+msgstr "Posteingang"
+
+#: src/components/ProductList/ProductList.js:20
+#: src/components/ProductList/ProductList.js:22
+#, fuzzy
+msgid "test"
+msgstr "Test"
+
+#: src/components/ProductList/ProductList.js:21
+#, fuzzy
+msgid "test again"
+msgstr "Test erneut"
+
+# The number of items added to the cart
+#: src/components/ProductList/ProductList.js:24
+msgctxt "Cart"
+msgid "One item"
+msgid_plural "{{ count }} items"
+msgstr[0] "Ein Gegenstand"
+msgstr[1] "{{ count }} Gegenstände"

@@ -1,21 +1,34 @@
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import ProductsList from '../../components/ProductList'
-import { addProduct, deleteProduct } from '../../redux/modules/products/actions'
+import config from '../../../config/default.json'
+import * as productAPi from '../../api/product'
 
-export const createRandomProduct = () => {
-  const id = Math.floor(Math.random() * (100 - 5) + 5)
-  return { id, description: `product ${id}` }
+import ProductsList from '../../components/ProductList'
+import * as productActions from '../../redux/modules/products/actions'
+
+class ProductListContainer extends Component {
+  componentDidMount() {
+    const { setProducts } = this.props
+    productAPi.get(config.endpoint.productApi).then(response => setProducts(response))
+  }
+
+  render() {
+    return <ProductsList {...this.props} />
+  }
 }
 
-export default connect(
-    (state) => {
-      return { products: state.products }
-    },
-    (dispatch) => {
-      return {
-        deleteProduct: (id) => dispatch(deleteProduct(id)),
-        addProduct: () => dispatch(addProduct(createRandomProduct()))
-      }
-    }
-)(ProductsList)
+ProductListContainer.propTypes = {
+  setProducts: PropTypes.func.isRequired,
+  addProduct: PropTypes.func.isRequired,
+  deleteProduct: PropTypes.func.isRequired
+}
+
+ProductListContainer = connect(
+    (state) => ({
+      products: state.products
+    }),
+    productActions
+)(ProductListContainer)
+
+export default ProductListContainer

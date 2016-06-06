@@ -1,8 +1,6 @@
-import { ADD_PRODUCT, DELETE_PRODUCT } from './actions'
+import { ADD_PRODUCT, DELETE_PRODUCT, SET_PRODUCTS } from './actions'
 
-const initialState = []
-
-export default (state = initialState, action) => {
+export default (state = [], action) => {
   const inList = product => state.filter(i => i.id === product.id).length > 0
   const getPosition = id => state.findIndex(i => i.id === id)
 
@@ -15,6 +13,7 @@ export default (state = initialState, action) => {
         ...state,
         action.product
       ]
+
     case DELETE_PRODUCT:
       const index = getPosition(action.id)
       if (index === -1) return state
@@ -23,7 +22,19 @@ export default (state = initialState, action) => {
         ...state.slice(index + 1)
       ]
 
+    case SET_PRODUCTS:
+      if (!action.products) return state
+      action.products.filter(p => {
+        if (!p.id) return false
+        if (inList(p)) return false
+        return true
+      })
+      return [
+        ...action.products
+      ]
+
     default:
       return state
+
   }
 }

@@ -4,18 +4,12 @@ import ReactDOM from 'react-dom'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { browserHistory } from 'react-router'
 
-import config from '../config/default.json'
-import { addProduct } from './redux/modules/products/actions'
-import * as productAPi from './api/product'
 import Root from './root'
 import configureStore from './store'
 
 const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)
 const rootEl = document.getElementById('root')
-
-// init store.products with initial data
-productAPi.get(config.endpoint.productApi).then(response => response.map(product => store.dispatch(addProduct(product))))
 
 ReactDOM.render(
   <AppContainer>

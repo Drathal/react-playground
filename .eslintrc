@@ -23,6 +23,7 @@
     "mocha": true
   },
   "rules": {
+    "no-class-assign":"off",
     "new-cap": 0,
     "no-case-declarations": "off",
     "semi": [2, "never"],

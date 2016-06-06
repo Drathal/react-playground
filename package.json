@@ -12,14 +12,29 @@
     "start:dev": "better-npm-run start:dev",
     "dev": "npm-run-all --parallel start:dev test:watch",
     "clean": "rimraf dist",
-    "font:update": "cd assets/fonts && rm -rf * && gfdownloader Material+Icons:400 && gfdownloader Roboto:400,700"
+    "font:update": "cd assets/fonts && rm -rf * && gfdownloader Material+Icons:400 && gfdownloader Roboto:400,700",
+    "extract": "babel-node src/translation/extract.js"
   },
   "nyc": {
-    "extension": [".js"],
-    "reporter": ["lcov", "text", "html"],
+    "extension": [
+      ".js"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "html"
+    ],
     "report-dir": "./coverage",
-    "exclude": ["**/*.spec.js", "build", "test", "config", "node_modules"],
-    "includes": ["**/*.js"]
+    "exclude": [
+      "**/*.spec.js",
+      "build",
+      "test",
+      "config",
+      "node_modules"
+    ],
+    "includes": [
+      "**/*.js"
+    ]
   },
   "betterScripts": {
     "test": {
@@ -69,6 +84,7 @@
     "i18next-browser-languagedetector": "^0.3.0",
     "i18next-xhr-backend": "^0.5.3",
     "isomorphic-fetch": "^2.2.1",
+    "jed": "^1.1.0",
     "lodash": "^4.13.1",
     "material-design-icons": "^2.2.3",
     "react": "^15.1.0",
@@ -88,6 +104,7 @@
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
     "babel-eslint": "^6.0.4",
+    "babel-gettext-extractor": "^1.0.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-react-constant-elements": "^6.5.0",
@@ -125,6 +142,7 @@
     "pretty-error": "^2.0.0",
     "proxy-middleware": "^0.15.0",
     "react-addons-test-utils": "^15.1.0",
+    "react-gettext-parser": "^1.0.0",
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.11",
