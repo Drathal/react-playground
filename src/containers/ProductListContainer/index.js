@@ -7,6 +7,11 @@ import * as productAPi from '../../api/product'
 import ProductsList from '../../components/ProductList'
 import * as productActions from '../../redux/modules/products/actions'
 
+const createRandomProduct = () => {
+  const id = Math.floor(Math.random() * (100 - 5) + 5)
+  return { id, description: `product ${id}` }
+}
+
 class ProductListContainer extends Component {
   componentDidMount() {
     const { setProducts } = this.props
@@ -14,7 +19,8 @@ class ProductListContainer extends Component {
   }
 
   render() {
-    return <ProductsList {...this.props} />
+    const { addProduct, ...props } = this.props
+    return (<ProductsList {...props} addProduct={() => addProduct(createRandomProduct())} />)
   }
 }
 

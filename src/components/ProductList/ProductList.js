@@ -22,13 +22,13 @@ const test2 = (<GetText
 />)
 */
 
-const ProductList = ({ products, addRandomProduct, deleteProduct }) => {
+const ProductList = ({ products, addProduct, deleteProduct }) => {
   const ProductItems = products.map((product) => <ProductItem key={product.id} { ...{ product, deleteProduct } } />)
   const noProducts = <h4>{'noProducts'}</h4>
 
   return (<div className={`productsWrapper ${style.productsWrapper}`}>
     <h2>{'title'}</h2>
-    <Button className={`addProduct ${style.addProductButton}`} onClick={addRandomProduct}>
+    <Button className={`addProduct ${style.addProductButton}`} onClick={addProduct}>
     {'addProductButton'}
     </Button>
     <div className={style.products}>
@@ -44,15 +44,13 @@ ProductList.propTypes = {
     description: PropTypes.string.isRequired
   })).isRequired,
   addProduct: PropTypes.func,
-  addRandomProduct: PropTypes.func,
   deleteProduct: PropTypes.func
 }
 
 ProductList.defaultProps = {
   products: [],
   addProduct: () => {},
-  deleteProduct: () => {},
-  addRandomProduct: () => {}
+  deleteProduct: () => {}
 }
 
 export default ProductList
