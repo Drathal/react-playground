@@ -4,7 +4,7 @@
   "description": "react-playground",
   "scripts": {
     "test": "better-npm-run test",
-    "test:watch": "npm test --watch",
+    "test:watch": "npm test -- --watch",
     "coverage": "nyc --cache npm run test -- --reporter min",
     "build": "better-npm-run build",
     "build:server": "cp ./index.html ./dist && cp ./build/server.prod.js ./dist/index.js",
