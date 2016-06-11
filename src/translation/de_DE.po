@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-06-11 16:01+0200\n"
+"POT-Creation-Date: 2016-06-11 17:25+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Markus Dethlefsen <dethlefsen@cleverbridge.com>\n"
 "Language-Team: \n"
@@ -12,17 +12,25 @@ msgstr ""
 "X-Generator: Poedit 1.8.8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/containers/ProductListContainer.js:27
-msgid "no Products"
-msgstr "Keine Produkte"
-
-#: src/containers/ProductListContainer.js:28
+#: src/containers/ProductListContainer.js:29
 msgid "Products"
 msgstr "Produkte"
 
-#: src/containers/ProductListContainer.js:29
+#: src/containers/ProductListContainer.js:30
 msgid "Add a random product"
 msgstr "Fügen Sie ein Zufallsprodukt hinzu"
+
+#: src/containers/ProductListContainer.js:33
+msgid "Delete"
+msgstr "Löschen"
+
+#: src/containers/ProductListContainer.js:34
+msgid "Buy"
+msgstr "Kaufen"
+
+#: src/containers/ProductListContainer.js:48
+msgid "No Products"
+msgstr "Keine Produkte "
 
 # my first translation
 #: src/translation/i18n.spec.js:29 src/translation/i18n.spec.js:31

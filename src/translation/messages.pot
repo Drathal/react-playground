@@ -1,20 +1,28 @@
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
-"POT-Creation-Date: Sat Jun 11 2016 16:00:47 GMT+0200 (CEST)\n"
+"POT-Creation-Date: Sat Jun 11 2016 17:25:23 GMT+0200 (CEST)\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/containers/ProductListContainer.js:27
-msgid "no Products"
-msgstr ""
-
-#: src/containers/ProductListContainer.js:28
+#: src/containers/ProductListContainer.js:29
 msgid "Products"
 msgstr ""
 
-#: src/containers/ProductListContainer.js:29
+#: src/containers/ProductListContainer.js:30
 msgid "Add a random product"
+msgstr ""
+
+#: src/containers/ProductListContainer.js:33
+msgid "Delete"
+msgstr ""
+
+#: src/containers/ProductListContainer.js:34
+msgid "Buy"
+msgstr ""
+
+#: src/containers/ProductListContainer.js:48
+msgid "No Products"
 msgstr ""
 
 #: src/translation/i18n.js:39

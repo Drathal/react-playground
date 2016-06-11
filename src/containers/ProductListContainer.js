@@ -30,8 +30,8 @@ class ProductListContainer extends Component {
       addProduct: i18n.gettext('Add a random product')
     }
     const productMessages = {
-      deleteProductButton: 'Delete',
-      addToCartButton: 'Buy'
+      deleteProductButton: i18n.gettext('Delete'),
+      addToCartButton: i18n.gettext('Buy')
     }
     const { addProduct, deleteProduct, ...props } = this.props
     const ProductItems = props.products.map((product) => <ProductItem
