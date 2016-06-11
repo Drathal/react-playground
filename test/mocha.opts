@@ -1,5 +1,5 @@
 src/**/*.spec.js
---slow 250
+--slow 500
 --timeout 1000
 --reporter spec
 --reporter-options stack-exclude=**/node_modules/**

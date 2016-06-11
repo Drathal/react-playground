@@ -8,18 +8,23 @@ describe('component <ProductList />', () => {
     { id: 777, description: 'product description', productImage },
     { id: 666, description: 'product description' }
   ]
+  const messages = {
+    noProducts: 'no Products',
+    title: 'Products',
+    addProduct: 'Add a random product'
+  }
   const onAddProduct = sinon.spy()
   const onDeleteProduct = sinon.spy()
-  const wrapper = mount(<ProductList products={products} addProduct={onAddProduct} deleteProduct={onDeleteProduct} />)
-  const wrapperEmpty = mount(<ProductList products={[]} addProduct={onAddProduct} deleteProduct={onDeleteProduct} />)
+  const wrapper = mount(<ProductList products={products} messages={messages} addProduct={onAddProduct} deleteProduct={onDeleteProduct} />)
+  const wrapperEmpty = mount(<ProductList products={[]} messages={messages} addProduct={onAddProduct} deleteProduct={onDeleteProduct} />)
 
   it('can render messages without a product', () => {
-    expect(wrapperEmpty.html().includes('noProduct')).to.equal(true)
+    expect(wrapperEmpty.html().includes(messages.title)).to.equal(true)
+    expect(wrapperEmpty.html().includes(messages.noProducts)).to.equal(true)
   })
 
   it('can render messages with a product', () => {
-    expect(wrapper.html().includes('title')).to.equal(true)
-    expect(wrapper.html().includes('addProductButton')).to.equal(true)
+    expect(wrapper.html().includes(messages.addProduct)).to.equal(true)
   })
 
   it('can render product informations', () => {

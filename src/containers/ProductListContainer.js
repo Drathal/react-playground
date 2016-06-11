@@ -7,6 +7,10 @@ import * as productAPi from '../api/product'
 import ProductsList from '../components/ProductList'
 import * as productActions from '../redux/modules/products/actions'
 
+// refactor langalue loading later
+import * as i18n from '../translation/i18n'
+i18n.addTranslation(require('../translation/de_DE.po'))
+
 const createRandomProduct = () => {
   const id = Math.floor(Math.random() * (100 - 5) + 5)
   return { id, description: `product ${id}` }
@@ -19,8 +23,13 @@ class ProductListContainer extends Component {
   }
 
   render() {
+    const messages = {
+      noProducts: i18n.gettext('no Products'),
+      title: i18n.gettext('Products'),
+      addProduct: i18n.gettext('Add a random product')
+    }
     const { addProduct, ...props } = this.props
-    return (<ProductsList {...props} addProduct={() => addProduct(createRandomProduct())} />)
+    return (<ProductsList {...props} messages={messages} addProduct={() => addProduct(createRandomProduct())} />)
   }
 }
 

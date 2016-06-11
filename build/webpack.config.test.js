@@ -29,6 +29,10 @@ module.exports = {
       {
         test: /\.(scss|css)$/,
         loaders: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]', 'sass-loader']
+      },
+      {
+        test: /\.po$/,
+        loader: 'json!po?format=jed1.x&domain=messages'
       }
     ]
   }

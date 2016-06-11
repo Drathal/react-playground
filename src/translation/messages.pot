@@ -1,37 +1,36 @@
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
-"POT-Creation-Date: Sun Jun 05 2016 16:21:35 GMT+0200 (CEST)\n"
+"POT-Creation-Date: Sat Jun 11 2016 16:00:47 GMT+0200 (CEST)\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/components/ProductList/ProductList.js:8
-msgid "lala"
+#: src/containers/ProductListContainer.js:27
+msgid "no Products"
 msgstr ""
 
-#: src/components/ProductList/ProductList.js:11
-msgid "one"
-msgid_plural "more"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/components/ProductList/ProductList.js:17
-msgid "Inbox"
+#: src/containers/ProductListContainer.js:28
+msgid "Products"
 msgstr ""
 
-#: src/components/ProductList/ProductList.js:20
-#: src/components/ProductList/ProductList.js:22
-msgid "test"
+#: src/containers/ProductListContainer.js:29
+msgid "Add a random product"
 msgstr ""
 
-#: src/components/ProductList/ProductList.js:21
-msgid "test again"
+#: src/translation/i18n.js:39
+#: src/translation/i18n.js:43
+msgid ""
 msgstr ""
 
-# The number of items added to the cart
-#: src/components/ProductList/ProductList.js:24
-msgctxt "Cart"
-msgid "One item"
-msgid_plural "{{ count }} items"
+#: src/translation/i18n.spec.js:29
+#: src/translation/i18n.spec.js:31
+#: src/translation/i18n.spec.js:38
+msgid "test_translation"
+msgstr ""
+
+#: src/translation/i18n.spec.js:45
+#: src/translation/i18n.spec.js:46
+msgid "singular_translation"
+msgid_plural "plural_translation"
 msgstr[0] ""
 msgstr[1] ""
