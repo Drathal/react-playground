@@ -7,6 +7,8 @@ import * as productAPi from '../api/product'
 import ProductsList from '../components/ProductList'
 import * as productActions from '../redux/modules/products/actions'
 
+import ProductItem from '../components/ProductItem'
+
 // refactor langalue loading later
 import * as i18n from '../translation/i18n'
 i18n.addTranslation(require('../translation/de_DE.po'))
@@ -24,12 +26,27 @@ class ProductListContainer extends Component {
 
   render() {
     const messages = {
-      noProducts: i18n.gettext('no Products'),
       title: i18n.gettext('Products'),
       addProduct: i18n.gettext('Add a random product')
     }
-    const { addProduct, ...props } = this.props
-    return (<ProductsList {...props} messages={messages} addProduct={() => addProduct(createRandomProduct())} />)
+    const productMessages = {
+      deleteProductButton: 'Delete',
+      addToCartButton: 'Buy'
+    }
+    const { addProduct, deleteProduct, ...props } = this.props
+    const ProductItems = props.products.map((product) => <ProductItem
+      key={product.id}
+      messages={productMessages}
+      deleteProduct={deleteProduct}
+      { ...{ product } }
+    />)
+
+    return (<ProductsList {...props}
+      count={ProductItems.length}
+      messages={messages}
+      addProduct={() => addProduct(createRandomProduct())}>
+      {ProductItems.length > 0 ? ProductItems : <h4>{i18n.gettext('No Products')}</h4>}
+    </ProductsList>)
   }
 }
 
