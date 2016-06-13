@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import config from '../../config/default.json'
-import * as productAPi from '../api/product'
+import * as productAPi from '../service/product'
 
 import ProductsList from '../components/ProductList'
 import * as productActions from '../redux/modules/products/actions'

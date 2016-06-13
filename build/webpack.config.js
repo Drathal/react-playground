@@ -50,6 +50,7 @@ const config = {
   debug: isDevelopment,
   noInfo: isProduction,
   resolve: {
+    root: [PATH.src],
     extensions: [
       '',
       '.js',

@@ -1,8 +1,14 @@
+const path = require('path')
 const webpack = require('webpack')
+const PATH = {
+  build: path.join(__dirname, '../dist'),
+  src: path.join(__dirname, '../src')
+}
 
 module.exports = {
   debug: false,
   resolve: {
+    root: [PATH.src],
     extensions: [
       '',
       '.js',
