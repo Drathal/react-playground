@@ -6,12 +6,12 @@
     "test": "mocha",
     "test:watch": "npm test -- --watch --reporter min",
     "test:coverage": "nyc --cache npm run test -- --reporter min",
-    "build": "better-npm-run build",
-    "build:server": "cp ./index.html ./dist && cp ./build/server.prod.js ./dist/index.js",
-    "start": "better-npm-run start",
-    "start:dev": "better-npm-run start:dev",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production BABEL_ENV=producttion webpack --config build/webpack.config.js -p",
+    "postbuild": "cp ./index.html ./dist && cp ./build/server.prod.js ./dist/index.js",
+    "start": "cross-env NODE_ENV=production BABEL_ENV=producttion node dist/index.js",
+    "start:dev": "cross-env NODE_ENV=development BABEL_ENV=development babel-node ./build/server.dev.js",
     "dev": "npm-run-all --parallel start:dev test:watch",
-    "clean": "rimraf dist",
     "font:update": "cd assets/fonts && rm -rf * && gfdownloader Material+Icons:400 && gfdownloader Roboto:400,700",
     "extract": "babel-node src/translation/extract.js"
   },
@@ -35,29 +35,6 @@
     "includes": [
       "**/*.js"
     ]
-  },
-  "betterScripts": {
-    "start": {
-      "command": "node dist/index.js",
-      "env": {
-        "BABEL_ENV": "production",
-        "NODE_ENV": "production"
-      }
-    },
-    "start:dev": {
-      "command": "babel-node ./build/server.dev.js",
-      "env": {
-        "BABEL_ENV": "development",
-        "NODE_ENV": "development"
-      }
-    },
-    "build": {
-      "command": "npm run clean && webpack --config build/webpack.config.js -p && npm run build:server",
-      "env": {
-        "BABEL_ENV": "production",
-        "NODE_ENV": "production"
-      }
-    }
   },
   "license": "MIT",
   "repository": {
@@ -104,8 +81,8 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
-    "better-npm-run": "0.0.8",
     "chai": "^3.5.0",
+    "cross-env": "^1.0.8",
     "css-loader": "^0.23.1",
     "decache": "^3.1.0",
     "deep-freeze": "0.0.1",
