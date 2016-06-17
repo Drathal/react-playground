@@ -3,7 +3,13 @@ import React, { PropTypes } from 'react'
 import LayoutDashboard from '../LayoutDashboard'
 import LayoutMain from '../LayoutMain'
 
-const Layout = (props) => (props.params.layout === 'dashboard' ? <LayoutDashboard { ...props } /> : <LayoutMain { ...props } />)
+const Layout = (props) => (
+  <span>
+   {
+     props.params.layout === 'main' ? <LayoutMain { ...props } /> : <LayoutDashboard { ...props } />
+   }
+  </span>)
+//  props.params.layout === 'dashboard' ? <LayoutDashboard { ...props } /> : <LayoutMain { ...props } />)
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

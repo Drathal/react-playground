@@ -4,6 +4,7 @@
 /.tmp
 /.idea
 /dist
+/i18n
 /.nyc_output
 *.log
 .DS_Store

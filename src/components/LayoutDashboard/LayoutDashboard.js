@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router'
+import { Navbar, Nav } from 'react-bootstrap'
 import style from './LayoutDashboard.scss'
 
 const LayoutDashboard = ({ children, params }) => {

@@ -23,6 +23,7 @@
     "mocha": true
   },
   "rules": {
+    "global-require": "off",
     "camelcase": "off",
     "no-underscore-dangle": "off",
     "no-class-assign":"off",

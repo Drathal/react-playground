@@ -4,14 +4,39 @@ import { connect } from 'react-redux'
 import config from '../../config/default.json'
 import * as productAPi from '../service/product'
 
+import ProductItem from '../components/ProductItem'
 import ProductsList from '../components/ProductList'
 import * as productActions from '../redux/modules/products/actions'
 
-import ProductItem from '../components/ProductItem'
+import { injectIntl, defineMessages } from 'react-intl'
 
-// refactor langalue loading later
-import * as i18n from '../translation/i18n'
-i18n.addTranslation(require('../translation/de_DE.po'))
+const m = defineMessages({
+  title: {
+    id: 'title',
+    defaultMessage: 'Products',
+    description: '5boooooring',
+  },
+  addProduct: {
+    id: 'addProduct',
+    defaultMessage: 'Add a random product',
+    description: 'This translation is defined in a defineMessage.',
+  },
+  deleteProductButton: {
+    id: 'deleteProductButton',
+    defaultMessage: 'Delete',
+    description: 'This translation is defined in a defineMessage.',
+  },
+  addToCartButton: {
+    id: 'addToCartButton',
+    defaultMessage: 'Buy',
+    description: 'This translation is also defined in a defineMessage.',
+  },
+  noProduct: {
+    id: 'noProduct',
+    defaultMessage: 'No Products',
+    description: 'description',
+  }
+})
 
 const createRandomProduct = () => {
   const id = Math.floor(Math.random() * (100 - 5) + 5)
@@ -25,27 +50,27 @@ class ProductListContainer extends Component {
   }
 
   render() {
-    const messages = {
-      title: i18n.gettext('Products'),
-      addProduct: i18n.gettext('Add a random product')
-    }
-    const productMessages = {
-      deleteProductButton: i18n.gettext('Delete'),
-      addToCartButton: i18n.gettext('Buy')
-    }
     const { addProduct, deleteProduct, ...props } = this.props
+    const t = props.intl.formatMessage
+
     const ProductItems = props.products.map((product) => <ProductItem
       key={product.id}
-      messages={productMessages}
+      messages={{
+        deleteProductButton: t(m.deleteProductButton),
+        addToCartButton: t(m.addToCartButton)
+      }}
       deleteProduct={deleteProduct}
       { ...{ product } }
     />)
 
     return (<ProductsList {...props}
       count={ProductItems.length}
-      messages={messages}
+      messages={{
+        title: t(m.title),
+        addProduct: t(m.addProduct)
+      }}
       addProduct={() => addProduct(createRandomProduct())}>
-      {ProductItems.length > 0 ? ProductItems : <h4>{i18n.gettext('No Products')}</h4>}
+      {ProductItems.length > 0 ? ProductItems : <h4>{'No Products'}</h4>}
     </ProductsList>)
   }
 }
@@ -63,4 +88,4 @@ ProductListContainer = connect(
     productActions
 )(ProductListContainer)
 
-export default ProductListContainer
+export default injectIntl(ProductListContainer)

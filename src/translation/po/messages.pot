@@ -1,0 +1,39 @@
+#: ./i18n/src/containers/ProductListContainer.json
+#. [addProduct] - This translation is defined in a defineMessage.
+msgid "Add a random product"
+msgstr ""
+
+#: ./i18n/src/containers/ProductListContainer.json
+#. [addToCartButton] - This translation is also defined in a defineMessage.
+msgid "Buy"
+msgstr ""
+
+#: ./i18n/src/containers/LanguageSelectorConnector.json
+#. [currentLanguage] - undefined
+msgid "Current language:"
+msgstr ""
+
+#: ./i18n/src/containers/ProductListContainer.json
+#. [deleteProductButton] - This translation is defined in a defineMessage.
+msgid "Delete"
+msgstr ""
+
+#: ./i18n/src/containers/LanguageSelectorConnector.json
+#. [locale_de] - undefined
+msgid "Deutsch"
+msgstr ""
+
+#: ./i18n/src/containers/LanguageSelectorConnector.json
+#. [locale_en] - undefined
+msgid "English"
+msgstr ""
+
+#: ./i18n/src/containers/ProductListContainer.json
+#. [noProduct] - description
+msgid "No Products"
+msgstr ""
+
+#: ./i18n/src/containers/ProductListContainer.json
+#. [title] - 5boooooring
+msgid "Products"
+msgstr ""

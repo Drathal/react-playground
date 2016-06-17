@@ -1,6 +1,12 @@
 {
   "presets": ["es2015", "stage-0", "react"],
-  "plugins": ["react-hot-loader/babel"],
+  "plugins": [
+    "react-hot-loader/babel",
+    ["react-intl", {
+      "messagesDir": "./i18n/",
+      "enforceDescriptions": false
+    }]
+  ],
   "env": {
     "test": {
       "plugins": [

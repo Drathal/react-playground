@@ -1,14 +1,11 @@
 import React, { PropTypes } from 'react'
-import { Provider } from 'react-redux'
 import { Router } from 'react-router'
 import routes from './routes'
-import { I18n } from './translation'
+import { Provider } from 'react-intl-redux'
 
 const Root = ({ store, history }) => (
-  <Provider store={store} test={'test'}>
-    <I18n>
-      <Router { ...{ routes, history }} />
-    </I18n>
+  <Provider store={store}>
+    <Router { ...{ routes, history }} />
   </Provider>
 )
 

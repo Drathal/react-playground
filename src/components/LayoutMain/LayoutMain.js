@@ -2,8 +2,9 @@ import React, { PropTypes } from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router'
 import style from './LayoutMain.scss'
+import LanguageSelectorContainer from '../../containers/LanguageSelectorConnector'
 
-const LayoutMain = ({ children, params }) => {
+const LayoutMain = ({ children, params }, context) => {
   const NAV_LINKS = [
     {
       title: 'productLink',
@@ -15,7 +16,7 @@ const LayoutMain = ({ children, params }) => {
     }
   ]
 
-  let links = NAV_LINKS.map(item => <li activeClassName="active" key={item.link}>
+  const links = NAV_LINKS.map(item => <li activeClassName="active" key={item.link}>
     <Link to={item.link}>{item.title}</Link>
   </li>)
 
@@ -33,6 +34,7 @@ const LayoutMain = ({ children, params }) => {
     <div className={`${style.container} app-content`}>
       <div className={`${style.containerBody} app-content-body`}>
         {children}
+        <LanguageSelectorContainer />
       </div>
     </div>
   </div>)

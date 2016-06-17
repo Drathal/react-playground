@@ -35,6 +35,7 @@ const loaders = isProduction ? [
 ]
 
 const plugins = isProduction ? [
+  // same as webpack -p
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.optimize.UglifyJsPlugin({
     mangle: true,
@@ -43,6 +44,7 @@ const plugins = isProduction ? [
     }
   })
 ] : [
+  // enable hot reloading in development
   new webpack.HotModuleReplacementPlugin()
 ]
 
@@ -74,8 +76,7 @@ const config = {
       allChunks: true
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      __DEV__: isDevelopment
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new webpack.NoErrorsPlugin(),
     ...plugins
@@ -87,7 +88,7 @@ const config = {
       ...loaders,
       {
         test: /\.js$/,
-        loaders: ['babel?cacheDirectory'],
+        loaders: [`babel?cacheDirectory&cacheIdentifier=${Math.random()}`],
         include: PATH.src
       },
       {
@@ -102,8 +103,7 @@ const config = {
       { test: /\.woff$/, loader: 'url?limit=65000&mimetype=application/font-woff&name=[name].[ext]' },
       { test: /\.woff2$/, loader: 'url?limit=65000&mimetype=application/font-woff2&name=[name].[ext]' },
       { test: /\.[ot]tf$/, loader: 'url?limit=65000&mimetype=application/octet-stream&name=[name].[ext]' },
-      { test: /\.eot$/, loader: 'url?limit=65000&mimetype=application/vnd.ms-fontobject&name=[name].[ext]' },
-      { test: /\.po$/, loader: 'json!po?format=jed1.x&domain=messages' }
+      { test: /\.eot$/, loader: 'url?limit=65000&mimetype=application/vnd.ms-fontobject&name=[name].[ext]' }
     ]
   }
 }
