@@ -2,9 +2,9 @@ import React from 'react'
 import { Route, IndexRedirect } from 'react-router'
 
 import App from './components/App'
-import Layout from './components/Layout'
 import NotFound from './components/NotFound'
 import ProductListContainer from './containers/ProductListContainer'
+import Layout from './views/Layout'
 
 const Routes = (<Route path="/" component={App}>
   <Route path="/:layout" component={Layout}>

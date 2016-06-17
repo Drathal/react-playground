@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 import style from './LayoutMain.scss'
 import LanguageSelectorContainer from '../../containers/LanguageSelectorConnector'
 
-const LayoutMain = ({ children, params }, context) => {
+const LayoutMain = ({ children, params }) => {
   const NAV_LINKS = [
     {
       title: 'productLink',
