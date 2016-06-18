@@ -6,7 +6,7 @@ module.exports = {
         loaders: ['json-loader']
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
         loaders: ['file-loader']
       },
       {
