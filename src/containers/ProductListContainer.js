@@ -40,9 +40,12 @@ const createRandomProduct = () => {
 }
 
 class ProductListContainer extends Component {
+
   componentDidMount() {
-    const { setProducts } = this.props
-    productAPi.get(process.env.PRODUCT_SERVICE_URL).then(response => setProducts(response))
+    const { setProducts, shouldLoadProducts } = this.props
+    if (shouldLoadProducts) {
+      productAPi.get(process.env.PRODUCT_SERVICE_URL).then(response => setProducts(response))
+    }
   }
 
   render() {
@@ -72,6 +75,7 @@ class ProductListContainer extends Component {
 }
 
 ProductListContainer.propTypes = {
+  shouldLoadProducts: PropTypes.bool.isRequired,
   setProducts: PropTypes.func.isRequired,
   addProduct: PropTypes.func.isRequired,
   deleteProduct: PropTypes.func.isRequired
@@ -79,7 +83,8 @@ ProductListContainer.propTypes = {
 
 ProductListContainer = connect(
     (state) => ({
-      products: state.products
+      products: state.products.items,
+      shouldLoadProducts: !state.products.isValid
     }),
     productActions
 )(ProductListContainer)

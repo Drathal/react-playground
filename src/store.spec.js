@@ -9,8 +9,8 @@ describe('store', () => {
 
   it('can dispatch product actions', () => {
     const store = makeStore()
-    const stateBefore = []
-    const stateAfter = [{ ...product1 }, { ...product2 }]
+    const stateBefore = { isValid: false, items: [] }
+    const stateAfter = { isValid: true, items: [{ ...product1 }, { ...product2 }] }
 
     expect(store.getState().products).to.deep.equal(stateBefore)
 

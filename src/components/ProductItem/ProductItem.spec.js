@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'enzyme'
-import ProductItem from '../ProductItem'
+import ProductItem from './ProductItem'
 
 describe('component <ProductItem />', () => {
   it('can render a product', () => {

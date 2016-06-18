@@ -1,28 +1,4 @@
-const path = require('path')
-const webpack = require('webpack')
-require('dotenv-safe').load()
-const PATH = {
-  build: path.join(__dirname, '../dist'),
-  src: path.join(__dirname, '../src')
-}
-
 module.exports = {
-  debug: false,
-  resolve: {
-    root: [PATH.src],
-    extensions: [
-      '',
-      '.js',
-      '.scss',
-      '.json'
-    ]
-  },
-  output: {
-    libraryTarget: 'commonjs2'
-  },
-  plugins: [
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) })
-  ],
   module: {
     loaders: [
       {
