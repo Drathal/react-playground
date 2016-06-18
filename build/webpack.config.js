@@ -1,11 +1,11 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-
+const DotenvPlugin = require('webpack-dotenv-plugin')
+require('dotenv-safe').load()
 const isProduction = process.env.NODE_ENV === 'production'
 const isDevelopment = !isProduction
-const port = 3000
-const host = '0.0.0.0'
+const webpackPort = parseInt(process.env.APP_PORT, 10) + 1
 const PATH = {
   build: path.join(__dirname, '../dist'),
   src: path.join(__dirname, '../src')
@@ -13,7 +13,7 @@ const PATH = {
 
 const app = isProduction ? [] : [
   'react-hot-loader/patch',
-  `webpack-dev-server/client?http://${host}:${port + 1}`,
+  `webpack-dev-server/client?http://0.0.0.0:${webpackPort}`,
   'webpack/hot/only-dev-server'
 ]
 
@@ -39,6 +39,7 @@ const plugins = isProduction ? [
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.optimize.UglifyJsPlugin({
     mangle: true,
+    sourceMap: false,
     compress: {
       warnings: false
     }
@@ -72,17 +73,16 @@ const config = {
     publicPath: '/'
   },
   plugins: [
+    new DotenvPlugin({
+      sample: './.env.example',
+      path: './.env'
+    }),
     new ExtractTextPlugin('app.css', {
       allChunks: true
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new webpack.NoErrorsPlugin(),
     ...plugins
   ],
-  port,
-  host,
   module: {
     loaders: [
       ...loaders,

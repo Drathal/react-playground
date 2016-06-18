@@ -1,14 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-
-import config from '../../config/default.json'
+import { injectIntl, defineMessages } from 'react-intl'
 import * as productAPi from '../service/product'
-
 import ProductItem from '../components/ProductItem'
 import ProductsList from '../components/ProductList'
 import * as productActions from '../redux/modules/products/actions'
-
-import { injectIntl, defineMessages } from 'react-intl'
 
 const m = defineMessages({
   title: {
@@ -46,7 +42,7 @@ const createRandomProduct = () => {
 class ProductListContainer extends Component {
   componentDidMount() {
     const { setProducts } = this.props
-    productAPi.get(config.endpoint.productApi).then(response => setProducts(response))
+    productAPi.get(process.env.PRODUCT_SERVICE_URL).then(response => setProducts(response))
   }
 
   render() {

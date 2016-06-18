@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+require('dotenv-safe').load()
 const PATH = {
   build: path.join(__dirname, '../dist'),
   src: path.join(__dirname, '../src')

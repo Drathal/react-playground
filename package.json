@@ -1,6 +1,6 @@
 {
   "name": "react-playground",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "react-playground",
   "scripts": {
     "start": "cross-env NODE_ENV=production BABEL_ENV=producttion node dist/index.js",
@@ -8,7 +8,7 @@
     "test:watch": "npm test -- --watch --reporter min",
     "test:coverage": "nyc --cache npm run test -- --reporter min",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production BABEL_ENV=producttion webpack --config build/webpack.config.js -p",
+    "build": "cross-env NODE_ENV=production BABEL_ENV=production webpack --config build/webpack.config.js",
     "postbuild": "cp ./index.html ./dist && cp ./build/server.prod.js ./dist/index.js",
     "build:dev": "cross-env NODE_ENV=development BABEL_ENV=development babel-node ./build/server.dev.js",
     "predev": "rimraf i18n",
@@ -55,15 +55,14 @@
     "esformatter-quotes": "^1.1.0",
     "express": "^4.13.4",
     "isomorphic-fetch": "^2.2.1",
-    "jed": "^1.1.0",
     "lodash": "^4.13.1",
     "material-design-icons": "^2.2.3",
+    "minimatch": "^3.0.2",
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.1.0",
     "react-bootstrap": "^0.29.4",
     "react-dom": "^15.1.0",
     "react-hot-loader": "^3.0.0-beta.2",
-    "react-i18next": "^1.4.2",
     "react-intl": "^2.1.3",
     "react-intl-redux": "0.0.10",
     "react-redux": "^4.4.5",
@@ -89,6 +88,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
+    "chokidar-cmd": "^1.2.1",
     "cross-env": "^1.0.8",
     "css-loader": "^0.23.1",
     "debug": "^2.2.0",
@@ -115,7 +115,6 @@
     "json-loader": "^0.5.4",
     "mocha": "^2.5.3",
     "node-sass": "^3.4.2",
-    "nodemon": "^1.9.1",
     "npm-run-all": "^2.1.1",
     "nyc": "^6.4.4",
     "pretty-error": "^2.0.0",
@@ -135,6 +134,7 @@
     "to-object-by": "^1.0.3",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-dotenv-plugin": "^1.3.2"
   }
 }
