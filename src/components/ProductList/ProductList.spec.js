@@ -7,6 +7,7 @@ describe('component <ProductList />', () => {
     title: 'title',
     addProduct: 'add Products'
   }
+
   const onAddProduct = sinon.spy()
   const wrapper = mount(<ProductList children={'childs'} messages={messages} addProduct={onAddProduct} />)
 

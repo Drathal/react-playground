@@ -7,17 +7,20 @@
     "test": "mocha",
     "test:watch": "npm test -- --watch --reporter min",
     "test:coverage": "nyc --cache npm run test -- --reporter min",
-    "test:watch-coverage": "chokidar-cmd -q --initial -c 'npm run test:coverage' -t './src/**/*.js'",
+    "test:watch-coverage": "chokidar-cmd -q --initial -c 'npm run test:watch' -t './src/**/*.js'",
+
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production BABEL_ENV=production webpack --config build/webpack.config.js",
     "postbuild": "cp ./build/server.prod.js ./dist/index.js",
     "build:dev": "cross-env NODE_ENV=development BABEL_ENV=development babel-node ./build/server.dev.js",
     "predev": "rimraf i18n",
-    "dev": "npm-run-all --parallel test:watch-coverage build:dev translation:watchpot translation:watchpo",
+    "dev": "npm-run-all --parallel test:watch build:dev translation:watchpot translation:watchpo",
+
     "translation:watchpot": "chokidar-cmd -q -c 'npm run translation:createpot' -t './i18n/**/*'",
     "translation:watchpo": "chokidar-cmd -q -c 'npm run translation:po2json' -t './src/translation/po/*.po'",
     "translation:createpot": "rip json2pot ./i18n/**/*.json -o ./src/translation/po/messages.pot",
     "translation:po2json": "babel-node ./src/translation/po2json.js",
+
     "font:update": "cd assets/fonts && rm -rf * && gfdownloader Material+Icons:400 && gfdownloader Roboto:400,700"
   },
   "nyc": {

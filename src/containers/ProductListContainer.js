@@ -59,7 +59,7 @@ class ProductListContainer extends Component {
         addToCartButton: t(m.addToCartButton)
       }}
       deleteProduct={deleteProduct}
-      { ...{ product } }
+      {...{ product }}
     />)
 
     return (<ProductsList {...props}

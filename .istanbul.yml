@@ -1,2 +1,2 @@
 instrumentation:
-  ppreserve-comments: true
+  preserve-comments: true
