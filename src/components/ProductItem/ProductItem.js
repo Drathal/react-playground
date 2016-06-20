@@ -5,7 +5,9 @@ import productPictureDefault from './defaultProduct.jpg'
 import style from './ProductItem.scss'
 
 const ProductItem = ({ product, deleteProduct, addToCart, messages }) => {
-  const productImage = product.productImage && product.productImage.length > 0 ? product.productImage : productPictureDefault
+  const productImage = product.productImage && product.productImage.length > 0 ?
+    product.productImage :
+    productPictureDefault
 
   return (<Panel header={product.description} bsStyle="primary" className={`product-${product.id} ${style.productCard}`} key={product.id}>
     <img alt={'product'} className={`product-image-${product.id} ${style.productImage}`} src={productImage} />

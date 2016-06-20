@@ -21,24 +21,16 @@
     "font:update": "cd assets/fonts && rm -rf * && gfdownloader Material+Icons:400 && gfdownloader Roboto:400,700"
   },
   "nyc": {
-    "extension": [
-      ".js"
-    ],
     "reporter": [
       "lcov",
       "html"
     ],
     "report-dir": "./coverage",
-    "exclude": [
-      "**/*.spec.js",
-      "build",
-      "test",
-      "config",
-      "node_modules"
+    "require": [
+      "babel-register"
     ],
-    "includes": [
-      "**/*.js"
-    ]
+    "sourceMap": false,
+    "instrument": false
   },
   "license": "MIT",
   "repository": {
@@ -76,6 +68,7 @@
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
+    "babel-plugin-__coverage__": "^11.0.0",
     "babel-plugin-react-intl": "^2.1.3",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-react-constant-elements": "^6.9.1",

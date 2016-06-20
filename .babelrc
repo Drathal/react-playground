@@ -15,6 +15,11 @@
       "presets": ["es2015", "stage-0", "react"],
       "plugins": [
         [
+          "__coverage__", {
+            "only": "src/**/*(!.spec).js"
+          }
+        ],
+        [
           "babel-plugin-webpack-loaders", {
             "config": "./build/webpack.config.test.js",
             "verbose": false
