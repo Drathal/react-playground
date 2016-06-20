@@ -31,6 +31,7 @@ ProductItem.propTypes = {
   addToCart: PropTypes.func
 }
 
+/* istanbul ignore next */
 ProductItem.defaultProps = {
   product: {},
   deleteProduct: () => {},

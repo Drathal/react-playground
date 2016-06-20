@@ -1,16 +1,18 @@
 {
-  "presets": ["es2015", "stage-0", "react"],
-  "plugins": [
-    "react-hot-loader/babel",
-    [
-      "react-intl", {
-        "messagesDir": "./i18n/",
-        "enforceDescriptions": false
-      }
-    ]
-  ],
+  "presets": ["es2015-webpack", "stage-0", "react"],
   "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel", [
+          "react-intl", {
+            "messagesDir": "./i18n/",
+            "enforceDescriptions": false
+          }
+        ]
+      ]
+    },
     "test": {
+      "presets": ["es2015", "stage-0", "react"],
       "plugins": [
         [
           "babel-plugin-webpack-loaders", {

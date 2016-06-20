@@ -26,6 +26,7 @@ ProductList.propTypes = {
   addProduct: PropTypes.func
 }
 
+/* istanbul ignore next */
 ProductList.defaultProps = {
   addProduct: () => {}
 }
