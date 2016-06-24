@@ -1,9 +1,9 @@
 .addProductButton {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .deleteProductButton {
-    margin-right: 1em;
+  margin-right: 1em;
 }
 
 .productTitle {}
@@ -11,13 +11,25 @@
 .product {}
 
 .products {
-    margin: 0;
+  margin: 0;
 }
 
 .productsWrapper {
-    margin: 70px;
+  margin: 70px;
+}
+
+.imageWrapper {
+  width: 90px;
+  height: 90px;
+  display: inline-block;
+  line-height: 90px;
+  margin-right: 1em;
+  background-image: url('./placeholder.png');
+  background-size: 90px;
 }
 
 .productImage {
-    width: 90px;
+  width: 90px;
+  max-width: 90px;
+  max-height: 90px;
 }

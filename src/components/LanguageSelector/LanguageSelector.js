@@ -3,16 +3,18 @@ import { Button } from 'react-bootstrap'
 
 const LanguageSelector = ({ messages, languageCodes, currentLanguage, onLanguageSwitch }) => {
   const buttons = languageCodes.map(languageCode => <Button
+    style={{ marginLeft: '0.5em' }}
     key={`lang-${languageCode.locale}`}
     className={`switchLanguage switchLanguage-${languageCode.locale}`}
     onClick={() => onLanguageSwitch(languageCode.locale)}>
+      {languageCode.locale === currentLanguage && '* '}
       {languageCode.name}
   </Button>)
 
-  return (<div>
-    {messages.currentLanguage}{currentLanguage}
-    {buttons}
-  </div>)
+  return (<ul className={'nav navbar-nav'} style={{ float: 'right' }}>
+    <li style={{ lineHeight: '3.3em' }}>{messages.currentLanguage}{' '}{currentLanguage}</li>
+    <li style={{ lineHeight: '3.3em' }}>{buttons}</li>
+  </ul>)
 }
 
 LanguageSelector.propTypes = {

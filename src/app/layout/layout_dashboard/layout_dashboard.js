@@ -1,25 +1,18 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { Navbar, Nav } from 'react-bootstrap'
-import style from './LayoutDashboard.scss'
+import style from './layout_dashboard.scss'
+import top_navigation_links from '../topnav_links'
+import LanguageSelectorContainer from '../../../containers/LanguageSelectorConnector'
 
 const LayoutDashboard = ({ children, params }) => {
-  const NAV_LINKS = [
-    {
-      title: 'productLink',
-      link: `/${params.layout}/products`
-    },
-    {
-      title: 'notFoundLink',
-      link: `/${params.layout}/404`
-    }
-  ]
+  const NAV_LINKS = top_navigation_links(params)
 
   let links = NAV_LINKS.map(item => <li activeClassName="active" key={item.link}>
     <Link to={item.link}>{item.title}</Link>
   </li>)
 
-  return (<div className={'app layout layout-dashboard'}>
+  return (<div className={`${style.app} layout layout-dashboard`}>
     <Navbar fixed fluid staticTop componentClass="header" className={style.navigation} role="banner">
       <Navbar.Header>
         <Navbar.Brand className={style.navigationHeader}>
@@ -28,6 +21,7 @@ const LayoutDashboard = ({ children, params }) => {
       </Navbar.Header>
       <Navbar.Collapse className="bs-navbar-collapse">
         <Nav role="navigation" id="top">{links}</Nav>
+        <LanguageSelectorContainer />
       </Navbar.Collapse>
     </Navbar>
     <aside className={`${style.sidemenu} app-aside`}>

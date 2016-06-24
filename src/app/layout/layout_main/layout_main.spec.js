@@ -2,7 +2,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { Provider } from 'react-intl-redux'
 import configureStore from 'redux-mock-store'
-import LayoutMain from './LayoutMain'
+import LayoutMain from './layout_main'
 
 const store = configureStore()({ intl: { locale: 'en' } })
 

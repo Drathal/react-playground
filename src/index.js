@@ -1,5 +1,6 @@
 import 'babel-polyfill'
-import Promise from 'bluebird' //eslint-disable-line
+require('babel-runtime/core-js/promise').default = require('bluebird')
+
 import { AppContainer } from 'react-hot-loader'
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -38,10 +39,9 @@ IntlUtils.loadLocale('en').then(result => {
   // hot reloading
   if (module.hot) {
     module.hot.accept('./root', () => {
-      const NextRoot = require('./root').default // eslint-disable-line global-require
       ReactDOM.render(
         <AppContainer>
-          <NextRoot store={store} history={history} />
+          <Root store={store} history={history} />
         </AppContainer>,
         rootEl
       )

@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { injectIntl, defineMessages } from 'react-intl'
-import * as productAPi from '../service/product'
-import ProductItem from '../components/ProductItem'
-import ProductsList from '../components/ProductList'
-import * as productActions from '../redux/modules/products/actions'
+import * as productAPi from '../../service/product'
+import ProductItem from '../../components/ProductItem'
+import ProductsList from '../../components/ProductList'
+import * as productActions from '../../redux/modules/products/actions'
 
 const m = defineMessages({
   title: {
@@ -69,7 +69,7 @@ class ProductListContainer extends Component {
         addProduct: t(m.addProduct)
       }}
       addProduct={() => addProduct(createRandomProduct())}>
-      {ProductItems.length > 0 ? ProductItems : <h4>{'No Products'}</h4>}
+      {ProductItems.length > 0 ? ProductItems : <h4>{t(m.noProduct)}</h4>}
     </ProductsList>)
   }
 }

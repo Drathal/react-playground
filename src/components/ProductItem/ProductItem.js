@@ -9,8 +9,17 @@ const ProductItem = ({ product, deleteProduct, addToCart, messages }) => {
     product.productImage :
     productPictureDefault
 
+  // only a quick dirty demo - never manipulate DOM directly
+  const onError = (e) => {
+    if (e && e.target) {
+      e.target.src = productPictureDefault // eslint-disable-line
+    }
+  }
+
   return (<Panel header={product.description} bsStyle="primary" className={`product-${product.id} ${style.productCard}`} key={product.id}>
-    <img alt={'product'} className={`product-image-${product.id} ${style.productImage}`} src={productImage} />
+    <div className={`${style.imageWrapper}`}>
+      <img onError={onError} alt={'product'} className={`product-image-${product.id} ${style.productImage}`} src={productImage} />
+    </div>
     <Button className={`deleteProduct deleteProduct-${product.id} ${style.deleteProductButton}`} onClick={() => deleteProduct(product.id)}>
       {messages.deleteProductButton}
     </Button>

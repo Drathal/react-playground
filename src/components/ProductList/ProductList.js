@@ -7,14 +7,13 @@ const ProductList = ({ addProduct, messages, children, count }) =>
     <h2>{messages.title}</h2>
     {count < 5 || !count ?
       <Button className={`addProduct ${style.addProductButton}`} onClick={addProduct}>
-        {messages.addProduct}
+        <span className={'material-icons dp16'}>build</span>{' '}{messages.addProduct}
       </Button>
       : null}
     <div className={style.products}>
       {children}
     </div>
   </div>
-
 
 ProductList.propTypes = {
   messages: PropTypes.shape({

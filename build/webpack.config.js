@@ -1,7 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
+const precss = require('precss')
 const webpackValidator = require('webpack-validator')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const DotenvPlugin = require('webpack-dotenv-plugin')
 require('dotenv-safe').load()
@@ -21,22 +24,31 @@ const hot = isProduction ? [] : [
 
 const loaders = isProduction ? [
   {
+    test: /\.s?css$/,
+    loader: ExtractTextPlugin.extract(
+      'css?sourceMap&modules&importLoaders=2&localIdentName=[name]_[local]_[hash:base64:5]!postcss!resolve-url!sass?sourceMap'
+    )
+  },
+  {
     test: /\.(jpe?g|png|gif|svg)$/i,
     loaders: [
-      'url-loader?limit=10000',
+      'url-loader?limit=10000&name=assets/[name].[hash].[ext]',
       'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false&verbose=false'
     ]
   }
 ] : [
   {
+    test: /\.s?css$/,
+    loader: 'style!css?modules&importLoaders=2&localIdentName=[name]_[local]_[hash:base64:5]!postcss!resolve-url!sass?sourceMap'
+  },
+  {
     test: /\.(jpe?g|png|gif|svg)$/i,
-    loaders: [
-      'file-loader'
-    ]
+    loader: 'file'
   }
 ]
 
 const plugins = isProduction ? [
+  new WebpackCleanupPlugin(),
   new webpack.optimize.DedupePlugin(),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
@@ -49,7 +61,6 @@ const plugins = isProduction ? [
     },
   })
 ] : [
-  // enable hot reloading in development
   new webpack.HotModuleReplacementPlugin()
 ]
 
@@ -57,28 +68,30 @@ module.exports = () => {
   return webpackValidator({
     debug: isDevelopment,
     bail: isProduction,
-    resolve: {
-      extensions: [
-        '',
-        '.js',
-        '.scss',
-        '.json'
-      ]
-    },
     devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
     entry: {
       app: [...hot, './src/index'],
       vendor: [...hot],
     },
     target: 'web',
+    resolve: {
+      extensions: ['', '.js', '.scss', '.json'],
+      modulesDirectories: [
+        'node_modules',
+        path.resolve(__dirname, './node_modules')
+      ]
+    },
     output: {
       path: PATH.build,
-      filename: '[name].[hash].js',
-      chunkFilename: '[name].[hash].js',
+      filename: isProduction ? '[name].[hash].js' : '[name].js',
+      chunkFilename: isProduction ? '[name].[hash].js': '[name].js',
       publicPath: '/',
       pathinfo: isDevelopment
     },
     plugins: [
+      new webpack.ProvidePlugin({
+        fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+      }),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: module => /node_modules/.test(module.resource)
@@ -90,33 +103,36 @@ module.exports = () => {
         sample: './.env.example',
         path: './.env'
       }),
-      new ExtractTextPlugin('[name].[hash].css', {
+      new ExtractTextPlugin('css/[name].[hash].css', {
+        disable: !isProduction,
         allChunks: true
       }),
       new webpack.NoErrorsPlugin(),
       ...plugins
     ],
+    postcss() {
+      return [
+        autoprefixer({
+          browsers: ['last 2 version']
+        }),
+        precss
+      ]
+    },
     module: {
       loaders: [
         ...loaders,
         {
           test: /\.js$/,
           loaders: [`babel?cacheDirectory&cacheIdentifier=${Math.random()}`],
-          include: PATH.src
-        },
-        {
-          test: /\.s?css$/,
-          loader: ExtractTextPlugin.extract(
-            'style',
-            'css?sourceMap&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!sass-loader?sourceMap')
+          exclude: /(node_modules|.spec.)/
         },
         { test: /\.json$/, loaders: ['json'] },
-        { test: /\.ico$/, loader: 'file-loader?name=[name].[ext]' },
-        { test: /\.svg$/, loader: 'url?limit=65000&mimetype=image/svg+xml&name=name].[ext]' },
-        { test: /\.woff$/, loader: 'url?limit=65000&mimetype=application/font-woff&name=[name].[ext]' },
-        { test: /\.woff2$/, loader: 'url?limit=65000&mimetype=application/font-woff2&name=[name].[ext]' },
-        { test: /\.[ot]tf$/, loader: 'url?limit=65000&mimetype=application/octet-stream&name=[name].[ext]' },
-        { test: /\.eot$/, loader: 'url?limit=65000&mimetype=application/vnd.ms-fontobject&name=[name].[ext]' }
+        { test: /\.ico$/, loader: 'file?name=[name].[ext]' },
+        { test: /\.svg$/, loader: 'url?limit=15000&mimetype=image/svg+xml&name=assets/[name].[hash].[ext]' },
+        { test: /\.woff$/, loader: 'url?limit=15000&mimetype=application/font-woff&name=assets/[name].[hash].[ext]' },
+        { test: /\.woff2$/, loader: 'url?limit=15000&mimetype=application/font-woff2&name=assets/[name].[hash].[ext]' },
+        { test: /\.[ot]tf$/, loader: 'url?limit=15000&mimetype=application/octet-stream&name=assets/[name].[hash].[ext]' },
+        { test: /\.eot$/, loader: 'url?limit=15000&mimetype=application/vnd.ms-fontobject&name=assets/[name].[hash].[ext]' }
       ]
     }
   })
