@@ -5,9 +5,9 @@ import productsReducer from './index'
 import { addProduct, deleteProduct, setProducts } from './actions'
 
 describe('reducer products', () => {
-  const product1 = { id: 1, description: 'product 1' }
-  const product2 = { id: 2, description: 'product 2' }
-  const product3 = { id: 3, description: 'product 3' }
+  const product1 = { id: 1, description: 'product 1', name: 'product 1', productImage: 'a' }
+  const product2 = { id: 2, description: 'product 2', name: 'product 2', productImage: 'b' }
+  const product3 = { id: 3, description: 'product 3', name: 'product 3', productImage: 'c' }
 
   it('can add products', () => {
     const stateBefore = { isValid: false, items: [] }
