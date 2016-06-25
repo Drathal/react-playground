@@ -32,14 +32,14 @@ npm run build
   * builds the application for production
 
 ```shell
-    npm start
+npm start
 ```    
   * starts application in production mode at `localhost:3000`
 
 ### Development
 
 ```shell
-    npm run dev -s
+npm run dev -s
 ```
 
   * runs a development server at `localhost:3000`
@@ -48,6 +48,6 @@ npm run build
   * watches `*.po` files and creates message strings
 
 ```shell
-    npm run font:update
+npm run font:update
 ```
   * updates used fonts from the web
