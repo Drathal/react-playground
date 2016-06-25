@@ -18,35 +18,36 @@ Uses:
   * automatic assets optimisation (`.png`, `.gif`, `.jpg`, `.svg`)
   * ...
 
-
 ## Usage
-
-    npm install
-
+```shell
+npm install
+```
   * install all dependencies
 
 
 ### Production
-
-    npm run build
-
+```shell
+npm run build
+```
   * builds the application for production
 
-
+```shell
     npm start
-
+```    
   * starts application in production mode at `localhost:3000`
 
 ### Development
 
+```shell
     npm run dev -s
+```
 
   * runs a development server at `localhost:3000`
   * runs mocha tests on file change
   * extracts all language definitions and creates a `messages.pot` file
   * watches `*.po` files and creates message strings
 
-
-    npm run font:update -s
-
+```shell
+    npm run font:update
+```
   * updates used fonts from the web
