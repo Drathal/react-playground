@@ -26,7 +26,7 @@ const loaders = isProduction ? [
   {
     test: /\.s?css$/,
     loader: ExtractTextPlugin.extract(
-      'css?sourceMap&modules&importLoaders=2&localIdentName=[name]_[local]_[hash:base64:5]!postcss!resolve-url!sass?sourceMap'
+      'css?sourceMap&modules&importLoaders=2&localIdentName=[name]_[local]_[hash:base64:5]!postcss!sass?sourceMap'
     )
   },
   {
@@ -39,7 +39,7 @@ const loaders = isProduction ? [
 ] : [
   {
     test: /\.s?css$/,
-    loader: 'style!css?modules&importLoaders=2&localIdentName=[name]_[local]_[hash:base64:5]!postcss!resolve-url!sass?sourceMap'
+    loader: 'style!css?modules&importLoaders=2&localIdentName=[name]_[local]_[hash:base64:5]?sourceMap!postcss?sourceMap!sass?sourceMap'
   },
   {
     test: /\.(jpe?g|png|gif|svg)$/i,

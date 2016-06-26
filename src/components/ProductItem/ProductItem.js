@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Button, Panel } from 'react-bootstrap'
 
-import productPictureDefault from './defaultProduct.jpg'
+import productPictureDefault from './dummyProduct.jpg'
 import style from './ProductItem.scss'
 
 const ProductItem = ({ product, deleteProduct, addToCart, messages }) => {
