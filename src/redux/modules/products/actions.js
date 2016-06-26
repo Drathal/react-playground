@@ -1,6 +1,4 @@
-export const ADD_PRODUCT = 'product/ADD_PRODUCT'
-export const DELETE_PRODUCT = 'product/DELETE_PRODUCT'
-export const SET_PRODUCTS = 'product/SET_PRODUCTS'
+import { ADD_PRODUCT, DELETE_PRODUCT, SET_PRODUCTS } from '../constants'
 
 export const addProduct = product => ({
   type: ADD_PRODUCT, product
