@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, DELETE_PRODUCT, SET_PRODUCTS } from '../constants'
+import { ADD_PRODUCT, DELETE_PRODUCT, SET_PRODUCTS } from '../ActionTypes'
 import products from './products'
 
 const initialState = {

@@ -1,4 +1,4 @@
-import { ADD_PRODUCT } from '../constants'
+import { ADD_PRODUCT } from '../ActionTypes'
 
 const noProduct = (product) => (!product || !product.id)
 

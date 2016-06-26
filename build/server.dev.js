@@ -18,7 +18,7 @@ app.get('/api/product', (req, res) => res.sendFile(path.join(__dirname, '../test
 // devliver html coverage
 app.use('/coverage', express.static(path.join(__dirname, '../coverage')))
 
-// proxy hot server TODO: refactor hard coded protocol
+// proxy hot server
 app.use(config.output.publicPath, proxy(url.parse(`http://0.0.0.0:${webpackPort}${config.output.publicPath}`)))
 
 // start server
