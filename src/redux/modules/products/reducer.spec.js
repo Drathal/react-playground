@@ -1,6 +1,3 @@
-import { expect } from 'chai'
-import deepFreeze from 'deep-freeze'
-
 import productsReducer from './index'
 import { addProduct, deleteProduct, setProducts } from './actions'
 
@@ -20,8 +17,8 @@ describe('reducer products', () => {
     deepFreeze(action1)
     deepFreeze(action2)
 
-    expect(productsReducer(stateBefore, action1)).to.deep.equal(stateAfter1)
-    expect(productsReducer(stateAfter1, action2)).to.deep.equal(stateAfter2)
+    assert.deepEqual(productsReducer(stateBefore, action1), stateAfter1)
+    assert.deepEqual(productsReducer(stateAfter1, action2), stateAfter2)
   })
 
   it('can not add an existing product', () => {
@@ -38,9 +35,9 @@ describe('reducer products', () => {
     deepFreeze(action2)
     deepFreeze(action3)
 
-    expect(productsReducer(stateBefore, action1)).to.deep.equal(stateAfter1)
-    expect(productsReducer(stateAfter1, action2)).to.deep.equal(stateAfter2)
-    expect(productsReducer(stateAfter2, action3)).to.deep.equal(stateAfter3)
+    assert.deepEqual(productsReducer(stateBefore, action1), stateAfter1)
+    assert.deepEqual(productsReducer(stateAfter1, action2), stateAfter2)
+    assert.deepEqual(productsReducer(stateAfter2, action3), stateAfter3)
   })
 
   it('can delete a product', () => {
@@ -51,7 +48,7 @@ describe('reducer products', () => {
     deepFreeze(stateBefore)
     deepFreeze(action)
 
-    expect(productsReducer(stateBefore, action)).to.deep.equal(stateAfter)
+    assert.deepEqual(productsReducer(stateBefore, action), stateAfter)
   })
 
   it('can delete a product from many', () => {
@@ -62,7 +59,7 @@ describe('reducer products', () => {
     deepFreeze(stateBefore)
     deepFreeze(action)
 
-    expect(productsReducer(stateBefore, action)).to.deep.equal(stateAfter)
+    assert.deepEqual(productsReducer(stateBefore, action), stateAfter)
   })
 
   it('can add many products', () => {
@@ -73,6 +70,6 @@ describe('reducer products', () => {
     deepFreeze(stateBefore)
     deepFreeze(action)
 
-    expect(productsReducer(stateBefore, action)).to.deep.equal(stateAfter)
+    assert.deepEqual(productsReducer(stateBefore, action), stateAfter)
   })
 })

@@ -3,28 +3,30 @@
   "env": {
     "development": {
       "plugins": [
-        "react-hot-loader/babel", [
+        ["babel-plugin-espower", {
+          "embedAst": true
+        }],
+        ["react-hot-loader/babel", [
           "react-intl", {
             "messagesDir": "./i18n/",
             "enforceDescriptions": false
           }
-        ]
+        ]]
       ]
     },
     "test": {
       "presets": ["es2015", "stage-0", "react"],
       "plugins": [
-        [
-          "__coverage__", {
-            "only": "src/**/*(!.spec).js"
-          }
-        ],
-        [
-          "babel-plugin-webpack-loaders", {
-            "config": "./build/webpack.config.test.js",
-            "verbose": false
-          }
-        ]
+        ["babel-plugin-espower", {
+          "embedAst": true
+        }],
+        ["__coverage__", {
+          "only": "src/**/*(!.spec).js"
+        }],
+        ["babel-plugin-webpack-loaders", {
+          "config": "./build/webpack.config.test.js",
+          "verbose": false
+        }]
       ]
     }
   }

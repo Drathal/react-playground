@@ -10,9 +10,10 @@ describe('component <ProductItem />', () => {
     }
     const product = { id: 777, description: 'product description' }
     const ProductItemRender = render(<ProductItem product={product} messages={messages} />)
-    expect(ProductItemRender.html().includes(product.description)).to.equal(true)
-    expect(ProductItemRender.html().includes(product.id)).to.equal(true)
-    expect(ProductItemRender.html().includes(messages.deleteProductButton)).to.equal(true)
-    expect(ProductItemRender.html().includes(messages.addToCartButton)).to.equal(true)
+
+    assert(ProductItemRender.html().includes(product.description) === true)
+    assert(ProductItemRender.html().includes(product.id) === true)
+    assert(ProductItemRender.html().includes(messages.deleteProductButton) === true)
+    assert(ProductItemRender.html().includes(messages.addToCartButton) === true)
   })
 })

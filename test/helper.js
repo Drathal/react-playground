@@ -9,7 +9,7 @@ const jsdom = require('jsdom').jsdom
 chai.use(dirtyChai)
 
 const pe = require('pretty-error').start()
-pe.skipPackage('mocha', 'babel-register')
+pe.skipPackage('mocha', 'babel-register', 'empower-core', 'babel-plugin-espower')
 pe.skipNodeFiles()
 pe.skipPath('internal/module.js')
 
@@ -26,4 +26,6 @@ Object.keys(document.defaultView).forEach((property) => {
 global.navigator = { userAgent: 'node.js' }
 global.expect = chai.expect
 global.sinon = require('sinon')
+global.assert = require('power-assert')
+global.deepFreeze = require('deep-freeze')
 chai.use(sinonChai)

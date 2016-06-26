@@ -25,6 +25,6 @@ describe('component <ProductList />', () => {
 
   it('can handle addProduct', () => {
     wrapper.find('.addProduct').simulate('click')
-    expect(onAddProduct.calledOnce).to.equal(true)
+    assert(onAddProduct.calledOnce === true)
   })
 })
