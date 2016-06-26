@@ -1,7 +1,6 @@
 # react playground
 
 [![Join the chat at https://gitter.im/Drathal/react-playground](https://badges.gitter.im/Drathal/react-playground.svg)](https://gitter.im/Drathal/react-playground?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![CircleCI](https://circleci.com/gh/Drathal/react-playground/tree/master.svg?style=shield)](https://circleci.com/gh/Drathal/react-playground/tree/master)
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
 [![Dependencies](https://david-dm.org/Drathal/react-playground.svg)](https://david-dm.org/Drathal/react-playground)
