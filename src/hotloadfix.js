@@ -1,4 +1,4 @@
-// fix hot reload: add all lazy loaded modules here for dev and test - this will be fixt with react hot reloader 3 release
+// HACK: react-hot-reloader cannot hot update async modules
 require('./app/index')
 require('./app/route')
 

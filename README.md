@@ -53,3 +53,17 @@ npm run dev -s
 npm run font:update
 ```
   * updates used fonts from the web
+
+### Docker
+
+```shell
+docker build -t drathal/react-playground:v0.1.1 .
+```
+
+  * build docker image
+
+```shell
+docker run -ti -d --name react-playground -p 3000:3000 -v $(pwd):/home/app -v drathal/react-playground:v0.1.1
+```
+
+  * run docker image with mounted development source
