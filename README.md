@@ -41,7 +41,7 @@ npm start
 ### Development
 
 ```shell
-npm run dev -s
+npm run start:dev -s
 ```
 
   * runs a development server at `localhost:3000`
@@ -63,7 +63,7 @@ docker build -t drathal/react-playground:v0.1.1 .
   * build docker image
 
 ```shell
-docker run -ti -d --name react-playground -p 3000:3000 -v $(pwd):/home/app -v drathal/react-playground:v0.1.1
+docker run -ti -d --name react-playground -p 3000:3000 -v $(pwd):/home/app drathal/react-playground:v0.1.1 npm start:dev
 ```
 
   * run docker image with mounted development source

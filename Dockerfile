@@ -11,5 +11,3 @@ WORKDIR $HOME
 RUN npm install
 RUN npm test -- --reporter spec
 RUN npm build
-
-CMD ["npm", "start"]

@@ -9,9 +9,9 @@ const ProductItem = ({ product, deleteProduct, addToCart, messages }) => {
     product.productImage :
     productPictureDefault
 
-  // only a quick dirty demo - never manipulate DOM directly
   const onError = (e) => {
     if (e && e.target) {
+      // TODO:0 refactor - only a quick dirty demo
       e.target.src = productPictureDefault // eslint-disable-line
     }
   }

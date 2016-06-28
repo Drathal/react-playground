@@ -8,6 +8,7 @@ const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 require('dotenv-safe').load()
+const devhost = process.env.npm_package_config_devhost || 'localhost'
 const isProduction = process.env.NODE_ENV === 'production'
 const isDevelopment = !isProduction
 const webpackPort = parseInt(process.env.APP_PORT, 10) + 1
@@ -18,7 +19,7 @@ const PATH = {
 
 const hot = isProduction ? [] : [
   'react-hot-loader/patch',
-  `webpack-dev-server/client?http://0.0.0.0:${webpackPort}`,
+  `webpack-dev-server/client?http://${devhost}:${webpackPort}`,
   'webpack/hot/only-dev-server'
 ]
 
