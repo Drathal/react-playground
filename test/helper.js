@@ -1,5 +1,3 @@
-process.env.BABEL_DISABLE_CACHE = 1
-process.env.BABEL_ENV = process.env.NODE_ENV = 'test'
 require('babel-register')()
 
 const chai = require('chai')

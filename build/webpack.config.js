@@ -16,8 +16,6 @@ const PATH = {
   src: path.join(__dirname, '../src')
 }
 
-console.info(`webpack mode ${process.env.NODE_ENV}`)
-
 const hot = isProduction ? [] : [
   'react-hot-loader/patch',
   `webpack-dev-server/client?http://0.0.0.0:${webpackPort}`,

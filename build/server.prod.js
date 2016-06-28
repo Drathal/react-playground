@@ -3,7 +3,7 @@ const express = require('express')
 
 require('dotenv-safe').load()
 const app = new express()
-const port = process.env.APP_PORT || 8080
+const port = process.env.APP_PORT || 3000
 
 // product api (product api mock)
 app.get('/api/product', (req, res) => res.sendFile(path.join(__dirname, '../test/fixtures/products.json')))

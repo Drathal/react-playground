@@ -1,24 +1,27 @@
 {
   "name": "react-playground",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "react-playground",
   "scripts": {
-    "start": "cross-env NODE_ENV=production BABEL_ENV=production node dist/index.js",
-    "test": "mocha --reporter mocha-junit-reporter",
-    "test:watch": "chokidar -p --initial --silent './src/**/*.js' -c 'mocha --reporter min'",
+    "start": "node dist/index.js",
+    "prestart:dev": "rimraf ./i18n",
+    "start:dev": "run-p -c --silent test:watch build:dev translation:watchpot translation:watchpo",
+    "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 mocha --reporter mocha-junit-reporter",
+    "test:watch": "chokidar -p --initial --silent './src/**/*.js' -c 'npm run test -- --reporter min'",
     "test:coverage": "nyc --cache npm run test -- --reporter spec",
-    "lint": "eslint src",
-    "build": "cross-env NODE_ENV=production BABEL_ENV=production webpack --config build/webpack.config.js",
+    "test:lint": "eslint ./src",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.js",
     "postbuild": "cp ./build/server.prod.js ./dist/index.js",
-    "build:dev": "cross-env NODE_ENV=development BABEL_ENV=development node ./build/server.dev.js",
-    "predev": "rimraf i18n",
-    "dev": "run-p -c --silent test:watch build:dev translation:watchpot translation:watchpo",
-    "translation:watchpot": "chokidar -p --silent './i18n/**/*' -c 'npm run translation:createpot'",
+    "build:dev": "cross-env NODE_ENV=development node ./build/server.dev.js",
+    "translation:watchpot": "chokidar -p --silent '.i18n/**/*' -c 'npm run translation:createpot'",
     "translation:watchpo": "chokidar -p --silent './src/translation/po/*.po' -c 'npm run translation:po2json'",
     "translation:createpot": "rip json2pot ./i18n/**/*.json -o ./src/translation/po/messages.pot",
     "translation:po2json": "babel-node ./src/translation/po2json.js",
-    "font:update": "cd src/views/app/assets_fonts && rm -rf * && gfdownloader Material+Icons:400 && gfdownloader Roboto:400,700",
-    "t": "cross-env NODE_ENV=production BABEL_ENV=production webpack --config build/webpack.static.json"
+    "prefont:update": "rimraf $npm_package_config_fontpath && mkdirp $npm_package_config_fontpath",
+    "font:update": "cd $npm_package_config_fontpath && gfdownloader Material+Icons:400 && gfdownloader Roboto:400"
+  },
+  "config": {
+    "i18ncache": "./i18n"
   },
   "nyc": {
     "reporter": [
@@ -112,6 +115,7 @@
     "js-beautify": "^1.6.3",
     "jsdom": "^9.2.1",
     "json-loader": "^0.5.4",
+    "mkdirp": "^0.5.1",
     "mocha": "^2.5.3",
     "mocha-junit-reporter": "^1.11.1",
     "node-sass": "^3.4.2",
