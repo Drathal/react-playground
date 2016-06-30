@@ -58,8 +58,8 @@ const plugins = isProduction ? [
   new webpack.optimize.UglifyJsPlugin({
     compress: {
       screw_ie8: true, // eslint-disable-line
-      warnings: false,
-    },
+      warnings: false
+    }
   })
 ] : [
   new webpack.HotModuleReplacementPlugin()
@@ -96,13 +96,9 @@ const webpackConfig = () => webpackValidator({
     new HtmlWebpackPlugin({
       template: './index.html'
     }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-        PRODUCT_SERVICE_URL: JSON.stringify(process.env.PRODUCT_SERVICE_URL),
-        APP_PORT: JSON.stringify(process.env.APP_PORT)
-      }
-    }),
+    new webpack.EnvironmentPlugin([
+      'NODE_ENV', 'PRODUCT_SERVICE_URL', 'APP_PORT'
+    ]),
     new ExtractTextPlugin('css/[name].[hash].css', {
       disable: !isProduction,
       allChunks: true
@@ -126,13 +122,13 @@ const webpackConfig = () => webpackValidator({
         loaders: [`babel?cacheDirectory&cacheIdentifier=${Math.random()}`],
         exclude: /(node_modules|.spec.)/
       },
-        { test: /\.json$/, loaders: ['json'] },
-        { test: /\.ico$/, loader: 'file?name=[name].[ext]' },
-        { test: /\.svg$/, loader: 'url?limit=15000&mimetype=image/svg+xml&name=assets/[name].[hash].[ext]' },
-        { test: /\.woff$/, loader: 'url?limit=15000&mimetype=application/font-woff&name=assets/[name].[hash].[ext]' },
-        { test: /\.woff2$/, loader: 'url?limit=15000&mimetype=application/font-woff2&name=assets/[name].[hash].[ext]' },
-        { test: /\.[ot]tf$/, loader: 'url?limit=15000&mimetype=application/octet-stream&name=assets/[name].[hash].[ext]' },
-        { test: /\.eot$/, loader: 'url?limit=15000&mimetype=application/vnd.ms-fontobject&name=assets/[name].[hash].[ext]' }
+      { test: /\.json$/, loaders: ['json'] },
+      { test: /\.ico$/, loader: 'file?name=[name].[ext]' },
+      { test: /\.svg$/, loader: 'url?limit=15000&mimetype=image/svg+xml&name=assets/[name].[hash].[ext]' },
+      { test: /\.woff$/, loader: 'url?limit=15000&mimetype=application/font-woff&name=assets/[name].[hash].[ext]' },
+      { test: /\.woff2$/, loader: 'url?limit=15000&mimetype=application/font-woff2&name=assets/[name].[hash].[ext]' },
+      { test: /\.[ot]tf$/, loader: 'url?limit=15000&mimetype=application/octet-stream&name=assets/[name].[hash].[ext]' },
+      { test: /\.eot$/, loader: 'url?limit=15000&mimetype=application/vnd.ms-fontobject&name=assets/[name].[hash].[ext]' }
     ]
   }
 })

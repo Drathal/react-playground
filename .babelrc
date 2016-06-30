@@ -22,7 +22,7 @@
           "only": "src/**/*(!.spec).js"
         }],
         ["babel-plugin-webpack-loaders", {
-          "config": "./build/webpack.config.test.js",
+          "config": "./webpack/webpack.config.test.js",
           "verbose": false
         }]
       ]
