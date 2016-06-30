@@ -1,4 +1,12 @@
 @import './settings';
+
+:global {
+  .layout-dashboard .productsWrapper .panel {
+    width: 48%;
+    display: inline-block;
+    margin-right: 2%;
+  }
+}
 @media (min-width: 768px) {
   .app {
     .navigationHeader,
@@ -39,8 +47,6 @@
 }
 
 .container {
-  color: $default-text-color;
-  background-color: $default-bg-color;
   height: 100%;
   overflow: hidden;
 }

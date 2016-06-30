@@ -24,24 +24,37 @@ const m = defineMessages({
   }
 })
 
-const component = ({ children, params }) => <div className={`${style.app} layout layout-dashboard`}>
-  <TopNavBar
-    brand={<Link to="/main"><FormattedMessage {...m.brandNameTwo} /></Link>}
-    menu={[<LanguageSelectorContainer key={'menuitem-1'} />, <NavLogin messages={{
-      login: <FormattedMessage {...m.login} />,
-      logout: <FormattedMessage {...m.logout} />
-    }} key={'menuitem-2'} />]}
-    style={style}
-  />
-  <aside className={`${style.sidemenu} app-aside`}>
-    <div className={`${style.sidemenuBody}`}><TopNavLinks linkList={top_navigation_links(params)} /></div>
-  </aside>
-  <div className={`${style.container} app-content`}>
-    <div className={`${style.containerBody} app-content-body`}>
-      {children}
-    </div>
-  </div>
-</div>
+class component extends React.Component {
+  // changing style outside component scope
+  componentWillMount() {
+    document.body.style.backgroundColor = '#e0e0e0'
+  }
+
+  componentWillUnmount() {
+    document.body.style.backgroundColor = null
+  }
+
+  render() {
+    return (<div className={`${style.app} layout layout-dashboard`}>
+      <TopNavBar
+        brand={<Link to="/main"><FormattedMessage {...m.brandNameTwo} /></Link>}
+        menu={[<LanguageSelectorContainer key={'menuitem-1'} />, <NavLogin messages={{
+          login: <FormattedMessage {...m.login} />,
+          logout: <FormattedMessage {...m.logout} />
+        }} key={'menuitem-2'} />]}
+        style={style}
+      />
+      <aside className={`${style.sidemenu} app-aside`}>
+        <div className={`${style.sidemenuBody}`}><TopNavLinks linkList={top_navigation_links(this.props.params)} /></div>
+      </aside>
+      <div className={`${style.container} app-content`}>
+        <div className={`${style.containerBody} app-content-body`}>
+          {this.props.children}
+        </div>
+      </div>
+    </div>)
+  }
+}
 
 component.propTypes = {
   activePage: PropTypes.func,
