@@ -1,6 +1,6 @@
 {
   "name": "react-playground",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "react-playground",
   "scripts": {
     "start": "node dist/index.js",
@@ -13,16 +13,18 @@
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.js",
     "postbuild": "cp ./build/server.prod.js ./dist/index.js",
     "build:dev": "cross-env NODE_ENV=development node ./build/server.dev.js",
+    "translation:export": "npm run translation:extract && npm run translation:createpot",
+    "translation:extract": "babel-node ./src/translation/extract.js",
     "translation:watchpot": "chokidar -p --silent '.i18n/**/*' -c 'npm run translation:createpot'",
-    "translation:watchpo": "chokidar -p --silent './src/translation/po/*.po' -c 'npm run translation:po2json'",
+    "translation:watchpo": "chokidar -p --silent './src/translation/po/*.po' -c 'npm run translation:import'",
     "translation:createpot": "rip json2pot ./i18n/**/*.json -o ./src/translation/po/messages.pot",
-    "translation:po2json": "babel-node ./src/translation/po2json.js",
+    "translation:import": "babel-node ./src/translation/po2json.js",
     "prefont:update": "rimraf $npm_package_config_fontpath && mkdirp $npm_package_config_fontpath",
     "font:update": "cd $npm_package_config_fontpath && gfdownloader Material+Icons:400 && gfdownloader Roboto:400"
   },
   "config": {
     "devhost": "0.0.0.0",
-    "fontpath": "./src/app/assets_fonts"
+    "fontpath": "./src/app/layout/fonts"
   },
   "nyc": {
     "reporter": [
@@ -47,8 +49,10 @@
   },
   "dependencies": {
     "bluebird": "^3.4.0",
+    "cors": "^2.7.1",
     "dotenv-safe": "^2.3.1",
     "express": "^4.13.4",
+    "express-jwt": "^3.4.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.13.1",
     "react": "^15.1.0",
@@ -57,7 +61,7 @@
     "react-dom": "^15.1.0",
     "react-hot-loader": "^3.0.0-beta.2",
     "react-intl": "^2.1.3",
-    "react-intl-redux": "0.0.10",
+    "react-intl-redux": "0.0.11",
     "react-redux": "^4.4.5",
     "react-router": "^2.5.1",
     "react-router-redux": "^4.0.5",
@@ -82,7 +86,7 @@
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-es2015-webpack": "^6.4.1",
-    "babel-preset-react": "^6.5.0",
+    "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
     "chokidar-cli": "^1.2.0",
@@ -103,6 +107,7 @@
     "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "glob": "^7.0.5",
     "google-fonts-downloader": "0.0.3",
     "html-webpack-plugin": "^2.21.0",
     "ignore-styles": "^4.0.0",
@@ -116,11 +121,12 @@
     "js-beautify": "^1.6.3",
     "jsdom": "^9.2.1",
     "json-loader": "^0.5.4",
+    "minimatch": "^3.0.2",
     "mkdirp": "^0.5.1",
     "mocha": "^2.5.3",
     "mocha-junit-reporter": "^1.11.1",
     "node-sass": "^3.4.2",
-    "npm-run-all": "^2.2.2",
+    "npm-run-all": "^2.3.0",
     "nyc": "^6.6.1",
     "postcss-import": "^8.1.2",
     "postcss-loader": "^0.9.1",
@@ -132,7 +138,7 @@
     "react-gettext-parser": "^1.0.1",
     "react-intl-loader": "^1.0.2",
     "react-intl-po": "^1.0.5",
-    "redux-mock-store": "^1.1.1",
+    "redux-mock-store": "^1.1.2",
     "sass-loader": "^4.0.0",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
@@ -143,6 +149,6 @@
     "webpack": "^2.1.0-beta.14",
     "webpack-cleanup-plugin": "^0.2.0",
     "webpack-dev-server": "^2.1.0-beta.0",
-    "webpack-validator": "^2.2.0"
+    "webpack-validator": "^2.2.2"
   }
 }

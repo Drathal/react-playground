@@ -6,12 +6,10 @@
         ["babel-plugin-espower", {
           "embedAst": true
         }],
-        ["react-hot-loader/babel", [
-          "react-intl", {
-            "messagesDir": "./i18n/",
-            "enforceDescriptions": false
-          }
-        ]]
+        "react-hot-loader/babel", ["react-intl", {
+          "messagesDir": "./i18n/",
+          "enforceDescriptions": false
+        }]
       ]
     },
     "test": {

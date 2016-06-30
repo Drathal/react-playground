@@ -1,57 +1,49 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
-import { Navbar, Nav } from 'react-bootstrap'
+import { injectIntl, defineMessages, FormattedMessage } from 'react-intl'
+
 import style from './layout_dashboard.scss'
 import top_navigation_links from '../topnav_links'
-import LanguageSelectorContainer from '../../../containers/LanguageSelectorConnector'
+import NavLogin from '../../../components/NavLogin'
+import LanguageSelectorContainer from '../../../containers/LanguageSelectorContainer'
+import TopNavBar from '../../../components/TopNavBar'
+import TopNavLinks from '../../../components/TopNavLinks'
 
-const LayoutDashboard = ({ children, params }) => {
-  const NAV_LINKS = top_navigation_links(params)
+const m = defineMessages({
+  brandNameTwo: {
+    id: 'brandNameTwo',
+    defaultMessage: '#Company two#'
+  },
+  login: {
+    id: 'login',
+    defaultMessage: 'login'
+  },
+  logout: {
+    id: 'logout',
+    defaultMessage: 'logout'
+  }
+})
 
-  let links = NAV_LINKS.map(item => <li activeClassName="active" key={item.link}>
-    <Link to={item.link}>{item.title}</Link>
-  </li>)
-
-  return (<div className={`${style.app} layout layout-dashboard`}>
-    <Navbar fixed fluid staticTop componentClass="header" className={style.navigation} role="banner">
-      <Navbar.Header>
-        <Navbar.Brand className={style.navigationHeader}>
-          <Link to="/main">dashboard</Link>
-        </Navbar.Brand>
-      </Navbar.Header>
-      <Navbar.Collapse className="bs-navbar-collapse">
-        <Nav role="navigation" id="top">{links}</Nav>
-        <LanguageSelectorContainer />
-      </Navbar.Collapse>
-    </Navbar>
-    <aside className={`${style.sidemenu} app-aside`}>
-      <div className={`${style.sidemenuBody}`}>
-        <nav className="navi">
-          <ul className="nav">
-            <li><span>Navigation</span></li>
-            <li className="line"></li>
-            <li>
-              <a href="#">menu 1</a>
-              <ul className="nav nav-sub">
-                <li><a href="#">menu 2</a></li>
-                <li><a href="#">menu 3</a></li>
-                <li><a href="#">menu 4</a></li>
-                <li><a href="#">menu 5</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </aside>
-    <div className={`${style.container} app-content`}>
-      <div className={`${style.containerBody} app-content-body`}>
-        {children}
-      </div>
+const component = ({ children, params }) => <div className={`${style.app} layout layout-dashboard`}>
+  <TopNavBar
+    brand={<Link to="/main"><FormattedMessage {...m.brandNameTwo} /></Link>}
+    menu={[<LanguageSelectorContainer key={'menuitem-1'} />, <NavLogin messages={{
+      login: <FormattedMessage {...m.login} />,
+      logout: <FormattedMessage {...m.logout} />
+    }} key={'menuitem-2'} />]}
+    style={style}
+  />
+  <aside className={`${style.sidemenu} app-aside`}>
+    <div className={`${style.sidemenuBody}`}><TopNavLinks linkList={top_navigation_links(params)} /></div>
+  </aside>
+  <div className={`${style.container} app-content`}>
+    <div className={`${style.containerBody} app-content-body`}>
+      {children}
     </div>
-  </div>)
-}
+  </div>
+</div>
 
-LayoutDashboard.propTypes = {
+component.propTypes = {
   activePage: PropTypes.func,
   children: PropTypes.node,
   params: PropTypes.shape({
@@ -60,9 +52,8 @@ LayoutDashboard.propTypes = {
   location: PropTypes.object
 }
 
-LayoutDashboard.defaultProps = {
+component.defaultProps = {
   params: { layout: 'layout' }
 }
 
-
-export default LayoutDashboard
+export default injectIntl(component)

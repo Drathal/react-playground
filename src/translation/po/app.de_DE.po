@@ -12,42 +12,66 @@ msgstr ""
 "X-Generator: Poedit 1.8.8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#. [brandName] - undefined
+#: i18n/src/app/layout/layout_main/layout_main.json
+msgid "#Company one#"
+msgstr "Firma 1"
+
+#. [brandNameTwo] - undefined
+#: i18n/src/app/layout/layout_dashboard/layout_dashboard.json
+msgid "#Company two#"
+msgstr "Firma 2"
+
 #. [addProduct] - This translation is defined in a defineMessage.
-#: i18n/src/containers/ProductListContainer.json
+#: i18n/src/app/products/products.json
 msgid "Add a random product"
 msgstr "Fügen Sie ein Zufallsprodukt hinzu"
 
 #. [addToCartButton] - This translation is also defined in a defineMessage.
-#: i18n/src/containers/ProductListContainer.json
+#: i18n/src/app/products/products.json
 msgid "Buy"
 msgstr "Jetzt Kaufen"
 
 #. [currentLanguage] - undefined
-#: i18n/src/containers/LanguageSelectorConnector.json
+#: i18n/src/containers/LanguageSelectorContainer.json
 msgid "Current language:"
 msgstr "Aktuelle Sprache:"
 
 #. [deleteProductButton] - This translation is defined in a defineMessage.
-#: i18n/src/containers/ProductListContainer.json
+#: i18n/src/app/products/products.json
 msgid "Delete"
 msgstr "Löschen"
 
 #. [locale_de] - undefined
-#: i18n/src/containers/LanguageSelectorConnector.json
+#: i18n/src/containers/LanguageSelectorContainer.json
 msgid "Deutsch"
 msgstr "Deutsch"
 
 #. [locale_en] - undefined
-#: i18n/src/containers/LanguageSelectorConnector.json
+#: i18n/src/containers/LanguageSelectorContainer.json
 msgid "English"
 msgstr "English"
 
 #. [noProduct] - description
-#: i18n/src/containers/ProductListContainer.json
+#: i18n/src/app/products/products.json
 msgid "No Products"
 msgstr "Keine Produkte "
 
 #. [title] - 5boooooring
-#: i18n/src/containers/ProductListContainer.json
+#: i18n/src/app/products/products.json
 msgid "Products"
 msgstr "Produkte"
+
+#. [login] - undefined
+#. [login] - undefined
+#: i18n/src/app/layout/layout_dashboard/layout_dashboard.json
+#: i18n/src/app/layout/layout_main/layout_main.json
+msgid "login"
+msgstr "Anmeldung"
+
+#. [logout] - undefined
+#. [logout] - undefined
+#: i18n/src/app/layout/layout_dashboard/layout_dashboard.json
+#: i18n/src/app/layout/layout_main/layout_main.json
+msgid "logout"
+msgstr "Abmelden"

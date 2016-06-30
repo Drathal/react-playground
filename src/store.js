@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import promiseMiddleware from 'redux-promise'
-import rootReducer from './redux/modules/root'
+import rootReducer from './reducer/root'
 
 export default (initialState = {}) => {
   const devToolsExtension = window.devToolsExtension ? window.devToolsExtension() : undefined
@@ -9,8 +9,8 @@ export default (initialState = {}) => {
   const store = middlewares(createStore)(rootReducer, initialState, devToolsExtension)
 
   if (module.hot) {
-    module.hot.accept('./redux/modules/root', () => {
-      const nextRootReducer = require('./redux/modules/root').default // eslint-disable-line global-require
+    module.hot.accept('./reducer/root', () => {
+      const nextRootReducer = require('./reducer/root').default // eslint-disable-line global-require
       store.replaceReducer(nextRootReducer)
     })
   }

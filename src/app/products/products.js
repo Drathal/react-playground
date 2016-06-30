@@ -4,7 +4,7 @@ import { injectIntl, defineMessages } from 'react-intl'
 import * as productAPi from '../../service/product'
 import ProductItem from '../../components/ProductItem'
 import ProductsList from '../../components/ProductList'
-import * as productActions from '../../redux/modules/products/actions'
+import * as productActions from '../../reducer/products/actions'
 
 const m = defineMessages({
   title: {

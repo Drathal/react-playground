@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import './theme.scss'
+import './layout/theme.scss'
 
 const app = ({ children }) => <span>{children}</span>
 

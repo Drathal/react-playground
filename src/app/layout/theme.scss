@@ -1,15 +1,15 @@
-@import 'theme-settings';
+@import 'settings';
 @font-face {
   font-weight: 400;
   font-style: normal;
   font-family: 'Material Icons';
-  src: url('./assets_fonts/material+icons-400.eot') format('embedded-opentype'), url('./assets_fonts/material+icons-400.woff') format('woff'), url('./assets_fonts/material+icons-400.ttf') format('truetype'), url('./assets_fonts/material+icons-400.svg#material+icons') format('svg');
+  src: url('./fonts/material+icons-400.eot') format('embedded-opentype'), url('./fonts/material+icons-400.woff') format('woff'), url('./fonts/material+icons-400.ttf') format('truetype'), url('./fonts/material+icons-400.svg#material+icons') format('svg');
 }
 @font-face {
   font-weight: 400;
   font-style: normal;
   font-family: 'Roboto';
-  src: url('./assets_fonts/roboto-400.eot') format('embedded-opentype'), url('./assets_fonts/roboto-400.woff') format('woff'), url('./assets_fonts/roboto-400.ttf') format('truetype'), url('./assets_fonts/roboto-400.svg#roboto') format('svg');
+  src: url('./fonts/roboto-400.eot') format('embedded-opentype'), url('./fonts/roboto-400.woff') format('woff'), url('./fonts/roboto-400.ttf') format('truetype'), url('./fonts/roboto-400.svg#roboto') format('svg');
 }
 
 :global {

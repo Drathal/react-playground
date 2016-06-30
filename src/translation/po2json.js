@@ -1,17 +1,15 @@
-import fs from 'fs'
-import chalk from 'chalk'
-import values from 'lodash/values'
-import flatten from 'lodash/flatten'
-import flowRight from 'lodash/flowRight'
-import toObjectBy from 'to-object-by'
-import * as p2j from 'react-intl-po'
+const fs = require('fs')
+const chalk = require('chalk')
+const values = require('lodash/values')
+const flatten = require('lodash/flatten')
+const flowRight = require('lodash/flowRight')
+const toObjectBy = require('to-object-by')
+const p2j = require('react-intl-po')
 
 const poFiles = './src/translation/po/*.po'
 const translationFiles = './i18n/**/*.json'
 const destinationPath = './src/translation/json/'
 const prefix = 'app.'
-
-// process.argv[0] ||
 
 function po2json() {
   const translationTable = p2j.readAllPOAsObjectSync(poFiles)

@@ -7,4 +7,6 @@ require('./app/layout/route')
 require('./app/products/index')
 require('./app/products/route')
 
-require('./containers/LanguageSelectorConnector')
+require('./containers/LanguageSelectorContainer')
+require('./components/NavLogin')
+require('./components/TopNavBar')

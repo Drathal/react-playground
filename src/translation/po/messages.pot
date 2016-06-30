@@ -1,3 +1,13 @@
+#: ./i18n/src/app/layout/layout_main/layout_main.json
+#. [brandName] - undefined
+msgid "#Company one#"
+msgstr ""
+
+#: ./i18n/src/app/layout/layout_dashboard/layout_dashboard.json
+#. [brandNameTwo] - undefined
+msgid "#Company two#"
+msgstr ""
+
 #: ./i18n/src/app/products/products.json
 #. [addProduct] - This translation is defined in a defineMessage.
 msgid "Add a random product"
@@ -8,7 +18,7 @@ msgstr ""
 msgid "Buy"
 msgstr ""
 
-#: ./i18n/src/containers/LanguageSelectorConnector.json
+#: ./i18n/src/containers/LanguageSelectorContainer.json
 #. [currentLanguage] - undefined
 msgid "Current language:"
 msgstr ""
@@ -18,12 +28,12 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: ./i18n/src/containers/LanguageSelectorConnector.json
+#: ./i18n/src/containers/LanguageSelectorContainer.json
 #. [locale_de] - undefined
 msgid "Deutsch"
 msgstr ""
 
-#: ./i18n/src/containers/LanguageSelectorConnector.json
+#: ./i18n/src/containers/LanguageSelectorContainer.json
 #. [locale_en] - undefined
 msgid "English"
 msgstr ""
@@ -36,4 +46,18 @@ msgstr ""
 #: ./i18n/src/app/products/products.json
 #. [title] - 5boooooring
 msgid "Products"
+msgstr ""
+
+#: ./i18n/src/app/layout/layout_dashboard/layout_dashboard.json
+#. [login] - undefined
+#: ./i18n/src/app/layout/layout_main/layout_main.json
+#. [login] - undefined
+msgid "login"
+msgstr ""
+
+#: ./i18n/src/app/layout/layout_dashboard/layout_dashboard.json
+#. [logout] - undefined
+#: ./i18n/src/app/layout/layout_main/layout_main.json
+#. [logout] - undefined
+msgid "logout"
 msgstr ""

@@ -33,14 +33,14 @@ const loaders = isProduction ? [
   {
     test: /\.(jpe?g|png|gif|svg)$/i,
     loaders: [
-      'url-loader?limit=10000&name=assets/[name].[hash].[ext]',
+      'url-loader?limit=8192&name=assets/[name].[hash].[ext]',
       'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false&verbose=false'
     ]
   }
 ] : [
   {
     test: /\.s?css$/,
-    loader: 'style!css?modules&importLoaders=2&localIdentName=[name]_[local]_[hash:base64:5]?sourceMap!postcss?sourceMap!sass?sourceMap'
+    loader: 'style!css?modules&importLoaders=2&localIdentName=[name]_[local]_[hash:base64:5]!postcss!sass?sourceMap'
   },
   {
     test: /\.(jpe?g|png|gif|svg)$/i,
@@ -75,11 +75,8 @@ const webpackConfig = () => webpackValidator({
   },
   target: 'web',
   resolve: {
-    extensions: ['', '.js', '.scss', '.json'],
-    modulesDirectories: [
-      'node_modules',
-      path.resolve(__dirname, './node_modules')
-    ]
+    extensions: ['', '.js'],
+    modulesDirectories: ['node_modules']
   },
   output: {
     path: PATH.build,

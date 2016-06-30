@@ -1,4 +1,2 @@
-import app from './app'
-import './favicon.ico'
-
-export default app
+import component from './app'
+export default component

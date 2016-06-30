@@ -1,3 +1,4 @@
-import LayoutDashboard from './layout_dashboard'
+import component from './layout_dashboard'
+import './favicon.ico'
 
-export default LayoutDashboard
+export default component

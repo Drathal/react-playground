@@ -1,38 +1,46 @@
 import React, { PropTypes } from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router'
+import { injectIntl, defineMessages, FormattedMessage } from 'react-intl'
+
 import style from './layout_main.scss'
 import top_navigation_links from '../topnav_links'
-import LanguageSelectorContainer from '../../../containers/LanguageSelectorConnector'
+import NavLogin from '../../../components/NavLogin'
+import LanguageSelectorContainer from '../../../containers/LanguageSelectorContainer'
+import TopNavBar from '../../../components/TopNavBar'
+import TopNavLinks from '../../../components/TopNavLinks'
 
-const layout_main = ({ children, params }) => {
-  const NAV_LINKS = top_navigation_links(params)
+const m = defineMessages({
+  brandName: {
+    id: 'brandName',
+    defaultMessage: '#Company one#'
+  },
+  login: {
+    id: 'login',
+    defaultMessage: 'login'
+  },
+  logout: {
+    id: 'logout',
+    defaultMessage: 'logout'
+  }
+})
 
-  const links = NAV_LINKS.map(item => <li activeClassName="active" key={item.link}>
-    <Link to={item.link}>{item.title}</Link>
-  </li>)
-
-  return (<div className={'app layout layout-main'}>
-    <Navbar fixed fluid staticTop componentClass="header" className={style.navigation} role="banner">
-      <Navbar.Header>
-        <Navbar.Brand className={style.navigationHeader}>
-          <Link to="/dashboard">main</Link>
-        </Navbar.Brand>
-      </Navbar.Header>
-      <Navbar.Collapse className="bs-navbar-collapse">
-        <Nav role="navigation" id="top">{links}</Nav>
-        <LanguageSelectorContainer />
-      </Navbar.Collapse>
-    </Navbar>
-    <div className={`${style.container} app-content`}>
-      <div className={`${style.containerBody} app-content-body`}>
-        {children}
-      </div>
+const component = ({ children, params }) => <div className={`${style.app} layout layout-main`}>
+  <TopNavBar
+    brand={<Link to="/dashboard"><FormattedMessage {...m.brandName} /></Link>}
+    links={<TopNavLinks linkList={top_navigation_links(params)} />}
+    menu={[<LanguageSelectorContainer key={'menuitem-1'} />, <NavLogin messages={{
+      login: <FormattedMessage {...m.login} />,
+      logout: <FormattedMessage {...m.logout} />
+    }} key={'menuitem-2'} />]}
+  />
+  <div className={`${style.container} app-content`}>
+    <div className={`${style.containerBody} app-content-body`}>
+      {children}
     </div>
-  </div>)
-}
+  </div>
+</div>
 
-layout_main.propTypes = {
+component.propTypes = {
   activePage: PropTypes.func,
   children: PropTypes.node,
   params: PropTypes.shape({
@@ -41,8 +49,8 @@ layout_main.propTypes = {
   location: PropTypes.object
 }
 
-layout_main.defaultProps = {
-  params: { layout: 'layout' }
+component.defaultProps = {
+  params: { layout: 'main' }
 }
 
-export default layout_main
+export default injectIntl(component)

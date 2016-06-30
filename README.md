@@ -46,7 +46,7 @@ npm run start:dev -s
 
   * runs a development server at `localhost:3000`
   * runs mocha tests on file change
-  * extracts all language definitions and creates a `messages.pot` file
+  * extracts all language definitions and creates a `messages.pot` file on change
   * watches `*.po` files and creates message strings
 
 ```shell
@@ -67,3 +67,17 @@ docker run -ti -d --name react-playground -p 3000:3000 -v $(pwd):/home/app drath
 ```
 
   * run docker image with mounted development source
+
+### translation
+
+```shell
+npm run translation:export
+```
+
+  * extract all messages and create a export `messages.pot` file
+
+```shell
+npm run translation:import
+```
+
+  * imports all `*.po` files and creates `*.json` files

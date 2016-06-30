@@ -1,23 +1,19 @@
 import React, { PropTypes } from 'react'
-import { Button } from 'react-bootstrap'
+import { Nav, NavDropdown, MenuItem } from 'react-bootstrap'
 
-const LanguageSelector = ({ messages, languageCodes, currentLanguage, onLanguageSwitch }) => {
-  const buttons = languageCodes.map(languageCode => <Button
-    style={{ marginLeft: '0.5em' }}
-    key={`lang-${languageCode.locale}`}
-    className={`switchLanguage switchLanguage-${languageCode.locale}`}
-    onClick={() => onLanguageSwitch(languageCode.locale)}>
-      {languageCode.locale === currentLanguage && '* '}
-      {languageCode.name}
-  </Button>)
+const component = ({ messages, languageCodes, currentLanguage, onLanguageSwitch }) => <Nav style={{ float: 'right' }}>
+  <NavDropdown title={messages.currentLanguage} id={'nav-language-select'}>
+    {languageCodes.map(languageCode => <MenuItem
+      key={`lang-${languageCode.locale}`}
+      className={`switchLanguage switchLanguage-${languageCode.locale}`}
+      onClick={() => onLanguageSwitch(languageCode.locale)}>
+        {languageCode.locale === currentLanguage && '* '}
+        {languageCode.name}
+    </MenuItem>)}
+  </NavDropdown>
+</Nav>
 
-  return (<ul className={'nav navbar-nav'} style={{ float: 'right' }}>
-    <li style={{ lineHeight: '3.3em' }}>{messages.currentLanguage}{' '}{currentLanguage}</li>
-    <li style={{ lineHeight: '3.3em' }}>{buttons}</li>
-  </ul>)
-}
-
-LanguageSelector.propTypes = {
+component.propTypes = {
   messages: PropTypes.shape({
     currentLanguage: PropTypes.element.isRequired
   }).isRequired,
@@ -26,10 +22,13 @@ LanguageSelector.propTypes = {
   onLanguageSwitch: PropTypes.func
 }
 
-LanguageSelector.defaultProps = {
+component.defaultProps = {
+  messages: {
+    currentLanguage: '#messages.currentLanguage#',
+  },
   languageCodes: ['unset_LanguageCodes'],
   currentLanguage: 'unset_Language',
   onLanguageSwitch: () => {},
 }
 
-export default LanguageSelector
+export default component

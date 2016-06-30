@@ -10,3 +10,4 @@
 *.xml
 .DS_Store
 /.imdone
+/backup
