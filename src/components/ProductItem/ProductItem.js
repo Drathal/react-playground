@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Button, Panel } from 'react-bootstrap'
 
 import productPictureDefault from './dummyProduct.jpg'
-import style from './ProductItem.scss'
+import style from './ProductItem.css'
 
 const ProductItem = ({ product, deleteProduct, addToCart, messages }) => {
   const productImage = product.productImage && product.productImage.length > 0 ?
@@ -11,7 +11,7 @@ const ProductItem = ({ product, deleteProduct, addToCart, messages }) => {
 
   const onError = (e) => {
     if (e && e.target) {
-      // TODO:0 refactor - only a quick dirty demo
+      // HACK:10 refactor - only a quick dirty demo
       e.target.src = productPictureDefault // eslint-disable-line
     }
   }

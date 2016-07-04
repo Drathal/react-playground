@@ -1,0 +1,18 @@
+@value default-text-color, default-bg-color from "../colors.css";
+.layout {}
+
+.container {
+  color: default-text-color;
+  background-color: default-bg-color;
+}
+
+.containerBody {
+  color: $default-text-color;
+  background-color: default-bg-color;
+}
+
+.navigation {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}

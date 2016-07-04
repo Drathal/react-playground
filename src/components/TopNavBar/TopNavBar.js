@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Navbar } from 'react-bootstrap'
-import component_style from './TopNavBar.scss'
+import component_style from './TopNavBar.css'
 
 const component = ({ links, menu, brand, style }) => {
   const s = { ...component_style, ...style }

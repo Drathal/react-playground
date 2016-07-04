@@ -1,11 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
-const autoprefixer = require('autoprefixer')
-const precss = require('precss')
 const webpackValidator = require('webpack-validator')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const WebpackShellPlugin = require('webpack-shell-plugin')
+const autoprefixer = require('autoprefixer')
+const precss = require('precss')
+const cssModuleValues = require('postcss-modules-values')
+const ImageminPlugin = require('imagemin-webpack-plugin').default
 
 require('dotenv-safe').load()
 const devhost = process.env.npm_package_config_devhost || 'localhost'
@@ -25,22 +28,23 @@ const hot = isProduction ? [] : [
 
 const loaders = isProduction ? [
   {
-    test: /\.s?css$/,
+    test: /\.css$/,
     loader: ExtractTextPlugin.extract(
-      'css?modules&importLoaders=2&localIdentName=[name]_[local]_[hash:base64:5]?sourceMap!postcss?sourceMap!sass?sourceMap'
+      'css?camelCase&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!postcss'
     )
   },
   {
     test: /\.(jpe?g|png|gif|svg)$/i,
-    loaders: [
-      'url-loader?limit=8192&name=assets/[name].[hash].[ext]',
-      'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false&verbose=false'
-    ]
+    loader: 'url-loader?limit=8192&name=assets/[name].[hash].[ext]'
   }
 ] : [
   {
-    test: /\.s?css$/,
-    loader: 'style!css?modules&importLoaders=2&localIdentName=[name]_[local]_[hash:base64:5]!postcss!sass?sourceMap'
+    test: /\.css$/,
+    loaders: [
+      'style?sourceMap',
+      'css?camelCase&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]&sourceMap',
+      'postcss?sourceMap'
+    ]
   },
   {
     test: /\.(jpe?g|png|gif|svg)$/i,
@@ -50,6 +54,24 @@ const loaders = isProduction ? [
 
 const plugins = isProduction ? [
   new WebpackCleanupPlugin(),
+  new ImageminPlugin({
+    disable: false,
+    optipng: {
+      optimizationLevel: 3
+    },
+    gifsicle: {
+      optimizationLevel: 1
+    },
+    jpegtran: {
+      progressive: false
+    },
+    svgo: {
+    },
+    pngquant: {
+      quality: '95-100'
+    },
+    plugins: []
+  }),
   new webpack.optimize.DedupePlugin(),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
@@ -86,6 +108,7 @@ const webpackConfig = () => webpackValidator({
     pathinfo: isDevelopment
   },
   plugins: [
+    new WebpackShellPlugin({ onBuildStart: ['echo "Webpack frontend Start"'], onBuildEnd: ['echo "Webpack frontend End"'] }),
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     }),
@@ -97,7 +120,9 @@ const webpackConfig = () => webpackValidator({
       template: './index.html'
     }),
     new webpack.EnvironmentPlugin([
-      'NODE_ENV', 'PRODUCT_SERVICE_URL', 'APP_PORT'
+      'NODE_ENV',
+      'PRODUCT_SERVICE_URL',
+      'APP_PORT'
     ]),
     new ExtractTextPlugin('css/[name].[hash].css', {
       disable: !isProduction,
@@ -111,6 +136,7 @@ const webpackConfig = () => webpackValidator({
       autoprefixer({
         browsers: ['last 2 version']
       }),
+      cssModuleValues,
       precss
     ]
   },

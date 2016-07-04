@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Button } from 'react-bootstrap'
-import style from './style.scss'
+import style from './ProductList.css'
 
 const ProductList = ({ addProduct, messages, children, count }) =>
   <div className={`productsWrapper ${style.productsWrapper}`}>

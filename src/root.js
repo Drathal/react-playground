@@ -5,11 +5,6 @@ import emptyRoute from './routefix'
 import indexRoute from './app/route'
 const routes = Object.assign(emptyRoute, indexRoute)
 
-// HACK: react-hot-reloader cannot hot update async modules
-if (process.env.NODE_ENV !== 'production') {
-  require('./hotloadfix')
-}
-
 const Root = ({ store, history }) => (
   <Provider store={store}>
     <Router {...{ routes, history }} />

@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { injectIntl, defineMessages, FormattedMessage } from 'react-intl'
 
-import style from './layout_main.scss'
+import style from './layout_main.css'
 import top_navigation_links from '../topnav_links'
 import NavLogin from '../../../components/NavLogin'
 import LanguageSelectorContainer from '../../../containers/LanguageSelectorContainer'
@@ -24,7 +24,7 @@ const m = defineMessages({
   }
 })
 
-const component = ({ children, params }) => <div className={`${style.app} layout layout-main`}>
+const component = ({ children, params }) => <div className={`${style.layout} layout layout-main`}>
   <TopNavBar
     brand={<Link to="/dashboard"><FormattedMessage {...m.brandName} /></Link>}
     links={<TopNavLinks linkList={top_navigation_links(params)} />}

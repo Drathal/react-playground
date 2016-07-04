@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { injectIntl, defineMessages, FormattedMessage } from 'react-intl'
 
-import style from './layout_dashboard.scss'
+import style from './layout_dashboard.css'
 import top_navigation_links from '../topnav_links'
 import NavLogin from '../../../components/NavLogin'
 import LanguageSelectorContainer from '../../../containers/LanguageSelectorContainer'
@@ -35,7 +35,7 @@ class component extends React.Component {
   }
 
   render() {
-    return (<div className={`${style.app} layout layout-dashboard`}>
+    return (<div className={`${style.layout} layout layout-dashboard`}>
       <TopNavBar
         brand={<Link to="/main"><FormattedMessage {...m.brandNameTwo} /></Link>}
         menu={[<LanguageSelectorContainer key={'menuitem-1'} />, <NavLogin messages={{

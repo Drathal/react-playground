@@ -1,5 +1,5 @@
-@import './settings';
-
+@value brand-text-color, dark-bg-color, dark-text-color from "../colors.css";
+@value sidebar-witdh: 250px;
 :global {
   .layout-dashboard .productsWrapper .panel {
     width: 48%;
@@ -7,29 +7,27 @@
     margin-right: 2%;
   }
 }
+
 @media (min-width: 768px) {
-  .app {
-    .navigationHeader,
-    .sidemenu {
-      width: 200px;
+  .layout {
+    .navigationHeader, .sidemenu {
+      width: sidebar-witdh;
     }
   }
 }
 
-.app {
-  .navigationHeader,
-  .navigationHeader:hover {
-    color: $brand-text-color;
-    background-color: $dark-bg-color;
-    text-shadow: 0 0 0 rgba(255,255,255,0);
+.layout {
+  .navigationHeader, .navigationHeader:hover {
+    color: brand-text-color;
+    background-color: dark-bg-color;
+    text-shadow: 0 0 0 rgba(255, 255, 255, 0);
   }
 }
 
 .sidemenu {
-  color: $dark-text-color;
-  background-color: $dark-bg-color;
+  color: dark-text-color;
+  background-color: dark-bg-color;
   float: left;
-
   &::before {
     position: absolute;
     top: 0;
@@ -42,7 +40,7 @@
   }
 }
 
-.sidemenuBody {
+.sidemenu-body {
   padding-top: 70px;
 }
 
@@ -56,9 +54,7 @@
   width: 100%;
   padding-bottom: 50px;
   overflow: hidden;
-
-  &::after,
-  &::before {
+  &::after, &::before {
     display: table;
     content: ' ';
   }

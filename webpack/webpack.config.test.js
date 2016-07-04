@@ -1,4 +1,14 @@
+const autoprefixer = require('autoprefixer')
+const precss = require('precss')
+const cssModuleValues = require('postcss-modules-values')
+
 module.exports = {
+  postcss() {
+    return [
+      cssModuleValues,
+      precss
+    ]
+  },
   module: {
     loaders: [
       {
@@ -10,8 +20,8 @@ module.exports = {
         loaders: ['file-loader']
       },
       {
-        test: /\.(scss|css)$/,
-        loaders: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]', 'sass-loader']
+        test: /\.(css)$/,
+        loader: 'style!css?modules&-import&-url!postcss'
       }
     ]
   }
