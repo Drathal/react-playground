@@ -9,6 +9,7 @@ const autoprefixer = require('autoprefixer')
 const precss = require('precss')
 const cssModuleValues = require('postcss-modules-values')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
+const rucksack = require('rucksack-css')
 
 require('dotenv-safe').load()
 const devhost = process.env.npm_package_config_devhost || 'localhost'
@@ -137,7 +138,8 @@ const webpackConfig = () => webpackValidator({
         browsers: ['last 2 version']
       }),
       cssModuleValues,
-      precss
+      precss,
+      rucksack
     ]
   },
   module: {
