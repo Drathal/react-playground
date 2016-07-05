@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { injectIntl, defineMessages, FormattedMessage } from 'react-intl'
+import Helmet from 'react-helmet'
 
 import style from './layout_main.css'
 import top_navigation_links from '../topnav_links'
@@ -24,14 +25,15 @@ const m = defineMessages({
   }
 })
 
-const component = ({ children, params }) => <div className={`${style.layout} layout layout-main`}>
+const component = ({ children, params, intl }) => <div className={`${style.layout} layout layout-main`}>
+  <Helmet title={intl.formatMessage(m.brandName)} />
   <TopNavBar
-    brand={<Link to="/dashboard"><FormattedMessage {...m.brandName} /></Link>}
-    links={<TopNavLinks linkList={top_navigation_links(params)} />}
-    menu={[<LanguageSelectorContainer key={'menuitem-1'} />, <NavLogin messages={{
-      login: <FormattedMessage {...m.login} />,
-      logout: <FormattedMessage {...m.logout} />
-    }} key={'menuitem-2'} />]}
+  brand={<Link to="/dashboard"><FormattedMessage {...m.brandName} /></Link>}
+  links={<TopNavLinks linkList={top_navigation_links(params)} />}
+  menu={[<LanguageSelectorContainer key={'menuitem-1'} />, <NavLogin messages={{
+    login: <FormattedMessage {...m.login} />,
+    logout: <FormattedMessage {...m.logout} />
+  }} key={'menuitem-2'} />]}
   />
   <div className={`${style.container} app-content`}>
     <div className={`${style.containerBody} app-content-body`}>
@@ -41,6 +43,7 @@ const component = ({ children, params }) => <div className={`${style.layout} lay
 </div>
 
 component.propTypes = {
+  intl: PropTypes.object,
   activePage: PropTypes.func,
   children: PropTypes.node,
   params: PropTypes.shape({

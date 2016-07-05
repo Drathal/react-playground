@@ -109,7 +109,10 @@ const webpackConfig = () => webpackValidator({
     pathinfo: isDevelopment
   },
   plugins: [
-    new WebpackShellPlugin({ onBuildStart: ['echo "Webpack frontend Start"'], onBuildEnd: ['echo "Webpack frontend End"'] }),
+    new WebpackShellPlugin({
+      onBuildStart: ['echo "Webpack frontend Start"'],
+      onBuildEnd: ['echo "Webpack frontend End"']
+    }),
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     }),
@@ -138,8 +141,10 @@ const webpackConfig = () => webpackValidator({
         browsers: ['last 2 version']
       }),
       cssModuleValues,
-      precss,
-      rucksack
+      rucksack(({
+        fallbacks: true
+      })),
+      precss
     ]
   },
   module: {

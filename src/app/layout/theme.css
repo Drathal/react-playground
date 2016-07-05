@@ -1,21 +1,22 @@
+@value default-bg-color, default-text-color from "./colors.css";
 @font-face {
   font-family: 'Roboto';
+  font-weight: 400;
   font-path: './fonts/roboto-400';
 }
 
 @font-face {
   font-family: 'Material Icons';
+  font-weight: 400;
   font-path: './fonts/material+icons-400';
 }
 
-@value default-bg-color, default-text-color from "./colors.css";
 :global {
   .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
     font-size: 24px;
-    /* Preferred icon size */
     display: inline-block;
     line-height: 1;
     text-transform: none;
@@ -23,13 +24,9 @@
     word-wrap: normal;
     white-space: nowrap;
     direction: ltr;
-    /* Support for all WebKit browsers. */
     -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
     text-rendering: optimizeLegibility;
-    /* Support for Firefox. */
     -moz-osx-font-smoothing: grayscale;
-    /* Support for IE. */
     font-feature-settings: 'liga';
   }
   .dp16 {

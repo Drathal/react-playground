@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { injectIntl, defineMessages, FormattedMessage } from 'react-intl'
+import Helmet from 'react-helmet'
 
 import style from './layout_dashboard.css'
 import top_navigation_links from '../topnav_links'
@@ -36,6 +37,7 @@ class component extends React.Component {
 
   render() {
     return (<div className={`${style.layout} layout layout-dashboard`}>
+      <Helmet title={this.props.intl.formatMessage(m.brandNameTwo)} />
       <TopNavBar
         brand={<Link to="/main"><FormattedMessage {...m.brandNameTwo} /></Link>}
         menu={[<LanguageSelectorContainer key={'menuitem-1'} />, <NavLogin messages={{
@@ -57,6 +59,7 @@ class component extends React.Component {
 }
 
 component.propTypes = {
+  intl: PropTypes.object,
   activePage: PropTypes.func,
   children: PropTypes.node,
   params: PropTypes.shape({
