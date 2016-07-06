@@ -2,23 +2,21 @@ import React, { PropTypes } from 'react'
 import { Navbar } from 'react-bootstrap'
 import component_style from './TopNavBar.css'
 
-const component = ({ links, menu, brand, style }) => {
+const component = ({ children, brand, style }) => {
   const s = { ...component_style, ...style }
   return (<Navbar fixed fluid staticTop componentClass="header" role="banner" className={s.navigation} >
     <Navbar.Header>
       <Navbar.Brand className={s.navigationHeader}>{brand}</Navbar.Brand>
     </Navbar.Header>
     <Navbar.Collapse className="bs-navbar-collapse">
-      {links}
-      {menu.map(c => c)}
+      {children}
     </Navbar.Collapse>
   </Navbar>)
 }
 
 component.propTypes = {
   style: PropTypes.object,
-  links: PropTypes.element,
-  menu: PropTypes.array,
+  children: PropTypes.node,
   brand: PropTypes.element
 }
 

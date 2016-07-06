@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
-import { injectIntl, defineMessages, FormattedMessage } from 'react-intl'
+import { injectIntl, defineMessages } from 'react-intl'
 import Helmet from 'react-helmet'
 
 import NavLogin from 'components/NavLogin'
 import LanguageSelectorContainer from 'containers/LanguageSelectorContainer'
 import TopNavBar from 'components/TopNavBar'
-import TopNavLinks from 'components/TopNavLinks'
+import NavLinks from 'components/NavLinks'
 
 import style from './layout_main.css'
 import top_navigation_links from '../topnav_links'
@@ -26,16 +26,14 @@ const m = defineMessages({
   }
 })
 
-const component = ({ children, params, intl }) => <div className={`${style.layout} layout layout-main`}>
-  <Helmet title={intl.formatMessage(m.brandName)} />
-  <TopNavBar
-  brand={<Link to="/dashboard"><FormattedMessage {...m.brandName} /></Link>}
-  links={<TopNavLinks linkList={top_navigation_links(params)} />}
-  menu={[<LanguageSelectorContainer key={'menuitem-1'} />, <NavLogin messages={{
-    login: <FormattedMessage {...m.login} />,
-    logout: <FormattedMessage {...m.logout} />
-  }} key={'menuitem-2'} />]}
-  />
+const component = ({ children, params, intl: { formatMessage: fm } }) => <div
+  className={`${style.layout} layout layout-main`}>
+  <Helmet title={fm(m.brandName)} />
+  <TopNavBar brand={<Link to="/dashboard">{fm(m.brandName)}</Link>}>
+    <NavLinks linkList={top_navigation_links(params)} />
+    <LanguageSelectorContainer key={'menuitem-1'} />
+    <NavLogin key={'menuitem-2'} messages={{ login: fm(m.login), logout: fm(m.logout) }} />
+  </TopNavBar>
   <div className={`${style.container} app-content`}>
     <div className={`${style.containerBody} app-content-body`}>
       {children}

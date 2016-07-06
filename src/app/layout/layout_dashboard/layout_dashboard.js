@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
-import { injectIntl, defineMessages, FormattedMessage } from 'react-intl'
+import { injectIntl, defineMessages } from 'react-intl'
 import Helmet from 'react-helmet'
 
 import NavLogin from 'components/NavLogin'
 import TopNavBar from 'components/TopNavBar'
-import TopNavLinks from 'components/TopNavLinks'
+import NavLinks from 'components/NavLinks'
 import LanguageSelectorContainer from 'containers/LanguageSelectorContainer'
 
 import style from './layout_dashboard.css'
@@ -37,18 +37,18 @@ class component extends React.Component {
   }
 
   render() {
+    const { formatMessage: fm } = this.props.intl
+
     return (<div className={`${style.layout} layout layout-dashboard`}>
-      <Helmet title={this.props.intl.formatMessage(m.brandNameTwo)} />
-      <TopNavBar
-        brand={<Link to="/main"><FormattedMessage {...m.brandNameTwo} /></Link>}
-        menu={[<LanguageSelectorContainer key={'menuitem-1'} />, <NavLogin messages={{
-          login: <FormattedMessage {...m.login} />,
-          logout: <FormattedMessage {...m.logout} />
-        }} key={'menuitem-2'} />]}
-        style={style}
-      />
+      <Helmet title={fm(m.brandNameTwo)} />
+      <TopNavBar style={style} brand={<Link to="/main">{fm(m.brandNameTwo)}</Link>}>
+        <LanguageSelectorContainer key={'menuitem-1'} />
+        <NavLogin key={'menuitem-2'} messages={{ login: fm(m.login), logout: fm(m.logout) }} />
+      </TopNavBar>
       <aside className={`${style.sidemenu} app-aside`}>
-        <div className={`${style.sidemenuBody}`}><TopNavLinks linkList={top_navigation_links(this.props.params)} /></div>
+        <div className={`${style.sidemenuBody}`}>
+          <NavLinks linkList={top_navigation_links(this.props.params)} />
+        </div>
       </aside>
       <div className={`${style.container} app-content`}>
         <div className={`${style.containerBody} app-content-body`}>

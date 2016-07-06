@@ -7,7 +7,7 @@
     "prestart:dev": "rimraf ./i18n",
     "start:dev": "run-p -c --silent test:watch build:dev translation:watchpot translation:watchpo",
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 mocha --reporter mocha-junit-reporter",
-    "test:watch": "chokidar --initial --silent './src/**/*.js' -c 'npm run test -- --watch --reporter min'",
+    "test:watch": "npm run test -- --watch --reporter min",
     "test:coverage": "nyc --cache npm run test -- --reporter spec",
     "test:lint": "eslint ./src",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.js",
