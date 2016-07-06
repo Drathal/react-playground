@@ -1,4 +1,4 @@
-import { ADD_PRODUCT } from '../ActionTypes'
+import { ADD_PRODUCT } from 'reducer/ActionTypes'
 
 const noProduct = (product) => (!product || !product.id)
 

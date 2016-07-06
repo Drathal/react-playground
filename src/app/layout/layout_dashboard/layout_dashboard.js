@@ -3,12 +3,13 @@ import { Link } from 'react-router'
 import { injectIntl, defineMessages, FormattedMessage } from 'react-intl'
 import Helmet from 'react-helmet'
 
+import NavLogin from 'components/NavLogin'
+import TopNavBar from 'components/TopNavBar'
+import TopNavLinks from 'components/TopNavLinks'
+import LanguageSelectorContainer from 'containers/LanguageSelectorContainer'
+
 import style from './layout_dashboard.css'
 import top_navigation_links from '../topnav_links'
-import NavLogin from '../../../components/NavLogin'
-import LanguageSelectorContainer from '../../../containers/LanguageSelectorContainer'
-import TopNavBar from '../../../components/TopNavBar'
-import TopNavLinks from '../../../components/TopNavLinks'
 
 const m = defineMessages({
   brandNameTwo: {
@@ -26,7 +27,7 @@ const m = defineMessages({
 })
 
 class component extends React.Component {
-  // changing style outside component scope
+  // sideeffect: changing style outside component scope
   componentWillMount() {
     document.body.style.backgroundColor = '#e0e0e0'
   }

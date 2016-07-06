@@ -1,4 +1,4 @@
 export default {
   path: 'products',
-  component: require('../products').default
+  component: require('./products').default
 }

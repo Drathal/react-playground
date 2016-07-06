@@ -1,4 +1,3 @@
-const path = require('path')
 const webpack = require('webpack')
 const webpackValidator = require('webpack-validator')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -16,13 +15,7 @@ const devhost = process.env.npm_package_config_devhost || 'localhost'
 const isProduction = process.env.NODE_ENV === 'production'
 const isDevelopment = !isProduction
 const webpackPort = parseInt(process.env.APP_PORT, 10) + 1
-const PATH = {
-  build: path.join(__dirname, '../dist'),
-  src: path.join(__dirname, '../src'),
-  components: path.join(__dirname, '../src/components'),
-  reducer: path.join(__dirname, '../src/reducer'),
-  app: path.join(__dirname, '../src/app')
-}
+const PATH = require('./paths')
 
 const hot = isProduction ? [] : [
   'react-hot-loader/patch',
@@ -103,12 +96,7 @@ const webpackConfig = () => webpackValidator({
   resolve: {
     extensions: ['', '.js'],
     modulesDirectories: ['node_modules'],
-    alias: {
-      src: PATH.src,
-      components: PATH.components,
-      reducer: PATH.reducer,
-      app: PATH.app
-    }
+    alias: PATH
   },
   output: {
     path: PATH.build,

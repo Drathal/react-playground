@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { update } from 'react-intl-redux'
 import { injectIntl, defineMessages, FormattedMessage } from 'react-intl'
-import IntlUtils from '../translation/IntlUtils'
-import LanguageSelector from '../components/LanguageSelector'
+import IntlUtils from 'src/translation/IntlUtils'
+import LanguageSelector from 'components/LanguageSelector'
 
 const m = defineMessages({
   currentLanguage: {

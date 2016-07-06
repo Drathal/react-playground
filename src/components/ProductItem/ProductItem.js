@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 import { Button, Panel } from 'react-bootstrap'
 
-import productPictureDefault from 'components/ProductItem/dummyProduct.jpg'
-import style from 'components/ProductItem/ProductItem.css'
+import productPictureDefault from './dummyProduct.jpg'
+import style from './ProductItem.css'
 
 const ProductItem = ({ product, deleteProduct, addToCart, messages }) => {
   const productImage = product.productImage && product.productImage.length > 0 ?

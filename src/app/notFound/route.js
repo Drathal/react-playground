@@ -1,4 +1,4 @@
 export default {
   path: '404',
-  component: require('../../components/NotFound').default
+  component: require('components/NotFound').default
 }
