@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { injectIntl, defineMessages } from 'react-intl'
 import Helmet from 'react-helmet'
+import BodyClassName from 'react-body-classname'
 
 import NavLogin from 'components/NavLogin'
 import TopNavBar from 'components/TopNavBar'
@@ -26,38 +27,26 @@ const m = defineMessages({
   }
 })
 
-class component extends React.Component {
-  // sideeffect: changing style outside component scope
-  componentWillMount() {
-    document.body.style.backgroundColor = '#e0e0e0'
-  }
-
-  componentWillUnmount() {
-    document.body.style.backgroundColor = null
-  }
-
-  render() {
-    const { formatMessage: fm } = this.props.intl
-
-    return (<div className={`${style.layout} layout layout-dashboard`}>
-      <Helmet title={fm(m.brandNameTwo)} />
-      <TopNavBar style={style} brand={<Link to="/main">{fm(m.brandNameTwo)}</Link>}>
-        <LanguageSelectorContainer key={'menuitem-1'} />
-        <NavLogin key={'menuitem-2'} messages={{ login: fm(m.login), logout: fm(m.logout) }} />
-      </TopNavBar>
-      <aside className={`${style.sidemenu} app-aside`}>
-        <div className={`${style.sidemenuBody}`}>
-          <NavLinks linkList={top_navigation_links(this.props.params)} />
-        </div>
-      </aside>
-      <div className={`${style.container} app-content`}>
-        <div className={`${style.containerBody} app-content-body`}>
-          {this.props.children}
-        </div>
+const component = ({ children, params, intl: { formatMessage: fm } }) => <BodyClassName className={style.body}>
+  <div className={`${style.layout} layout layout-dashboard`}>
+    <Helmet title={fm(m.brandNameTwo)} />
+    <TopNavBar style={style} brand={<Link to="/main">{fm(m.brandNameTwo)}</Link>}>
+      <LanguageSelectorContainer key={'menuitem-1'} />
+      <NavLogin key={'menuitem-2'} messages={{ login: fm(m.login), logout: fm(m.logout) }} />
+    </TopNavBar>
+    <aside className={`${style.sidemenu} app-aside`}>
+      <div className={`${style.sidemenuBody}`}>
+        <NavLinks linkList={top_navigation_links(params)} />
       </div>
-    </div>)
-  }
-}
+    </aside>
+    <div className={`${style.container} app-content`}>
+      <div className={`${style.containerBody} app-content-body`}>
+        {children}
+      </div>
+    </div>
+  </div>
+</BodyClassName>
+
 
 component.propTypes = {
   intl: PropTypes.object,

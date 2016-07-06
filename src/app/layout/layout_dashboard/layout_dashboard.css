@@ -1,4 +1,5 @@
 @value brand-text-color, dark-bg-color, dark-text-color from "../colors.css";
+@value custom-bg-color: #e0e0e0;
 @value sidebar-witdh: 250px;
 :global {
   .layout-dashboard .productsWrapper .panel {
@@ -14,6 +15,10 @@
       width: sidebar-witdh;
     }
   }
+}
+
+.body {
+  background-color: custom-bg-color;
 }
 
 .layout {
