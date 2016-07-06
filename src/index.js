@@ -38,13 +38,11 @@ IntlUtils.loadLocale('en').then(result => {
 
   // hot reloading
   if (module.hot) {
-    module.hot.accept('./root', () => {
-      ReactDOM.render(
-        <AppContainer>
-          <Root store={store} history={history} />
-        </AppContainer>,
-        rootEl
-      )
-    })
+    module.hot.accept('./root', () => ReactDOM.render(
+      <AppContainer>
+        <Root store={store} history={history} />
+      </AppContainer>,
+      rootEl)
+    )
   }
 })
