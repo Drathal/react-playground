@@ -2,9 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { injectIntl, defineMessages } from 'react-intl'
 import * as productAPi from '../../service/product'
-import ProductItem from '../../components/ProductItem'
-import ProductsList from '../../components/ProductList'
-import * as productActions from '../../reducer/products/actions'
+// import ProductItem from '../../components/ProductItem'
+// import ProductsList from '../../components/ProductList'
+// import * as productActions from '../../reducer/products/actions'
+
+import * as productActions from 'src/reducer/products/actions'
+import ProductItem from 'components/ProductItem'
+import ProductsList from 'components/ProductList'
 
 const m = defineMessages({
   title: {

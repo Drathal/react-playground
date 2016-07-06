@@ -1,5 +1,5 @@
 import productsReducer from './index'
-import { addProduct, deleteProduct, setProducts } from './actions'
+import { addProduct, deleteProduct, setProducts } from 'reducer/products/actions'
 
 describe('reducer products', () => {
   const product1 = { id: 1, description: 'product 1', name: 'product 1', productImage: 'a' }

@@ -18,7 +18,10 @@ const isDevelopment = !isProduction
 const webpackPort = parseInt(process.env.APP_PORT, 10) + 1
 const PATH = {
   build: path.join(__dirname, '../dist'),
-  src: path.join(__dirname, '../src')
+  src: path.join(__dirname, '../src'),
+  components: path.join(__dirname, '../src/components'),
+  reducer: path.join(__dirname, '../src/reducer'),
+  app: path.join(__dirname, '../src/app')
 }
 
 const hot = isProduction ? [] : [
@@ -99,7 +102,13 @@ const webpackConfig = () => webpackValidator({
   target: 'web',
   resolve: {
     extensions: ['', '.js'],
-    modulesDirectories: ['node_modules']
+    modulesDirectories: ['node_modules'],
+    alias: {
+      src: PATH.src,
+      components: PATH.components,
+      reducer: PATH.reducer,
+      app: PATH.app
+    }
   },
   output: {
     path: PATH.build,

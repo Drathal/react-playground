@@ -21,6 +21,9 @@
         ["__coverage__", {
           "only": "src/**/*(!.spec).js"
         }],
+        ["babel-plugin-webpack-aliases", {
+          "config": "./webpack/webpack.config.test.js"
+        }],
         ["babel-plugin-webpack-loaders", {
           "config": "./webpack/webpack.config.test.js",
           "verbose": false
