@@ -5,20 +5,25 @@
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
 [![Dependencies](https://david-dm.org/Drathal/react-playground.svg)](https://david-dm.org/Drathal/react-playground)
 
-My personal frontend development playground
+My personal frontend development playground.
 
 Uses:
   * javascript in ES6
+  * babel 6
   * webpack 2
   * react 15
   * react-intl (with support for gettext `.po` files)
   * react-router (with lazy loading components)
   * redux
   * mocha (with wallaby.js support)
-  * css-modules (and sass support
-  * post-css (autoprefixer)
+  * enzyme
+  * css-modules
+  * postcss
   * automatic assets optimisation (`.png`, `.gif`, `.jpg`, `.svg`)
   * ...
+
+While this repro is using webpack as module bundler. It does not use webpack for unit testing. To archieve this im using
+`babel-plugin-webpack-loaders` and `babel-plugin-webpack-aliases`.
 
 ## Usage
 ```shell
@@ -45,7 +50,7 @@ npm run start:dev -s
 ```
 
   * runs a development server at `localhost:3000`
-  * runs mocha tests on file change
+  * runs mocha tests on file change (not on file add)
   * extracts all language definitions and creates a `messages.pot` file on change
   * watches `*.po` files and creates message strings
 
