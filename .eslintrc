@@ -3,6 +3,7 @@
   "plugins": [
     "react"
   ],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -24,11 +25,18 @@
     "jquery": true,
     "mocha": true
   },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack/webpack.config.test.js"
+      }
+    }
+  },
   "rules": {
     "global-require": "off",
     "camelcase": "off",
     "no-underscore-dangle": "off",
-    "no-class-assign":"off",
+    "no-class-assign": "off",
     "new-cap": 0,
     "no-case-declarations": "off",
     "semi": [2, "never"],
