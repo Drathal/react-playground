@@ -1,13 +1,20 @@
 {
-  "presets": ["es2015-webpack", "stage-0", "react"],
   "env": {
+    "production" : {
+      "presets": ["es2015-webpack", "stage-0", "react"],
+      "plugins": [
+        "transform-react-constant-elements",
+        "transform-react-inline-elements"
+      ]
+    },
     "development": {
       "presets": ["es2015-loose", "stage-0", "react"],
       "plugins": [
         ["babel-plugin-espower", {
           "embedAst": true
         }],
-        "react-hot-loader/babel", ["react-intl", {
+        "react-hot-loader/babel",
+        ["react-intl", {
           "messagesDir": "./i18n/",
           "enforceDescriptions": false
         }]
