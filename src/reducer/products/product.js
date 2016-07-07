@@ -12,6 +12,7 @@ const product = (state, action) => {
         description: action.product.description || '',
         productImage: action.product.productImage || ''
       }
+
     default:
       return state
   }

@@ -8,17 +8,21 @@ const products = (state = [], action) => {
   switch (action.type) {
     case ADD_PRODUCT:
       if (inList(state, action.product)) return state
+
       return [
         ...state,
         product(undefined, action)
       ]
+
     case DELETE_PRODUCT:
       const index = getPosition(state, action.id)
       if (index === -1) return state
+
       return [
         ...state.slice(0, index),
         ...state.slice(index + 1)
       ]
+
     case SET_PRODUCTS:
       if (!action.products) return state
       action.products.filter(p => {
@@ -26,9 +30,11 @@ const products = (state = [], action) => {
         if (inList(state, p)) return false
         return true
       })
+
       return [
         ...action.products
       ]
+
     default:
       return state
   }

@@ -15,6 +15,7 @@ export default (state = initialState, action) => {
         isValid: true,
         items: products(state.items, action)
       }
+
     default:
       return state
   }

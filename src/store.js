@@ -9,10 +9,7 @@ export default (initialState = {}) => {
   const store = middlewares(createStore)(rootReducer, initialState, devToolsExtension)
 
   if (module.hot) {
-    module.hot.accept('./reducer/root', () => {
-      const nextRootReducer = require('./reducer/root').default // eslint-disable-line global-require
-      store.replaceReducer(nextRootReducer)
-    })
+    module.hot.accept('./reducer/root', () => store.replaceReducer(require('./reducer/root').default))
   }
 
   return store
