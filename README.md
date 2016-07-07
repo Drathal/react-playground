@@ -25,7 +25,7 @@ Uses:
 While this repro is using webpack as module bundler. It does not use webpack for unit testing. To archieve this im using
 `babel-plugin-webpack-loaders` and `babel-plugin-webpack-aliases`.
 
-Reducers are not hot loaded yet. 
+Reducers are lazy loaded yet. 
 
 ## Usage
 ```shell
