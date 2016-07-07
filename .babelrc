@@ -14,13 +14,13 @@
       ]
     },
     "test": {
-      "presets": ["es2015", "stage-0", "react"],
+      "presets": ["es2015-loose", "stage-0", "react"],
       "plugins": [
         ["babel-plugin-espower", {
           "embedAst": true
         }],
         ["__coverage__", {
-          "only": "src/**/*(!.spec).js"
+          "ignore": [".spec.js","webpack/"]
         }],
         ["babel-plugin-webpack-aliases", {
           "config": "./webpack/webpack.config.test.js"
