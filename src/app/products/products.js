@@ -36,7 +36,7 @@ const m = defineMessages({
 })
 
 const createRandomProduct = () => {
-  const id = Math.floor(Math.random() * (100 - 5) + 5)
+  const id = Math.floor((Math.random() * (100 - 5)) + 5)
   return { id, description: `product ${id}` }
 }
 

@@ -1,7 +1,8 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt')
 const cookie = require('cookie')
+
 const router = express.Router()
 
 /*
@@ -43,7 +44,8 @@ router.get('/users/signup', (req, res) => {
   }
 
   const body = Object.assign({}, { name: 'markus', username: 'drathal', email: 'a@a.com', password: 'p' }, req.body)
-  const hash = bcrypt.hashSync(body.password.trim(), 10)
+  // const hash = bcrypt.hashSync(body.password.trim(), 10)
+  const hash = '1234'
   const user = {
     id: 1,
     name: body.name.trim(),

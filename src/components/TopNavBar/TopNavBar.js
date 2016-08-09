@@ -4,7 +4,7 @@ import component_style from './TopNavBar.css'
 
 const component = ({ children, brand, style }) => {
   const s = { ...component_style, ...style }
-  return (<Navbar fixed fluid staticTop componentClass="header" role="banner" className={s.navigation} >
+  return (<Navbar fluid staticTop componentClass="header" role="banner" className={s.navigation} >
     <Navbar.Header>
       <Navbar.Brand className={s.navigationHeader}>{brand}</Navbar.Brand>
     </Navbar.Header>

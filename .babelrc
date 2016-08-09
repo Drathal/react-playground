@@ -3,6 +3,7 @@
     "production" : {
       "presets": ["es2015-webpack", "stage-0", "react"],
       "plugins": [
+        "transform-promise-to-bluebird",
         "transform-react-constant-elements",
         "transform-react-inline-elements"
       ]
@@ -10,6 +11,7 @@
     "development": {
       "presets": ["es2015-loose", "stage-0", "react"],
       "plugins": [
+        ["transform-promise-to-bluebird"],
         ["babel-plugin-espower", {
           "embedAst": true
         }],
@@ -23,6 +25,7 @@
     "test": {
       "presets": ["es2015-loose", "stage-0", "react"],
       "plugins": [
+        ["transform-promise-to-bluebird"],
         ["babel-plugin-espower", {
           "embedAst": true
         }],

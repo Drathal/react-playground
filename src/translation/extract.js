@@ -8,6 +8,7 @@ glob.sync('./src/+(app|containers)/**/*.js').map(filename => {
     presets: ['es2015-webpack', 'stage-0', 'react'],
     plugins: ['react-intl']
   })
+
   if (result.metadata['react-intl'].messages.length <= 0) { return false }
 
   const destination = path.join('./i18n', filename).replace(/\.js$/, '.json')

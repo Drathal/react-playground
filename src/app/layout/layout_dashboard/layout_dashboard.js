@@ -31,8 +31,8 @@ const component = ({ children, params, intl: { formatMessage: fm } }) => <BodyCl
   <div className={`${style.layout} layout layout-dashboard`}>
     <Helmet title={fm(m.brandNameTwo)} />
     <TopNavBar style={style} brand={<Link to="/main">{fm(m.brandNameTwo)}</Link>}>
-      <LanguageSelectorContainer key={'menuitem-1'} />
-      <NavLogin key={'menuitem-2'} messages={{ login: fm(m.login), logout: fm(m.logout) }} />
+      <LanguageSelectorContainer />
+      <NavLogin messages={{ login: fm(m.login), logout: fm(m.logout) }} />
     </TopNavBar>
     <aside className={`${style.sidemenu} app-aside`}>
       <div className={`${style.sidemenuBody}`}>

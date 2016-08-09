@@ -6,7 +6,7 @@ import LayoutDashboard from './layout_dashboard'
 
 const store = configureStore()({ intl: { locale: 'en' } })
 
-describe('component <LayoutMain />', () => {
+describe('component <LayoutDashboard />', () => {
   it('can render childs', () => {
     const wrapper = mount(<Provider store={store}><LayoutDashboard children="childs" /></Provider>)
     expect(wrapper.html().includes('childs')).to.equal(true)

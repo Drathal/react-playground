@@ -11,14 +11,16 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default
 const rucksack = require('rucksack-css')
 
 require('dotenv-safe').load()
+
 const devhost = process.env.npm_package_config_devhost || 'localhost'
 const isProduction = process.env.NODE_ENV === 'production'
 const isDevelopment = !isProduction
 const webpackPort = parseInt(process.env.APP_PORT, 10) + 1
 const PATH = require('./paths')
 
-const hot = isProduction ? [] : [
+const hot = isProduction ? ['babel-polyfill'] : [
   'react-hot-loader/patch',
+  'babel-polyfill',
   `webpack-dev-server/client?http://${devhost}:${webpackPort}`,
   'webpack/hot/only-dev-server'
 ]
@@ -27,7 +29,7 @@ const loaders = isProduction ? [
   {
     test: /\.css$/,
     loader: ExtractTextPlugin.extract(
-      'css?camelCase&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!postcss'
+      { filename: 'css?camelCase&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!postcss' }
     )
   },
   {
@@ -81,7 +83,8 @@ const plugins = isProduction ? [
     }
   })
 ] : [
-  new webpack.HotModuleReplacementPlugin()
+  new webpack.HotModuleReplacementPlugin(),
+  new webpack.NamedModulesPlugin()
 ]
 
 const webpackConfig = () => webpackValidator({
@@ -125,7 +128,8 @@ const webpackConfig = () => webpackValidator({
       'PRODUCT_SERVICE_URL',
       'APP_PORT'
     ]),
-    new ExtractTextPlugin('css/[name].[hash].css', {
+    new ExtractTextPlugin({
+      filename: 'css/[name].[hash].css',
       disable: !isProduction,
       allChunks: true
     }),

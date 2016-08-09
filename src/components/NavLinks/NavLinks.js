@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react'
-import { Nav } from 'react-bootstrap'
-import { Link } from 'react-router'
+import { Nav, NavItem } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
-const component = ({ linkList }) => <Nav role="navigation">{
-    linkList.map(item => <li key={item.link}>
-      <Link to={item.link}>{item.title}</Link>
-    </li>)
-  }</Nav>
+const component = ({ linkList }) => <Nav>
+  {
+    linkList.map(item => {
+      return <LinkContainer key={item.link} to={`${item.link}`}><NavItem>{item.title}</NavItem></LinkContainer>
+    })
+  }
+</Nav>
 
 component.propTypes = {
   linkList: PropTypes.array

@@ -4,7 +4,7 @@ import './layout/theme.css'
 const app = ({ children }) => React.Children.only(children)
 
 app.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element.isRequired
 }
 
 export default app

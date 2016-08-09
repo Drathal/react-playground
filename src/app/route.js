@@ -1,8 +1,21 @@
+import App from '../app'
+import LayoutRoute from './layout/route'
+
 export default {
   path: '/',
   indexRoute: { onEnter: (nextState, replace) => replace('/main') },
-  component: require('../app').default,
-  getChildRoutes(location, cb) {
-    require.ensure([], (require) => cb(null, require('./layout/route').default), 'layout-route')
-  }
+  component: App,
+  childRoutes: [
+    LayoutRoute
+  ]
 }
+
+/*
+  getChildRoutes(location, cb) {
+    if (process.env.NODE_ENV === 'development') {
+      cb(null, require('./layout/route').default)
+    } else {
+      require.ensure([], (require) => cb(null, require('./layout/route').default), 'layout-route')
+    }
+  }
+*/
