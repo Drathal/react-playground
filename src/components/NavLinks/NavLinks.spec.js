@@ -13,7 +13,7 @@ const links = [
   }
 ]
 
-describe('component <NavLinks />', function () {
+describe('component <NavLinks />', () => {
   it('can render Navigation Links', function () {
     expect(shallow(<NavLinks linkList={links} />).html()).toMatchSnapshot(this)
   })
