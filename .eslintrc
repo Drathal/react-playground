@@ -22,6 +22,8 @@
     }
   },
   "rules": {
+    "func-names": 0,
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}],
     "global-require": "off",
     "camelcase": "off",
     "no-underscore-dangle": "off",

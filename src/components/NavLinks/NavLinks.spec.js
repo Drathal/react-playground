@@ -13,10 +13,8 @@ const links = [
   }
 ]
 
-describe('component <NavLinks />', () => {
-  it('can render Navigation Links', () => {
-    const wrapper = shallow(<NavLinks linkList={links} />)
-    expect(wrapper.html().includes('link1')).to.equal(true)
-    expect(wrapper.html().includes('link2')).to.equal(true)
+describe('component <NavLinks />', function () {
+  it('can render Navigation Links', function () {
+    expect(shallow(<NavLinks linkList={links} />).html()).toMatchSnapshot(this)
   })
 })
