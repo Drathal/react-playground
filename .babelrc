@@ -29,9 +29,7 @@
         ["babel-plugin-espower", {
           "embedAst": true
         }],
-        ["__coverage__", {
-          "ignore": [".spec.js","webpack/"]
-        }],
+        ["istanbul"],
         ["babel-plugin-webpack-aliases", {
           "config": "./webpack/webpack.config.test.js"
         }],
