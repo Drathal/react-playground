@@ -28,17 +28,18 @@ const hot = isProduction ? ['babel-polyfill'] : [
 const loaders = isProduction ? [
   {
     test: /\.css$/,
-    loader: ExtractTextPlugin.extract(
-      { filename: 'css?camelCase&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!postcss' }
-    )
+    loader: ExtractTextPlugin.extract({
+      loader: 'css?camelCase&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!postcss'
+    })
   },
   {
     test: /\.(jpe?g|png|gif|svg)$/i,
-    loader: 'url-loader?limit=8192&name=assets/[name].[hash].[ext]'
+    loader: 'url?limit=8192&name=assets/[name].[hash].[ext]'
   }
 ] : [
   {
     test: /\.css$/,
+    exclude: /file\.css$/,
     loaders: [
       'style?sourceMap',
       'css?camelCase&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]&sourceMap',
@@ -46,8 +47,14 @@ const loaders = isProduction ? [
     ]
   },
   {
+    test: /file\.css$/,
+    loader: ExtractTextPlugin.extract({
+      loader: 'css!postcss'
+    })
+  },
+  {
     test: /\.(jpe?g|png|gif|svg)$/i,
-    loader: 'file'
+    loader: 'file?name=[name].[hash].[ext]'
   }
 ]
 
@@ -130,7 +137,6 @@ const webpackConfig = () => webpackValidator({
     ]),
     new ExtractTextPlugin({
       filename: 'css/[name].[hash].css',
-      disable: !isProduction,
       allChunks: true
     }),
     new webpack.NoErrorsPlugin(),
@@ -158,11 +164,11 @@ const webpackConfig = () => webpackValidator({
       },
       { test: /\.json$/, loaders: ['json'] },
       { test: /\.ico$/, loader: 'file?name=[name].[ext]' },
-      { test: /\.svg$/, loader: 'url?limit=15000&mimetype=image/svg+xml&name=assets/[name].[hash].[ext]' },
-      { test: /\.woff$/, loader: 'url?limit=15000&mimetype=application/font-woff&name=assets/[name].[hash].[ext]' },
-      { test: /\.woff2$/, loader: 'url?limit=15000&mimetype=application/font-woff2&name=assets/[name].[hash].[ext]' },
-      { test: /\.[ot]tf$/, loader: 'url?limit=15000&mimetype=application/octet-stream&name=assets/[name].[hash].[ext]' },
-      { test: /\.eot$/, loader: 'url?limit=15000&mimetype=application/vnd.ms-fontobject&name=assets/[name].[hash].[ext]' }
+      { test: /\.svg$/, loader: 'file?name=assets/[name].[hash].[ext]' },
+      { test: /\.woff$/, loader: 'file?name=assets/[name].[hash].[ext]' },
+      { test: /\.woff2$/, loader: 'file?name=assets/[name].[hash].[ext]' },
+      { test: /\.[ot]tf$/, loader: 'file?name=assets/[name].[hash].[ext]' },
+      { test: /\.eot$/, loader: 'file?name=assets/[name].[hash].[ext]' }
     ]
   }
 })

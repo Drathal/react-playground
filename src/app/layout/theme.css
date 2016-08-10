@@ -1,16 +1,4 @@
 @value default-bg-color, default-text-color from "./colors.css";
-@font-face {
-  font-family: 'Roboto';
-  font-weight: 400;
-  font-path: './fonts/roboto-400';
-}
-
-@font-face {
-  font-family: 'Material Icons';
-  font-weight: 400;
-  font-path: './fonts/material+icons-400';
-}
-
 :global {
   .material-icons {
     font-family: 'Material Icons';
@@ -49,7 +37,7 @@
     color: default-text-color;
     font-weight: 400;
     font-size: 14px;
-    font-family: 'Roboto', 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Roboto, 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.42857143;
     -webkit-font-smoothing: antialiased;
   }

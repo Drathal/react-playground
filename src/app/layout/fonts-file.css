@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-path: './fonts/roboto-400';
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-weight: 400;
+  font-path: './fonts/material+icons-400';
+}

@@ -9,7 +9,7 @@
     "start:dev": "run-p -c --silent test:watch build:dev translation:watchpot translation:watchpo",
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 mocha --reporter mocha-junit-reporter",
     "test:spec": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 mocha --reporter spec",
-    "test:watch": "npm run test -- --watch --reporter spec",
+    "test:watch": "npm run test -- --watch --reporter min",
     "test:coverage": "nyc --cache npm run test -- --reporter spec",
     "test:lint": "eslint ./src",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.js",
@@ -135,6 +135,10 @@
     "style-loader": "^0.13.1",
     "to-object-by": "^1.0.3",
     "url-loader": "^0.5.7",
+    "webpack": "^2.1.0-beta.20",
+    "webpack-cleanup-plugin": "^0.2.0",
+    "webpack-dev-server": "^2.1.0-beta.0",
+    "webpack-shell-plugin": "^0.4.2",
     "webpack-validator": "^2.2.2"
   },
   "devDependencies": {
@@ -158,10 +162,6 @@
     "nyc": "^6.6.1",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
-    "wallaby-webpack": "0.0.22",
-    "webpack": "^2.1.0-beta.20",
-    "webpack-cleanup-plugin": "^0.2.0",
-    "webpack-dev-server": "^2.1.0-beta.0",
-    "webpack-shell-plugin": "^0.4.2"
+    "wallaby-webpack": "0.0.22"
   }
 }
