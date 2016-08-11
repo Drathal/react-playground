@@ -17,6 +17,7 @@ Uses:
   * redux
   * mocha (with wallaby.js support)
   * enzyme
+  * simple snapshot testing for react components
   * css-modules
   * postcss
   * automatic assets optimisation (`.png`, `.gif`, `.jpg`, `.svg`)
