@@ -1,0 +1,10 @@
+playground:
+  build: .
+  ports:
+  - 3000:3000
+  volumes:
+  - .:/home/app:rw
+  environment:
+  - NODE_ENV=development
+  command: >
+    sh -c 'npm run dev'

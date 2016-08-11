@@ -4,7 +4,7 @@ const url = require('url')
 const path = require('path')
 const express = require('express')
 const cookieParser = require('cookie-parser')
-const config = require('../webpack/webpack.config.js')()
+const config = require('../webpack/webpack.config')()
 
 const devhost = process.env.npm_package_config_devhost || 'localhost'
 const serverPort = parseInt(process.env.APP_PORT, 10)
@@ -14,8 +14,8 @@ const app = new express()
 
 if (process.env.START_SERVICE_MOCK === 'true') {
   app.use(cookieParser())
-  app.use('/api/', require('./mocks/route.api.user.js'))
-  app.use('/api/', require('./mocks/route.api.product.js'))
+  app.use('/api/', require('./mocks/route.api.user'))
+  app.use('/api/', require('./mocks/route.api.product'))
 }
 
 if (process.env.NODE_ENV === 'production') {
