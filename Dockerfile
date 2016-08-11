@@ -8,6 +8,6 @@ RUN chown -R app:app $HOME/*
 USER app
 WORKDIR $HOME
 
-RUN npm install
+RUN npm install -s
 RUN npm test -- --reporter spec
 RUN npm build
