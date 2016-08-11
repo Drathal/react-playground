@@ -1,4 +1,4 @@
-FROM node:6.2.2
+FROM node:6.3.1
 RUN useradd --user-group --create-home --shell /bin/false app
 
 ENV HOME=/home/app
@@ -10,4 +10,4 @@ WORKDIR $HOME
 
 RUN npm install -s
 RUN npm test -- --reporter spec
-RUN npm build
+RUN npm run build
