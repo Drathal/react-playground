@@ -1,3 +1,7 @@
 export const ADD_PRODUCT = 'product/ADD_PRODUCT'
 export const DELETE_PRODUCT = 'product/DELETE_PRODUCT'
 export const SET_PRODUCTS = 'product/SET_PRODUCTS'
+
+export const PRODUCTS_FETCH_REQUESTED = 'product/PRODUCTS_FETCH_REQUESTED'
+export const PRODUCTS_FETCH_SUCCEEDED = 'product/PRODUCTS_FETCH_SUCCEEDED'
+export const PRODUCTS_FETCH_FAILED = 'product/PRODUCTS_FETCH_FAILED'

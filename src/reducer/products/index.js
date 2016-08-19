@@ -1,5 +1,5 @@
 import { ADD_PRODUCT, DELETE_PRODUCT, SET_PRODUCTS } from 'reducer/ActionTypes'
-import products from './products'
+import { default as products, getPosition } from './products'
 
 const initialState = {
   isValid: false,
@@ -19,4 +19,12 @@ export default (state = initialState, action) => {
     default:
       return state
   }
+}
+
+export function getProduct(state, id) {
+  return state.items[getPosition(state, id)]
+}
+
+export function getProducts(state) {
+  return state.items
 }

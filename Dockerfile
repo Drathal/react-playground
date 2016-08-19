@@ -10,6 +10,5 @@ WORKDIR $HOME
 
 RUN npm install -s
 RUN npm test -- --reporter spec
-RUN npm run build
 
 ENV SHELL=/bin/sh

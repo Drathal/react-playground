@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { injectIntl, defineMessages } from 'react-intl'
 
-import * as productAPi from 'service/product'
 import * as productActions from 'src/reducer/products/actions'
 import ProductItem from 'components/ProductItem'
 import ProductsList from 'components/ProductList'
@@ -43,10 +42,7 @@ const createRandomProduct = () => {
 class ProductListContainer extends Component {
 
   componentDidMount() {
-    const { setProducts, shouldLoadProducts } = this.props
-    if (shouldLoadProducts) {
-      productAPi.get(process.env.PRODUCT_SERVICE_URL).then(response => setProducts(response))
-    }
+    this.props.fetchProducts()
   }
 
   render() {
@@ -76,16 +72,14 @@ class ProductListContainer extends Component {
 }
 
 ProductListContainer.propTypes = {
-  shouldLoadProducts: PropTypes.bool.isRequired,
-  setProducts: PropTypes.func.isRequired,
+  fetchProducts: PropTypes.func.isRequired,
   addProduct: PropTypes.func.isRequired,
   deleteProduct: PropTypes.func.isRequired
 }
 
 ProductListContainer = connect(
     (state) => ({
-      products: state.products.items,
-      shouldLoadProducts: !state.products.isValid
+      products: state.products.items
     }),
     productActions
 )(ProductListContainer)
