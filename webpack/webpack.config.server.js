@@ -3,10 +3,7 @@ const path = require('path')
 const webpack = require('webpack')
 const webpackValidator = require('webpack-validator')
 const WebpackShellPlugin = require('webpack-shell-plugin')
-
-const PATH = {
-  build: path.join(__dirname, '../dist/')
-}
+const PATH = require('./paths')
 
 const webpackConfig = webpackValidator({
   entry: './server/index.js',
@@ -15,7 +12,7 @@ const webpackConfig = webpackValidator({
   output: {
     path: PATH.build,
     filename: 'index.js',
-    publicPath: PATH.build,
+    publicPath: '/',
     libraryTarget: 'commonjs2'
   },
   plugins: [
