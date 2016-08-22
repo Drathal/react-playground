@@ -8,9 +8,8 @@ const envProductEndpoint = process.env.PRODUCT_SERVICE_URL
 
 // fetch products only once
 function* fetchProducts(productEndpoint = envProductEndpoint) {
-  yield take(PRODUCTS_FETCH_REQUESTED)
-
   try {
+    yield take(PRODUCTS_FETCH_REQUESTED)
     const products = yield call(productAPi.get, productEndpoint)
     yield put(productActions.setProducts(products))
   } catch (e) {
@@ -19,3 +18,7 @@ function* fetchProducts(productEndpoint = envProductEndpoint) {
 }
 
 export default fetchProducts
+
+export const actions = {
+  fetch: () => ({ type: PRODUCTS_FETCH_REQUESTED })
+}

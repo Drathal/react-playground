@@ -1,8 +1,7 @@
 import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
-  SET_PRODUCTS,
-  PRODUCTS_FETCH_REQUESTED
+  SET_PRODUCTS
 } from 'reducer/ActionTypes'
 
 export const addProduct = product => ({
@@ -15,8 +14,4 @@ export const deleteProduct = id => ({
 
 export const setProducts = products => ({
   type: SET_PRODUCTS, products
-})
-
-export const fetchProducts = () => ({
-  type: PRODUCTS_FETCH_REQUESTED
 })

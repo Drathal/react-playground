@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, DELETE_PRODUCT, SET_PRODUCTS, PRODUCTS_FETCH_SUCCEEDED } from 'reducer/ActionTypes'
+import { ADD_PRODUCT, DELETE_PRODUCT, SET_PRODUCTS } from 'reducer/ActionTypes'
 import product from './product'
 
 export const getPosition = (list, id) => list.findIndex(i => i.id === id)
@@ -23,7 +23,6 @@ const products = (state = [], action) => {
         ...state.slice(index + 1)
       ]
 
-    case PRODUCTS_FETCH_SUCCEEDED:
     case SET_PRODUCTS:
       if (!action.products) return state
       action.products.filter(p => {

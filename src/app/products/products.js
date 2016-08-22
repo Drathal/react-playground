@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { injectIntl, defineMessages } from 'react-intl'
 
 import * as productActions from 'src/reducer/products/actions'
+import { actions as sagaActions } from 'src/sagas/fetchProducts'
 import ProductItem from 'components/ProductItem'
 import ProductsList from 'components/ProductList'
 
@@ -10,7 +11,7 @@ const m = defineMessages({
   title: {
     id: 'title',
     defaultMessage: 'Products',
-    description: '5boooooring',
+    description: 'boooooring',
   },
   addProduct: {
     id: 'addProduct',
@@ -81,7 +82,10 @@ ProductListContainer = connect(
     (state) => ({
       products: state.products.items
     }),
-    productActions
+  {
+    ...productActions,
+    fetchProducts: sagaActions.fetch
+  }
 )(ProductListContainer)
 
 export default injectIntl(ProductListContainer)
