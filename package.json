@@ -26,7 +26,7 @@
     "font:update": "cd $npm_package_config_fontpath && gfdownloader Material+Icons:400 && gfdownloader Roboto:400"
   },
   "config": {
-    "devhost": "0.0.0.0",
+    "devhost": "localhost",
     "fontpath": "./src/app/layout/fonts"
   },
   "nyc": {
