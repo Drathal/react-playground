@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-fetch'
-
 export default {}
 export const get = endpoint => fetch(endpoint).then(response => {
   if (response.status >= 400) {
