@@ -104,7 +104,7 @@ const webpackConfig = () => webpackValidator({
   },
   target: 'web',
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.jsx'],
     modulesDirectories: ['node_modules'],
     alias: PATH
   },
@@ -158,7 +158,7 @@ const webpackConfig = () => webpackValidator({
     loaders: [
       ...loaders,
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         loaders: [`babel?cacheDirectory&cacheIdentifier=${Math.random()}`],
         exclude: /(node_modules|.spec.)/
       },

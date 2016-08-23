@@ -4,7 +4,9 @@
       "presets": [
         ["es2015", {
           "modules": false
-        }], "stage-0", "react"
+        }],
+        "stage-0",
+        "react"
       ],
       "plugins": [
         "transform-runtime",
@@ -16,8 +18,8 @@
     "development": {
       "presets": ["es2015-loose", "stage-0", "react"],
       "plugins": [
-        ["transform-runtime"],
-        ["transform-promise-to-bluebird"],
+        "transform-runtime",
+        "transform-promise-to-bluebird",
         "react-hot-loader/babel", ["react-intl", {
           "messagesDir": "./i18n/",
           "enforceDescriptions": false
@@ -27,12 +29,11 @@
     "test": {
       "presets": ["es2015-loose", "stage-0", "react"],
       "plugins": [
-        ["transform-runtime"],
-        ["transform-promise-to-bluebird"],
-        ["babel-plugin-espower", {
+        "transform-runtime",
+        "transform-promise-to-bluebird",
+        "istanbul", ["babel-plugin-espower", {
           "embedAst": true
         }],
-        ["istanbul"],
         ["babel-plugin-webpack-aliases", {
           "config": "./webpack/webpack.config.test.js"
         }],
