@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 if (process.env.NODE_ENV === 'development') {
-  app.use(config.output.publicPath, proxy(url.parse(`http://${devhost}:${webpackPort}${config.output.publicPath}`)))
+  app.use(config.output.publicPath, proxy(`http://${devhost}:${webpackPort}${config.output.publicPath}`))
   require('./webpack.devserver')
 }
 

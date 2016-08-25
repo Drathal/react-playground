@@ -1,0 +1,7 @@
+playground:
+  extends:
+    file: docker-compose.yml
+    service: playground
+  environment:
+  - NODE_ENV=development
+  command: sh -c 'echo $NODE_ENV && npm run dev'

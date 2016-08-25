@@ -65,16 +65,16 @@ npm run font:update
 ### Docker
 
 ```shell
-docker build -t drathal/react-playground:v0.1.6 .
+docker-compose up
 ```
 
-  * build docker image
+  * start production mode
 
 ```shell
-docker run -ti -d --name react-playground -p 3000:3000 -v $(pwd):/home/app drathal/react-playground:v0.1.6 npm start
+docker-compose -f docker-compose.dev.ym
 ```
 
-  * run docker image with mounted development source
+  * start development mode
 
 ### translation
 

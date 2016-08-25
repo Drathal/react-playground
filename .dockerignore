@@ -1,4 +1,12 @@
-.git
-.gitignore
-node_modules
+test-results.xml
 Dockerfile
+todo.txt
+wallaby.js
+.gitignore
+.git/
+.imdone/
+node_modules/
+dist/
+backup/
+coverage/
+i18n/

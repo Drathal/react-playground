@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const webpackValidator = require('webpack-validator')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin').default
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WebpackShellPlugin = require('webpack-shell-plugin')
 const autoprefixer = require('autoprefixer')
@@ -59,7 +59,7 @@ const loaders = isProduction ? [
 ]
 
 const plugins = isProduction ? [
-  new WebpackCleanupPlugin(),
+  new WebpackCleanupPlugin({ quiet: true }),
   new ImageminPlugin({
     disable: false,
     optipng: {
