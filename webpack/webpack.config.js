@@ -39,7 +39,7 @@ const loaders = isProduction ? [
 ] : [
   {
     test: /\.css$/,
-    exclude: /file\.css$/,
+    exclude: /(file|global)\.css$/,
     loaders: [
       'style?sourceMap',
       'css?camelCase&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]&sourceMap',
@@ -47,9 +47,9 @@ const loaders = isProduction ? [
     ]
   },
   {
-    test: /file\.css$/,
+    test: /(file|global)\.css$/,
     loader: ExtractTextPlugin.extract({
-      loader: 'css!postcss'
+      loader: 'css'
     })
   },
   {

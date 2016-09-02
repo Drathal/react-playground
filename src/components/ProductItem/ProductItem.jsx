@@ -4,7 +4,7 @@ import { Button, Panel } from 'react-bootstrap'
 import productPictureDefault from './dummyProduct.jpg'
 import style from './ProductItem.css'
 
-const ProductItem = ({ product, deleteProduct, addToCart, messages }) => {
+const component = ({ product, deleteProduct, addToCart, messages }) => {
   const productImage = product.productImage && product.productImage.length > 0 ?
     product.productImage :
     productPictureDefault
@@ -29,7 +29,9 @@ const ProductItem = ({ product, deleteProduct, addToCart, messages }) => {
   </Panel>)
 }
 
-ProductItem.propTypes = {
+component.displayName = 'ProductItem'
+
+component.propTypes = {
   messages: PropTypes.shape({
     deleteProductButton: PropTypes.string.isRequired,
     addToCartButton: PropTypes.string.isRequired
@@ -43,10 +45,10 @@ ProductItem.propTypes = {
 }
 
 /* istanbul ignore next */
-ProductItem.defaultProps = {
+component.defaultProps = {
   product: {},
   deleteProduct: () => {},
   addToCart: () => {}
 }
 
-export default ProductItem
+export default component

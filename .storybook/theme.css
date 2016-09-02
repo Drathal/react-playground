@@ -1,0 +1,7 @@
+div[data-reactroot]> div> div> div> div> div> h2 {
+  display: none;
+}
+
+div[data-reactroot]> div> div> div> div> h1 {
+  font-weight: 700;
+}
