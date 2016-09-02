@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const webpackValidator = require('webpack-validator')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const WebpackCleanupPlugin = require('webpack-cleanup-plugin').default
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WebpackShellPlugin = require('webpack-shell-plugin')
 const autoprefixer = require('autoprefixer')
@@ -59,7 +59,9 @@ const loaders = isProduction ? [
 ]
 
 const plugins = isProduction ? [
-  new WebpackCleanupPlugin({ quiet: true }),
+  new WebpackCleanupPlugin({
+    quiet: true
+  }),
   new ImageminPlugin({
     disable: false,
     optipng: {
@@ -111,7 +113,7 @@ const webpackConfig = () => webpackValidator({
   output: {
     path: PATH.build,
     filename: isProduction ? '[name].[hash].js' : '[name].js',
-    chunkFilename: isProduction ? '[name].[hash].js': '[name].js',
+    chunkFilename: isProduction ? '[name].[hash].js' : '[name].js',
     publicPath: '/',
     pathinfo: isDevelopment
   },
@@ -162,13 +164,34 @@ const webpackConfig = () => webpackValidator({
         loaders: [`babel?cacheDirectory&cacheIdentifier=${Math.random()}`],
         exclude: /(node_modules|.spec.)/
       },
-      { test: /\.json$/, loaders: ['json'] },
-      { test: /\.ico$/, loader: 'file?name=[name].[ext]' },
-      { test: /\.svg$/, loader: 'file?name=assets/[name].[hash].[ext]' },
-      { test: /\.woff$/, loader: 'file?name=assets/[name].[hash].[ext]' },
-      { test: /\.woff2$/, loader: 'file?name=assets/[name].[hash].[ext]' },
-      { test: /\.[ot]tf$/, loader: 'file?name=assets/[name].[hash].[ext]' },
-      { test: /\.eot$/, loader: 'file?name=assets/[name].[hash].[ext]' }
+      {
+        test: /\.json$/,
+        loaders: ['json']
+      },
+      {
+        test: /\.ico$/,
+        loader: 'file?name=[name].[ext]'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'file?name=assets/[name].[hash].[ext]'
+      },
+      {
+        test: /\.woff$/,
+        loader: 'file?name=assets/[name].[hash].[ext]'
+      },
+      {
+        test: /\.woff2$/,
+        loader: 'file?name=assets/[name].[hash].[ext]'
+      },
+      {
+        test: /\.[ot]tf$/,
+        loader: 'file?name=assets/[name].[hash].[ext]'
+      },
+      {
+        test: /\.eot$/,
+        loader: 'file?name=assets/[name].[hash].[ext]'
+      }
     ]
   }
 })
