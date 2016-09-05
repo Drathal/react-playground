@@ -1,22 +1,18 @@
-require('dotenv-safe').load()
 const proxy = require('proxy-middleware')
-const url = require('url')
 const path = require('path')
 const express = require('express')
 const cookieParser = require('cookie-parser')
 const config = require('../webpack/webpack.config')()
 
 const devhost = process.env.npm_package_config_devhost || 'localhost'
-const serverPort = parseInt(process.env.APP_PORT, 10)
-const webpackPort = parseInt(process.env.APP_PORT, 10) + 1
+const serverPort = 3000
+const webpackPort = 3001
 
 const app = new express()
 
-if (process.env.START_SERVICE_MOCK === 'true') {
-  app.use(cookieParser())
-  app.use('/api/', require('./mocks/route.api.user'))
-  app.use('/api/', require('./mocks/route.api.product'))
-}
+app.use(cookieParser())
+app.use('/api/', require('./mocks/route.api.user'))
+app.use('/api/', require('./mocks/route.api.product'))
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.resolve('./dist')))

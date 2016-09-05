@@ -1,21 +1,20 @@
+const config = require('config')
 const webpack = require('webpack')
 const webpackValidator = require('webpack-validator')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const WebpackShellPlugin = require('webpack-shell-plugin')
 const autoprefixer = require('autoprefixer')
 const precss = require('precss')
 const cssModuleValues = require('postcss-modules-values')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const rucksack = require('rucksack-css')
 
-require('dotenv-safe').load()
-
+process.env.PRODUCT_SERVICE_URL = process.env.PRODUCT_SERVICE_URL || config.products_enpoint
 const devhost = process.env.npm_package_config_devhost || 'localhost'
 const isProduction = process.env.NODE_ENV === 'production'
 const isDevelopment = !isProduction
-const webpackPort = parseInt(process.env.APP_PORT, 10) + 1
+const webpackPort = 3001
 const PATH = require('./paths')
 
 const hot = isProduction ? ['babel-polyfill'] : [
@@ -118,10 +117,6 @@ const webpackConfig = () => webpackValidator({
     pathinfo: isDevelopment
   },
   plugins: [
-    new WebpackShellPlugin({
-      onBuildStart: ['echo "Webpack frontend Start"'],
-      onBuildEnd: ['echo "Webpack frontend End"']
-    }),
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     }),
@@ -134,8 +129,7 @@ const webpackConfig = () => webpackValidator({
     }),
     new webpack.EnvironmentPlugin([
       'NODE_ENV',
-      'PRODUCT_SERVICE_URL',
-      'APP_PORT'
+      'PRODUCT_SERVICE_URL'
     ]),
     new ExtractTextPlugin({
       filename: 'css/[name].[hash].css',

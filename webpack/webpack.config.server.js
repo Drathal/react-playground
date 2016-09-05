@@ -1,8 +1,5 @@
-require('dotenv-safe').load()
-const path = require('path')
 const webpack = require('webpack')
 const webpackValidator = require('webpack-validator')
-const WebpackShellPlugin = require('webpack-shell-plugin')
 const PATH = require('./paths')
 
 const webpackConfig = webpackValidator({
@@ -16,15 +13,12 @@ const webpackConfig = webpackValidator({
     libraryTarget: 'commonjs2'
   },
   plugins: [
-    new WebpackShellPlugin({ onBuildStart: ['echo "Webpack Server Start"'], onBuildEnd: ['echo "Webpack Server End"'] }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
     }),
     new webpack.EnvironmentPlugin([
-      'NODE_ENV',
-      'START_SERVICE_MOCK',
-      'JWT_SECRET'
+      'NODE_ENV'
     ]),
     new webpack.optimize.UglifyJsPlugin({ compressor: { warnings: false } })
   ],
