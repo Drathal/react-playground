@@ -23,7 +23,7 @@
     "translation:watchpo": "chokidar -p --silent './src/translation/po/*.po' -c 'npm run translation:import'",
     "translation:createpot": "rip json2pot ./i18n/**/*.json -o ./src/translation/po/messages.pot",
     "translation:import": "babel-node ./src/translation/po2json.js",
-    "prefont:update": "del -d $npm_package_config_fontpath/roboto* && del -d $npm_package_config_fontpath/material*",
+    "prefont:update": "del $npm_package_config_fontpath/roboto* && del $npm_package_config_fontpath/material*",
     "font:update": "cd $npm_package_config_fontpath && gfdownloader Material+Icons:400 && gfdownloader Roboto:400"
   },
   "config": {
