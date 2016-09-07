@@ -10,6 +10,7 @@ import NavLinks from 'components/NavLinks'
 
 import style from './layout_main.css'
 import top_navigation_links from '../topnav_links'
+import favicon from './favicon.ico'
 
 const m = defineMessages({
   brandName: {
@@ -27,7 +28,9 @@ const m = defineMessages({
 })
 
 const component = ({ children, params, intl: { formatMessage: fm } }) => <div className={`${style.layout} layout layout-main`}>
-  <Helmet title={fm(m.brandName)} />
+  <Helmet
+    title={fm(m.brandName)}
+  />
   <TopNavBar brand={<Link to="/dashboard">{fm(m.brandName)}</Link>}>
     <NavLinks linkList={top_navigation_links(params)} />
     <LanguageSelectorContainer />

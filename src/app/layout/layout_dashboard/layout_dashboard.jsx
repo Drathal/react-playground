@@ -11,6 +11,7 @@ import LanguageSelectorContainer from 'containers/LanguageSelectorContainer'
 
 import style from './layout_dashboard.css'
 import top_navigation_links from '../topnav_links'
+import favicon from './favicon.ico'
 
 const m = defineMessages({
   brandNameTwo: {
@@ -29,7 +30,9 @@ const m = defineMessages({
 
 const component = ({ children, params, intl: { formatMessage: fm } }) => <BodyClassName className={style.body}>
   <div className={`${style.layout} layout layout-dashboard`}>
-    <Helmet title={fm(m.brandNameTwo)} />
+    <Helmet
+      title={fm(m.brandNameTwo)}
+    />
     <TopNavBar style={style} brand={<Link to="/main">{fm(m.brandNameTwo)}</Link>}>
       <LanguageSelectorContainer />
       <NavLogin messages={{ login: fm(m.login), logout: fm(m.logout) }} />
