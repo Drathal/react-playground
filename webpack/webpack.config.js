@@ -27,8 +27,15 @@ const hot = isProduction ? ['babel-polyfill'] : [
 const loaders = isProduction ? [
   {
     test: /\.css$/,
+    exclude: /(file|global)\.css$/,
     loader: ExtractTextPlugin.extract({
       loader: 'css?camelCase&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!postcss'
+    })
+  },
+  {
+    test: /(file|global)\.css$/,
+    loader: ExtractTextPlugin.extract({
+      loader: 'css'
     })
   },
   {
