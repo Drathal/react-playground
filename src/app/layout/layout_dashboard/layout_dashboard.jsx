@@ -32,6 +32,7 @@ const component = ({ children, params, intl: { formatMessage: fm } }) => <BodyCl
   <div className={`${style.layout} layout layout-dashboard`}>
     <Helmet
       title={fm(m.brandNameTwo)}
+      link={[{ rel: 'shortcut icon', href: favicon }]}
     />
     <TopNavBar style={style} brand={<Link to="/main">{fm(m.brandNameTwo)}</Link>}>
       <LanguageSelectorContainer />

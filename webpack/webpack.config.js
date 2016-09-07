@@ -171,7 +171,7 @@ const webpackConfig = () => webpackValidator({
       },
       {
         test: /\.ico$/,
-        loader: 'file?name=[name].[ext]'
+        loader: 'file?name=[name].[hash].[ext]'
       },
       {
         test: /\.svg$/,

@@ -30,6 +30,7 @@ const m = defineMessages({
 const component = ({ children, params, intl: { formatMessage: fm } }) => <div className={`${style.layout} layout layout-main`}>
   <Helmet
     title={fm(m.brandName)}
+    link={[{ rel: 'shortcut icon', href: favicon }]}
   />
   <TopNavBar brand={<Link to="/dashboard">{fm(m.brandName)}</Link>}>
     <NavLinks linkList={top_navigation_links(params)} />
