@@ -15,9 +15,18 @@ const component = ({ messages, languageCodes, currentLanguage, onLanguageSwitch 
 
 component.propTypes = {
   messages: PropTypes.shape({
-    currentLanguage: PropTypes.element.isRequired
+    currentLanguage: React.PropTypes.oneOfType([
+      React.PropTypes.element,
+      React.PropTypes.func,
+      React.PropTypes.string
+    ]).isRequired
   }).isRequired,
-  languageCodes: PropTypes.array,
+  languageCodes: React.PropTypes.arrayOf(
+    PropTypes.shape({
+      name: React.PropTypes.string,
+      locale: React.PropTypes.string
+    }).isRequired
+  ),
   currentLanguage: PropTypes.string,
   onLanguageSwitch: PropTypes.func
 }
@@ -26,7 +35,7 @@ component.defaultProps = {
   messages: {
     currentLanguage: '#messages.currentLanguage#',
   },
-  languageCodes: ['unset_LanguageCodes'],
+  languageCodes: [{ locale: 'unset_locale', name: 'unset_locale_name' }],
   currentLanguage: 'unset_Language',
   onLanguageSwitch: () => {},
 }

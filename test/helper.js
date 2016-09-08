@@ -42,7 +42,6 @@ chai.use((c) => {
     const filename = sanitize(`${mocha.test.title}`).replace(/\s/g, '')
     const filepath = path.dirname(mocha.test.parent.file)
     const snapshotfile = `${filepath}/${testfile}.snapshot.${filename}.html`
-
     if (!fs.existsSync(snapshotfile)) {
       fs.writeFileSync(snapshotfile.trim(), pretty(this._obj).trim())
       assert(true)

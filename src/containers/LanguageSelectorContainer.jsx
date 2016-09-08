@@ -1,7 +1,6 @@
-import React from 'react'
 import { connect } from 'react-redux'
 import { update } from 'react-intl-redux'
-import { injectIntl, defineMessages, FormattedMessage } from 'react-intl'
+import { injectIntl, defineMessages } from 'react-intl'
 import IntlUtils from 'src/translation/IntlUtils'
 import LanguageSelector from 'components/LanguageSelector'
 
@@ -21,10 +20,10 @@ const m = defineMessages({
 })
 
 const container = connect(
-  (state) => ({
+  (state, props) => ({
     currentLanguage: state.intl.locale,
-    languageCodes: IntlUtils.locales.map(l => ({ locale: l.locale, name: <FormattedMessage {...m[`locale_${l.locale}`]} /> })),
-    messages: { currentLanguage: <FormattedMessage {...m.currentLanguage} /> }
+    languageCodes: IntlUtils.locales.map(l => ({ locale: l.locale, name: props.intl.formatMessage(m[`locale_${l.locale}`]) })),
+    messages: { currentLanguage: props.intl.formatMessage(m.currentLanguage) }
   }),
   (dispatch) => ({
     onLanguageSwitch: (locale) => {
