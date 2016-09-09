@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
-import { injectIntl, defineMessages } from 'react-intl'
+import { injectIntl, intlShape } from 'react-intl'
 import Helmet from 'react-helmet'
 import BodyClassName from 'react-body-classname'
 
@@ -9,26 +9,12 @@ import TopNavBar from 'components/TopNavBar'
 import NavLinks from 'components/NavLinks'
 import LanguageSelectorContainer from 'containers/LanguageSelectorContainer'
 
+import m from './layout_dashboard.messages'
 import style from './layout_dashboard.css'
 import top_navigation_links from '../topnav_links'
 import favicon from './favicon.ico'
 
-const m = defineMessages({
-  brandNameTwo: {
-    id: 'brandNameTwo',
-    defaultMessage: '#Company two#'
-  },
-  login: {
-    id: 'login',
-    defaultMessage: 'login'
-  },
-  logout: {
-    id: 'logout',
-    defaultMessage: 'logout'
-  }
-})
-
-const component = ({ children, params, intl: { formatMessage: fm } }) => <BodyClassName className={style.body}>
+const component = ({ children, params: { layout }, intl: { formatMessage: fm } }) => (<BodyClassName className={style.body}>
   <div className={`${style.layout} layout layout-dashboard`}>
     <Helmet
       title={fm(m.brandNameTwo)}
@@ -40,7 +26,7 @@ const component = ({ children, params, intl: { formatMessage: fm } }) => <BodyCl
     </TopNavBar>
     <aside className={`${style.sidemenu} app-aside`}>
       <div className={`${style.sidemenuBody}`}>
-        <NavLinks linkList={top_navigation_links(params)} />
+        <NavLinks linkList={top_navigation_links(layout)} />
       </div>
     </aside>
     <div className={`${style.container} app-content`}>
@@ -49,17 +35,15 @@ const component = ({ children, params, intl: { formatMessage: fm } }) => <BodyCl
       </div>
     </div>
   </div>
-</BodyClassName>
+</BodyClassName>)
 
 
 component.propTypes = {
-  intl: PropTypes.object,
-  activePage: PropTypes.func,
+  intl: intlShape,
   children: PropTypes.node,
   params: PropTypes.shape({
-    layout: PropTypes.string
+    layout: PropTypes.string // eslint-disable-line react/no-unused-prop-types
   }).isRequired,
-  location: PropTypes.object
 }
 
 component.defaultProps = {

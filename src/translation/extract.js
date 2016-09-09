@@ -5,7 +5,7 @@ const mkdirp = require('mkdirp')
 
 glob.sync('./src/+(app|containers)/**/*.js').map(filename => {
   const result = require('babel-core').transform(fs.readFileSync(filename), {
-    presets: ['es2015-webpack', 'stage-0', 'react'],
+    presets: ['es2015', 'stage-0', 'react'],
     plugins: ['react-intl']
   })
 

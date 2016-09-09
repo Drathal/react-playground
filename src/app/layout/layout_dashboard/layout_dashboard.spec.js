@@ -6,7 +6,7 @@ import LayoutDashboard from './layout_dashboard'
 
 const store = configureStore()({ intl: { locale: 'en' } })
 
-describe('component <LayoutDashboard />', () => {
+describe('container <LayoutDashboard />', () => {
   it('can render childs', function () {
     expect(shallow(<Provider store={store}><LayoutDashboard children="childs" /></Provider>).html()).toMatchSnapshot(this)
   })
