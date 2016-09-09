@@ -4,5 +4,5 @@ src/**/*.spec.js
 --reporter spec
 --reporter-options stack-exclude=**/node_modules/**
 --compilers js:babel-core/register
---require ./test/helper.js
+--require ./test/helper
 --recursive
