@@ -16,6 +16,8 @@ const component = ({ children, brand, style }) => {
   </Navbar>)
 }
 
+component.displayName = 'TopNavBar'
+
 component.propTypes = {
   style: PropTypes.object,
   children: PropTypes.node,

@@ -10,7 +10,7 @@ import './theme.css'
 setAddon(infoAddon)
 
 addDecorator((story) => (
-  <div style={{ padding: '5px 20px 20px 20px' }}>
+  <div style={{ margin: '0 0 0 20px' }}>
     {story()}
   </div>
 ))
