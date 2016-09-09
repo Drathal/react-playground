@@ -6,7 +6,9 @@ const component = ({ children, brand, style }) => {
   const s = { ...component_style, ...style }
   return (<Navbar fluid staticTop componentClass="header" role="banner" className={s.navigation} >
     <Navbar.Header>
-      <Navbar.Brand className={s.navigationHeader}>{brand}</Navbar.Brand>
+      <Navbar.Brand className={s.navigationHeader}>
+        {brand}
+      </Navbar.Brand>
     </Navbar.Header>
     <Navbar.Collapse className="bs-navbar-collapse">
       {children}
@@ -17,12 +19,14 @@ const component = ({ children, brand, style }) => {
 component.propTypes = {
   style: PropTypes.object,
   children: PropTypes.node,
-  brand: PropTypes.element
+  brand: React.PropTypes.oneOfType([
+    React.PropTypes.element,
+    React.PropTypes.string
+  ])
 }
 
 component.defaultProps = {
   style: {}
 }
-
 
 export default component
