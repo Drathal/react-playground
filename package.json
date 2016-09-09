@@ -87,7 +87,7 @@
     "config": "^1.21.0",
     "cookie": "^0.3.1",
     "cookie-parser": "^1.4.3",
-    "cors": "^2.8.0",
+    "cors": "^2.8.1",
     "cross-env": "^2.0.1",
     "css-loader": "^0.25.0",
     "debug": "^2.2.0",
@@ -155,7 +155,7 @@
     "webpack-validator": "^2.2.7"
   },
   "devDependencies": {
-    "@kadira/storybook": "^2.12.1",
+    "@kadira/storybook": "^2.13.0",
     "chai": "^3.5.0",
     "dirty-chai": "^1.2.2",
     "enzyme": "^2.4.1",
