@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react'
 import { Button } from 'react-bootstrap'
 import style from './ProductList.css'
 
-const ProductList = ({ addProduct, messages, children, count }) =>
-  <div className={`productsWrapper ${style.productsWrapper}`}>
+const component = ({ addProduct, messages, children, count }) =>
+  (<div className={`productsWrapper ${style.productsWrapper}`}>
     <h2>{messages.title}</h2>
     {count < 5 || !count ?
       <Button className={`addProduct ${style.addProductButton}`} onClick={addProduct}>
@@ -13,12 +13,14 @@ const ProductList = ({ addProduct, messages, children, count }) =>
     <div className={style.products}>
       {children}
     </div>
-  </div>
+  </div>)
 
-ProductList.propTypes = {
+component.displayName = 'ProductList'
+
+component.propTypes = {
   messages: PropTypes.shape({
-    addProduct: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
+    addProduct: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
+    title: PropTypes.string.isRequired       // eslint-disable-line react/no-unused-prop-types
   }).isRequired,
   count: PropTypes.number,
   children: PropTypes.node,
@@ -26,8 +28,8 @@ ProductList.propTypes = {
 }
 
 /* istanbul ignore next */
-ProductList.defaultProps = {
+component.defaultProps = {
   addProduct: () => {}
 }
 
-export default ProductList
+export default component

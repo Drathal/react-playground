@@ -33,12 +33,12 @@ component.displayName = 'ProductItem'
 
 component.propTypes = {
   messages: PropTypes.shape({
-    deleteProductButton: PropTypes.string.isRequired,
-    addToCartButton: PropTypes.string.isRequired
+    deleteProductButton: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
+    addToCartButton: PropTypes.string.isRequired      // eslint-disable-line react/no-unused-prop-types
   }).isRequired,
   product: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired
+    id: PropTypes.number.isRequired,          // eslint-disable-line react/no-unused-prop-types
+    description: PropTypes.string.isRequired  // eslint-disable-line react/no-unused-prop-types
   }).isRequired,
   deleteProduct: PropTypes.func,
   addToCart: PropTypes.func

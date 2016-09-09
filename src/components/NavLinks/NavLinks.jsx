@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react'
 import { Nav, NavItem } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
-const component = ({ linkList }) => (<Nav>
+const component = ({ linkList }) =>
+(<Nav>
   {
     linkList.map(item => {
       return (<LinkContainer key={item.link} active={false} to={{ pathname: `${item.link}` }}>

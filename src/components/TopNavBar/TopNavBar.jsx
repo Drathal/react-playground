@@ -28,7 +28,9 @@ component.propTypes = {
 }
 
 component.defaultProps = {
-  style: {}
+  style: {},
+  brand: '',
+  children: ''
 }
 
 export default component

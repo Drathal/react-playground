@@ -6,3 +6,4 @@ src/**/*.spec.js
 --compilers js:babel-core/register
 --require ./test/helper
 --recursive
+--watch-extensions js,jsx
