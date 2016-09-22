@@ -1,10 +1,10 @@
-export default (params) => [
+export default ({ params: layout }) => [
   {
     title: 'productLink',
-    link: `/${params.layout}/products`
+    link: `/${layout}/products`
   },
   {
     title: 'notFoundLink',
-    link: `/${params.layout}/404`
+    link: `/${layout}/404`
   }
 ]

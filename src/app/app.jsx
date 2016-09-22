@@ -1,12 +1,11 @@
 import React, { PropTypes } from 'react'
-import './layout/layout-global.css'
-import './layout/fonts-global.css'
-import './layout/theme.css'
 
-const app = ({ children }) => React.Children.only(children)
+const component = ({ children }) => React.Children.only(children)
 
-app.propTypes = {
+component.displayName = 'App'
+
+component.propTypes = {
   children: PropTypes.element.isRequired
 }
 
-export default app
+export default component

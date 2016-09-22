@@ -1,4 +1,3 @@
-@value default-bg-color, default-text-color from "./colors.css";
 :global {
   .material-icons {
     font-family: 'Material Icons';
@@ -33,8 +32,6 @@
     font-size: 48px;
   }
   body {
-    background-color: default-bg-color;
-    color: default-text-color;
     font-weight: 400;
     font-size: 14px;
     font-family: Roboto, 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;

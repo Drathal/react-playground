@@ -1,7 +1,11 @@
-@value brand-text-color, dark-bg-color, dark-text-color from "../colors.css";
+@value brand-text-color, dark-bg-color, dark-text-color from "./colors.css";
 @value custom-bg-color: #e0e0e0;
 @value sidebar-witdh: 250px;
 :global {
+  body {
+    background-color: default-bg-color;
+    color: default-text-color;
+  }
   .layout-dashboard .productsWrapper .panel {
     width: 48%;
     display: inline-block;
@@ -42,6 +46,12 @@
     background-color: inherit;
     border: inherit;
     content: '';
+  }
+  a {
+    color: #fff;
+    &:hover {
+      color: #000
+    }
   }
 }
 

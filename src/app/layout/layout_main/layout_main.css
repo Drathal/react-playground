@@ -1,4 +1,11 @@
-@value default-text-color, default-bg-color from "../colors.css";
+@value default-text-color, default-bg-color from "./colors.css";
+:global {
+  body {
+    background-color: default-bg-color;
+    color: default-text-color;
+  }
+}
+
 .layout {}
 
 .container {
