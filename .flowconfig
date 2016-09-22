@@ -1,0 +1,9 @@
+[ignore]
+.*node_modules*
+
+[include]
+
+[libs]
+
+[options]
+module.name_mapper='^reducer\/\(.*\)$' -> '<PROJECT_ROOT>/src/reducer/\1'

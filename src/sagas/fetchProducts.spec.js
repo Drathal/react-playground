@@ -21,7 +21,7 @@ describe('saga fetchProducts', () => {
   })
 
   it('can PUT productActions.setProducts with TEST_PRODUCTS', () => {
-    assert.deepEqual(generator.next('TEST_PRODUCTS').value, put(productActions.setProducts('TEST_PRODUCTS')))
+    assert.deepEqual(generator.next([]).value, put(productActions.setProducts([])))
   })
 
   it('can not TAKE another product/PRODUCTS_FETCH_REQUESTED', () => {

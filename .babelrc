@@ -7,12 +7,13 @@
         }],
         "stage-0",
         "react"
-      ], 
+      ],
       "plugins": [
         "transform-runtime",
         "transform-promise-to-bluebird",
         "transform-react-constant-elements",
-        "transform-react-inline-elements"
+        "transform-react-inline-elements",
+        "tcomb"
       ]
     },
     "development": {
@@ -20,6 +21,7 @@
       "plugins": [
         "transform-runtime",
         "transform-promise-to-bluebird",
+        "tcomb",
         "react-hot-loader/babel", ["react-intl", {
           "messagesDir": "./i18n/",
           "enforceDescriptions": false
@@ -31,6 +33,7 @@
       "plugins": [
         "transform-runtime",
         "transform-promise-to-bluebird",
+        "tcomb",
         "istanbul", ["babel-plugin-espower", {
           "embedAst": true
         }],

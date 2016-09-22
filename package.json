@@ -18,6 +18,7 @@
     "postbuild": "npm run build:server",
     "build:server": "cross-env NODE_ENV=production START_SERVICE_MOCK=true webpack --config webpack/webpack.config.server.js ",
     "build:dev": "cross-env NODE_ENV=development node ./server/index.js",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "translation:export": "npm run translation:extract && npm run translation:createpot",
     "translation:extract": "babel-node ./src/translation/extract.js",
     "translation:watchpot": "chokidar -p --silent '.i18n/**/*' -c 'npm run translation:createpot'",
@@ -156,6 +157,7 @@
   },
   "devDependencies": {
     "@kadira/storybook": "^2.13.0",
+    "babel-plugin-tcomb": "^0.3.13",
     "chai": "^3.5.0",
     "dirty-chai": "^1.2.2",
     "enzyme": "^2.4.1",
@@ -166,6 +168,7 @@
     "eslint-import-resolver-webpack": "^0.5.1",
     "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-react": "^6.2.0",
+    "flow-bin": "^0.32.0",
     "isparta": "^4.0.0",
     "istanbul": "^0.4.5",
     "js-beautify": "^1.6.4",
@@ -176,6 +179,7 @@
     "power-assert": "^1.4.1",
     "sinon": "^1.17.5",
     "sinon-chai": "^2.8.0",
+    "tcomb": "^3.2.13",
     "wallaby-webpack": "0.0.23"
   }
 }
