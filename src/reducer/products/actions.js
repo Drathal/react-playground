@@ -9,17 +9,20 @@ import {
 import type {
   Product,
   Products,
-  ProductId
+  ProductId,
+  AddProductAction,
+  DeleteProductAction,
+  SetProductsAction
 } from './types'
 
-export const addProduct = (product : Product) : Object => ({
+export const addProduct = (product : Product) : AddProductAction => ({
   type: ADD_PRODUCT, product
 })
 
-export const deleteProduct = (id : ProductId) : Object => ({
+export const deleteProduct = (id : ProductId) : DeleteProductAction => ({
   type: DELETE_PRODUCT, id
 })
 
-export const setProducts = (products : Products) : Object => ({
+export const setProducts = (products : Products) : SetProductsAction => ({
   type: SET_PRODUCTS, products
 })
