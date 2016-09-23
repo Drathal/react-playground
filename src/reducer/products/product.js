@@ -1,12 +1,26 @@
-import { ADD_PRODUCT } from 'reducer/ActionTypes'
+// @flow
+import type {
+  Product
+} from './types'
 
-const noProduct = (product) => (!product || !product.id)
+import type {
+  Action
+} from '../../types'
 
-const product = (state, action) => {
+import { ADD_PRODUCT } from './actions'
+
+const initialState : Product = {
+  id: 0,
+  name: '',
+  description: '',
+  productImage: ''
+}
+
+const product = (state : Product = initialState, action : Action) => {
   switch (action.type) {
     case ADD_PRODUCT:
-      if (noProduct(action.product)) return state
       return {
+        ...state,
         id: action.product.id,
         name: action.product.name || '',
         description: action.product.description || '',

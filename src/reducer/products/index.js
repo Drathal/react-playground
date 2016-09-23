@@ -1,18 +1,23 @@
-import { ADD_PRODUCT, DELETE_PRODUCT, SET_PRODUCTS } from 'reducer/ActionTypes'
+// @flow
+import type {
+  Products
+} from './types'
+
+import type {
+  Action
+} from '../../types'
+
+import { ADD_PRODUCT, DELETE_PRODUCT, SET_PRODUCTS } from './actions'
 import { default as products } from './products'
 
-const initialState = {
-  items: []
-}
+const initialState = []
 
-export default (state = initialState, action) => {
+export default (state : Products = initialState, action : Action) : Products => {
   switch (action.type) {
     case ADD_PRODUCT:
     case DELETE_PRODUCT:
     case SET_PRODUCTS:
-      return {
-        items: products(state.items, action)
-      }
+      return products(state, action)
 
     default:
       return state

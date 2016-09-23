@@ -1,30 +1,26 @@
+// @flow
+export type ProductId = number
+
 export type Product = {
   id: number,
-  name?: string,
   description: string,
+  name?: string,
   productImage?: string
 }
 
 export type Products = Array<Product>
 
-export type ProductId = number
-
 export type AddProductAction = {
-  type: 'product/ADD_PRODUCT',
+  type: string,
   product: Product
 }
 
 export type DeleteProductAction = {
-  type: 'product/DELETE_PRODUCT',
+  type: string,
   id: ProductId
 }
 
 export type SetProductsAction = {
-  type: 'product/SET_PRODUCTS',
+  type: string,
   products: Products
 }
-
-export type ProductAction
-  = AddProductAction
-  | DeleteProductAction
-  | SetProductsAction

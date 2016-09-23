@@ -50,7 +50,7 @@ class ProductListContainer extends Component {
     const { addProduct, deleteProduct, ...props } = this.props
     const t = props.intl.formatMessage
 
-    const ProductItems = props.products.map((product) => <ProductItem
+    const ProductItems = props.products.map((product) => (<ProductItem
       key={product.id}
       messages={{
         deleteProductButton: t(m.deleteProductButton),
@@ -58,7 +58,7 @@ class ProductListContainer extends Component {
       }}
       deleteProduct={deleteProduct}
       {...{ product }}
-    />)
+    />))
 
     return (<ProductsList {...props}
       count={ProductItems.length}
@@ -80,7 +80,7 @@ ProductListContainer.propTypes = {
 
 ProductListContainer = connect(
     (state) => ({
-      products: state.products.items
+      products: state.products
     }),
   {
     ...productActions,

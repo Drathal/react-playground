@@ -1,11 +1,4 @@
 // @flow
-
-import {
-  ADD_PRODUCT,
-  DELETE_PRODUCT,
-  SET_PRODUCTS
-} from 'reducer/ActionTypes'
-
 import type {
   Product,
   Products,
@@ -14,6 +7,10 @@ import type {
   DeleteProductAction,
   SetProductsAction
 } from './types'
+
+export const ADD_PRODUCT = 'product/ADD_PRODUCT'
+export const DELETE_PRODUCT = 'product/DELETE_PRODUCT'
+export const SET_PRODUCTS = 'product/SET_PRODUCTS'
 
 export const addProduct = (product : Product) : AddProductAction => ({
   type: ADD_PRODUCT, product

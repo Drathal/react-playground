@@ -7,11 +7,11 @@ describe('reducer products', () => {
   const product3 = { id: 3, name: 'product 3', description: 'product 3', productImage: 'c' }
 
   it('can add products', () => {
-    const stateBefore = { items: [] }
+    const stateBefore = []
     const action1 = addProduct(product1)
     const action2 = addProduct(product2)
-    const stateAfter1 = { items: [{ ...product1 }] }
-    const stateAfter2 = { items: [{ ...product1 }, { ...product2 }] }
+    const stateAfter1 = [{ ...product1 }]
+    const stateAfter2 = [{ ...product1 }, { ...product2 }]
 
     deepFreeze(stateBefore)
     deepFreeze(action1)
@@ -22,13 +22,13 @@ describe('reducer products', () => {
   })
 
   it('can not add an existing product', () => {
-    const stateBefore = { items: [] }
+    const stateBefore = []
     const action1 = addProduct(product1)
     const action2 = addProduct(product2)
     const action3 = addProduct(product2)
-    const stateAfter1 = { items: [{ ...product1 }] }
-    const stateAfter2 = { items: [{ ...product1 }, { ...product2 }] }
-    const stateAfter3 = { items: [{ ...product1 }, { ...product2 }] }
+    const stateAfter1 = [{ ...product1 }]
+    const stateAfter2 = [{ ...product1 }, { ...product2 }]
+    const stateAfter3 = [{ ...product1 }, { ...product2 }]
 
     deepFreeze(stateBefore)
     deepFreeze(action1)
@@ -41,9 +41,9 @@ describe('reducer products', () => {
   })
 
   it('can delete a product', () => {
-    const stateBefore = { items: [{ ...product1 }] }
+    const stateBefore = [{ ...product1 }]
     const action = deleteProduct(1)
-    const stateAfter = { items: [] }
+    const stateAfter = []
 
     deepFreeze(stateBefore)
     deepFreeze(action)
@@ -52,9 +52,9 @@ describe('reducer products', () => {
   })
 
   it('can delete a product from many', () => {
-    const stateBefore = { items: [{ ...product1 }, { ...product2 }, { ...product3 }] }
+    const stateBefore = [{ ...product1 }, { ...product2 }, { ...product3 }]
     const action = deleteProduct(3)
-    const stateAfter = { items: [{ ...product1 }, { ...product2 }] }
+    const stateAfter = [{ ...product1 }, { ...product2 }]
 
     deepFreeze(stateBefore)
     deepFreeze(action)
@@ -63,9 +63,9 @@ describe('reducer products', () => {
   })
 
   it('can add many products', () => {
-    const stateBefore = { items: [{ ...product2 }] }
+    const stateBefore = [{ ...product2 }]
     const action = setProducts([{ ...product1 }, { ...product2 }, { ...product3 }])
-    const stateAfter = { items: [{ ...product1 }, { ...product2 }, { ...product3 }] }
+    const stateAfter = [{ ...product1 }, { ...product2 }, { ...product3 }]
 
     deepFreeze(stateBefore)
     deepFreeze(action)
