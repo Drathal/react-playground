@@ -9,6 +9,7 @@ My personal frontend development playground.
 
 Uses:
   * javascript in ES6
+  * flow & tcomb for typings
   * babel 6
   * webpack 2
   * react 15
