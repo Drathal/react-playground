@@ -9,7 +9,7 @@ babelConfiguration.babel = require('babel-core')
 module.exports = (wallaby) => {
   return {
     files: [
-      { pattern: 'test/helper.js' },
+      { pattern: 'test/helper/*.js' },
       { pattern: 'src/**/*.js' },
       { pattern: 'src/**/*.jsx' },
       { pattern: '!src/**/*.spec.js' },
