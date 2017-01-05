@@ -9,4 +9,3 @@
 module.system.node.resolve_dirname=src
 esproposal.class_static_fields=enable
 munge_underscores=true
-module.name_mapper='^reducer\/\(.*\)$' -> '<PROJECT_ROOT>/src/reducer/\1'
